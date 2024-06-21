@@ -1,0 +1,478 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href=".././css/vlabs-style.css" />
+    <link rel="shortcut icon" href=".././images/favicon.ico" />
+  </head>
+  <body>
+    <header class="border-b-orange-500 border-b-8">
+      <nav class="flex justify-between">
+        <button class="px-4 py-1 rounded-r-md border-r" onclick="showModal()">
+          <img class="w-[30px] h-[30px]" src=".././images/menu.png" />
+        </button>
+        <div class="flex justify-center">
+          <a href="https://vlab.co.in" class="navbar-brand">
+            <img
+              src=".././images/vlabs-color-small-moe.jpg"
+              alt="vlabs logo"
+              class="mx-4 px-4 w-[118px] h-[70px] py-2"
+            />
+          </a>
+        </div>
+        <div
+          id="headerNavbar"
+          class="flex flex-1 justify-center text-[24px] text-[#2c99ce] items-center"
+        >
+          <h2>FSK Modulation</h2>
+        </div>
+      </nav>
+      <!-- overlaynavbar -->
+      <div
+        class="overlaycontainer w-[100%] h-[100vh] bg-[#00000080] fixed top-[0%] -z-50 opacity-0"
+      ></div>
+      <div
+        class="overlaysignupform ease-in-out duration-100 fixed -top-[150%] left-[50%] -translate-x-1/2 z-50"
+      >
+        <div class="flex justify-center items-center px-4 h-[100vh] w-[100vw]">
+          <div
+            class="relative bg-white border border-solid border-[#00000033] rounded-md w-[498px] flex flex-col overflow-y-auto"
+          >
+            <div class="p-4 flex justify-between items-center border-b">
+              <div class="w-[87px] h-[50px] flex justify-center items-center">
+                <a href="https://vlab.co.in">
+                  <img
+                    src=".././images/vlabs-color-small-moe.jpg"
+                    alt="vlabs logo"
+                    class="w-[71px] h-[40px]"
+                  />
+                </a>
+              </div>
+              <button class="w-[24px] h-[24px]" onclick="closeModal()">
+                <img src=".././images/close.png" />
+              </button>
+            </div>
+            <div
+              class="p-4 flex flex-col text-[19.2px] font-bold text-[#3e6389]"
+            >
+              <div class="flex justify-center">
+                <a
+                  href="../index.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Aim
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../theory.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Theory
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../procedure.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Procedure
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../simulation.html"
+                  class="p-2 text-[#FF6600] hover:underline"
+                >
+                  Simulation
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../observations.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Observations
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../references.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  References
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../feedback.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Feedback
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 flex-1">
+        <div class="flex">
+          <div class="flex-1 basis-3/4 flex flex-col">
+            <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label
+                    for="carrier_frequency1"
+                    class="text-[#2c99ce] font-medium"
+                    >Carrier Frequency 1 in Hz:</label
+                  >
+                  <input
+                    class="border ml-2 border-black px-2 py-1 rounded-sm"
+                    type="number"
+                    id="carrier_frequency1"
+                    value="1"
+                  />
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label
+                    for="carrier_frequency2"
+                    class="text-[#2c99ce] font-medium"
+                    >Carrier Frequency 2 in Hz:</label
+                  >
+                  <input
+                    class="border border-black px-2 py-1 rounded-sm"
+                    type="number"
+                    id="carrier_frequency2"
+                    value="10"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label
+                    for="sampling_frequency"
+                    class="text-[#2c99ce] font-medium"
+                    >Sampling Frequency in Hz:</label
+                  >
+                  <input
+                    class="border border-black px-2 py-1 rounded-sm"
+                    type="number"
+                    id="sampling_frequency"
+                    value="100"
+                  />
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label for="num_bits" class="text-[#2c99ce] font-medium"
+                    >Number of Bits:</label
+                  >
+                  <input
+                    class="border px-2 ml-[72px] border-black py-1 rounded-sm"
+                    type="number"
+                    id="num_bits"
+                    value="10"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 flex flex-col basis-1/4">
+            <div class="flex justify-center pt-4">
+              <a href="../bervssnr/FSK_BervsSnr.html">
+                <button class="bg-blue-500 text-white rounded-md px-4 py-1">
+                  Generate BERvsSNR
+                </button>
+              </a>
+            </div>
+            <div class="flex justify-center pt-4">
+              <a href="../constellation/fsk_constellation.html">
+                <button class="bg-blue-500 text-white rounded-md px-2 py-1">
+                  Generate Constellation
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 border-t-2">
+          <div class="flex flex-col">
+            <div class="flex gap-1">
+              <div class="flex w-[50%] flex-col items-center">
+                <div class="relative my-4 w-[600px] h-[150px]">
+                  <!-- buttons -->
+                  <div class="absolute top-[102px] left-[0px]">
+                    <button
+                      class="bg-blue-500 text-white rounded-md px-2 py-1"
+                      class="button"
+                      onclick="generateMessageSignal()"
+                    >
+                      Generate Message
+                    </button>
+                  </div>
+                  <div class="absolute top-[130px] left-[184px]">
+                    <button
+                      class="bg-blue-500 text-sm text-white rounded-md px-2 py-1"
+                      class="button"
+                      onclick="generateCarrierSignal()"
+                    >
+                      Generate Carrier 1
+                    </button>
+                  </div>
+                  <div class="absolute top-[165px] left-[184px]">
+                    <button
+                      class="bg-blue-500 text-sm text-white rounded-md px-2 py-1"
+                      class="button"
+                      onclick="generateCarrierSignal2()"
+                    >
+                      Generate Carrier 2
+                    </button>
+                  </div>
+                  <div class="absolute top-[132px] right-[75px]">
+                    <button
+                      class="bg-blue-500 text-white rounded-md px-2 py-1"
+                      class="button"
+                      onclick="simulateFSK()"
+                    >
+                      Simulate FSK
+                    </button>
+                  </div>
+                  <img
+                    class="w-[100%] h-[100%]"
+                    src=".././images/simulation/fskimg1.png"
+                    alt="fsk1"
+                  />
+                </div>
+              </div>
+              <div class="flex w-[50%] flex-col justify-center items-center">
+                <div id="original"></div>
+                <div id="carrier-plot"></div>
+                <div id="carrier-plot2"></div>
+                <div id="modulated-plot"></div>
+                <div id="demodulated-plot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+    <script src=".././js/toggleSidebar.js"></script>
+    <script>
+      let bits, modulated_signal;
+
+      function generateMessageSignal() {
+        const num_bits = parseInt(document.getElementById("num_bits").value);
+        bits = Array.from({ length: num_bits }, () =>
+          Math.round(Math.random())
+        );
+        console.log("bits", bits);
+
+        // Plot binary information at transmitter
+        const { bitx, tx } = representDigitalSignal(bits);
+        const originalData = [
+          {
+            x: tx,
+            y: bitx.flat(),
+            type: "scatter",
+            mode: "linear",
+            name: "Binary Information at Transmitter",
+          },
+        ];
+        const originalLayout = {
+          title: "Binary Information at transmitter",
+          width: 570,
+          height: 420,
+          xaxis: {
+            title: "Bit Index",
+          },
+          yaxis: {
+            title: "Bit Value",
+          },
+        };
+        Plotly.newPlot("original", originalData, originalLayout);
+      }
+
+      function simulateFSK() {
+        // Parameters (same as before)
+        const Fs = parseInt(
+          document.getElementById("sampling_frequency").value
+        ); // Sampling frequency
+        const fc1 = parseInt(
+          document.getElementById("carrier_frequency1").value
+        ); // Carrier frequency for bit 0
+        const fc2 = parseInt(
+          document.getElementById("carrier_frequency2").value
+        ); // Carrier frequency for bit 1
+        const Tb = 1; // Duration of each bit in seconds
+        const num_bits = parseInt(document.getElementById("num_bits").value); // Number of bits
+
+        // FSK modulation
+        const t = Array.from({ length: Math.floor(Fs) }, (_, i) => i / Fs); // Time vector for one bit
+        modulated_signal = [];
+        for (const bit of bits) {
+          const carrier = bit === 0 ? fc1 : fc2;
+          const signal = t.map((time) =>
+            Math.sin(2 * Math.PI * carrier * time)
+          );
+          modulated_signal = modulated_signal.concat(signal);
+        }
+
+        // Plot modulated signal
+        const modulatedData = [
+          {
+            x: Array.from({ length: modulated_signal.length }, (_, i) => i),
+            y: modulated_signal,
+            type: "scatter",
+            mode: "lines",
+            name: "Modulated Signal",
+          },
+        ];
+        const modulatedLayout = {
+          title: "FSK Modulated Signal",
+          width: 570,
+          height: 420,
+          xaxis: {
+            title: "Samples",
+          },
+          yaxis: {
+            title: "Amplitude",
+          },
+        };
+        Plotly.newPlot("modulated-plot", modulatedData, modulatedLayout);
+      }
+
+      function representDigitalSignal(bitsx) {
+        const bitx = [];
+        const bp = 1; // Bit period
+        const Fs = parseInt(
+          document.getElementById("sampling_frequency").value
+        ); // Number of samples per bit period
+
+        // Represent each bit as a sequence of 0s or 1s
+        for (let n = 0; n < bitsx.length; n++) {
+          if (bitsx[n] === 1) {
+            bitx.push(Array(Fs).fill(1)); // Fill Fs elements with 1
+          } else {
+            bitx.push(Array(Fs).fill(0)); // Fill Fs elements with 0
+          }
+        }
+
+        const tx = [];
+        // Generate time instances corresponding to each bit period
+        for (let i = 1; i <= Fs * bitsx.length; i++) {
+          tx.push((i * bp) / Fs); // Calculate time instance and push to array
+        }
+
+        return { bitx, tx }; // Return the digital signal and corresponding time instances
+      }
+    </script>
+    <script>
+      let isGenerated = false; // Flag to check if carrier signal is generated
+
+      function generateCarrierSignal() {
+        const carrierFrequency = parseInt(
+          document.getElementById("carrier_frequency1").value
+        ); // Hz
+        const samplingFrequency = parseInt(
+          document.getElementById("sampling_frequency").value
+        ); // Hz
+        const durationInSeconds = 10; // Second
+
+        const numSamples = Math.floor(samplingFrequency * durationInSeconds);
+        const t = Array.from(
+          { length: numSamples },
+          (_, i) => i / samplingFrequency
+        );
+        const carrierSignal = t.map((time) =>
+          Math.sin(2 * Math.PI * carrierFrequency * time)
+        );
+        const data = [
+          {
+            x: t,
+            y: carrierSignal,
+            type: "scatter",
+            mode: "lines",
+            name: "Carrier Signal",
+            line: { color: "blue" },
+          },
+        ];
+
+        const layout = {
+          title: "Carrier Signal 1 Plot",
+          width: 570,
+          height: 420,
+          xaxis: { title: "Time (s)" },
+          yaxis: { title: "Amplitude" },
+        };
+
+        // If carrier plot is not generated yet, create it
+        if (!isGenerated) {
+          Plotly.newPlot("carrier-plot", data, layout);
+          isGenerated = true; // Update flag
+        } else {
+          // If carrier plot is already generated, update the data
+          Plotly.react("carrier-plot", data, layout);
+        }
+      }
+    </script>
+    <script>
+      let isGenerated2 = false; // Flag to check if carrier signal is generated
+
+      function generateCarrierSignal2() {
+        const carrierFrequency = parseInt(
+          document.getElementById("carrier_frequency2").value
+        ); // Hz
+        const samplingFrequency = parseInt(
+          document.getElementById("sampling_frequency").value
+        ); // Hz
+        const durationInSeconds = 10; // Second
+
+        const numSamples = Math.floor(samplingFrequency * durationInSeconds);
+        const t = Array.from(
+          { length: numSamples },
+          (_, i) => i / samplingFrequency
+        );
+        const carrierSignal = t.map((time) =>
+          Math.sin(2 * Math.PI * carrierFrequency * time)
+        );
+        const data = [
+          {
+            x: t,
+            y: carrierSignal,
+            type: "scatter",
+            mode: "lines",
+            name: "Carrier Signal",
+            line: { color: "blue" },
+          },
+        ];
+
+        const layout = {
+          title: "Carrier Signal 2 Plot",
+          width: 570,
+          height: 420,
+          xaxis: { title: "Time (s)" },
+          yaxis: { title: "Amplitude" },
+        };
+
+        // If carrier plot is not generated yet, create it
+        if (!isGenerated) {
+          Plotly.newPlot("carrier-plot", data, layout);
+          isGenerated2 = true; // Update flag
+        } else {
+          // If carrier plot is already generated, update the data
+          Plotly.react("carrier-plot2", data, layout);
+        }
+      }
+    </script>
+  </body>
+</html>

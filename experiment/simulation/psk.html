@@ -1,0 +1,357 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href=".././css/vlabs-style.css" />
+    <link rel="shortcut icon" href=".././images/favicon.ico" />
+  </head>
+  <body>
+    <header class="border-b-orange-500 border-b-8">
+      <nav class="flex justify-between">
+        <button class="px-4 py-1 rounded-r-md border-r" onclick="showModal()">
+          <img class="w-[30px] h-[30px]" src=".././images/menu.png" />
+        </button>
+        <div class="flex justify-center">
+          <a href="https://vlab.co.in" class="navbar-brand">
+            <img
+              src=".././images/vlabs-color-small-moe.jpg"
+              alt="vlabs logo"
+              class="mx-4 px-4 w-[118px] h-[70px] py-2"
+            />
+          </a>
+        </div>
+        <div
+          id="headerNavbar"
+          class="flex flex-1 justify-center text-[24px] text-[#2c99ce] items-center"
+        >
+          <h2>PSK Modulation</h2>
+        </div>
+      </nav>
+      <!-- overlaynavbar -->
+      <div
+        class="overlaycontainer w-[100%] h-[100vh] bg-[#00000080] fixed top-[0%] -z-50 opacity-0"
+      ></div>
+      <div
+        class="overlaysignupform ease-in-out duration-100 fixed -top-[150%] left-[50%] -translate-x-1/2 z-50"
+      >
+        <div class="flex justify-center items-center px-4 h-[100vh] w-[100vw]">
+          <div
+            class="relative bg-white border border-solid border-[#00000033] rounded-md w-[498px] flex flex-col overflow-y-auto"
+          >
+            <div class="p-4 flex justify-between items-center border-b">
+              <div class="w-[87px] h-[50px] flex justify-center items-center">
+                <a href="https://vlab.co.in">
+                  <img
+                    src=".././images/vlabs-color-small-moe.jpg"
+                    alt="vlabs logo"
+                    class="w-[71px] h-[40px]"
+                  />
+                </a>
+              </div>
+              <button class="w-[24px] h-[24px]" onclick="closeModal()">
+                <img src=".././images/close.png" />
+              </button>
+            </div>
+            <div
+              class="p-4 flex flex-col text-[19.2px] font-bold text-[#3e6389]"
+            >
+              <div class="flex justify-center">
+                <a
+                  href="../index.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Aim
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../theory.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Theory
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../procedure.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Procedure
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../simulation.html"
+                  class="p-2 text-[#FF6600] hover:underline"
+                >
+                  Simulation
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../observations.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Observations
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../references.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  References
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../feedback.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Feedback
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 flex-1">
+        <!--  -->
+        <div class="flex">
+          <div class="flex-1 basis-4/5 flex flex-col">
+            <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label
+                    for="carrier_frequency"
+                    class="text-[#2c99ce] font-medium"
+                    >Carrier Frequency in Hz:</label
+                  >
+                  <input
+                    class="border ml-5 border-black px-2 py-1 rounded-sm"
+                    type="number"
+                    id="carrier_frequency"
+                    value="1"
+                  />
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label for="phaseshift" class="text-[#2c99ce] font-medium"
+                    >Phase Shift :</label
+                  >
+                  <select
+                    class="border border-black px-2 py-[3px] ml-6 rounded-sm"
+                    id="phase_shift"
+                  >
+                    <option value="1">π</option>
+                    <option value="π/2">π/2</option>
+                  </select>
+                  <!-- <input
+                    class="border border-black px-2 py-1 rounded-sm"
+                  /> -->
+                </div>
+              </div>
+            </div>
+            <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label
+                    for="sampling_frequency"
+                    class="text-[#2c99ce] font-medium"
+                    >Sampling Frequency in Hz:</label
+                  >
+                  <input
+                    class="border border-black px-2 py-1 rounded-sm"
+                    type="number"
+                    id="sampling_frequency"
+                    value="100"
+                  />
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <label for="num_bits" class="text-[#2c99ce] font-medium"
+                    >Number of Bits:</label
+                  >
+                  <input
+                    class="border px-2 border-black py-1 rounded-sm"
+                    type="number"
+                    id="num_bits"
+                    value="10"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 flex flex-col basis-1/5">
+            <div class="flex justify-center pt-4">
+              <a href="../bervssnr/PSK_BervsSnr.html">
+                <button class="bg-blue-500 text-white rounded-md px-5 py-1">
+                  Generate BERvsSNR
+                </button>
+              </a>
+            </div>
+            <div class="flex justify-center pt-4">
+              <a href="../constellation/psk_constellation.html">
+                <button class="bg-blue-500 text-white rounded-md px-2 py-1">
+                  Generate Constellation
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 border-t-2">
+          <div class="flex flex-col">
+            <div class="flex justify-center pt-4">
+              <button
+                class="bg-blue-500 text-white rounded-md px-2 py-1"
+                class="button"
+                onclick="simulatePSK()"
+              >
+                Simulate PSK/QPSK
+              </button>
+            </div>
+            <div class="flex gap-2">
+              <div class="flex-1 flex flex-col items-center">
+                <div class="w-[550px]">
+                  <img
+                    class="w-[100%] h-[100%]"
+                    src=".././images/simulation/psk_mod.png"
+                    alt="psk_mod"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col justify-center items-center">
+                <div class="max-h-[400px]" id="original"></div>
+                <div class="max-h-[400px]" id="modulated-plot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+    <script src=".././js/toggleSidebar.js"></script>
+    <script>
+      function simulatePSK() {
+        const Fs = parseInt(
+          document.getElementById("sampling_frequency").value
+        ); // Sampling frequency
+        const fc = parseInt(document.getElementById("carrier_frequency").value); // Carrier frequency
+        const Tb = 1; // Duration of each bit in seconds
+        const num_bits = parseInt(document.getElementById("num_bits").value); // Number of bits
+        const phase_shift_select = document.getElementById("phase_shift");
+        const phase_shift_value = phase_shift_select.value;
+
+        if (phase_shift_value === "π/2") {
+          // Redirect to another link
+          window.location.href = "qpsk.html"; // Replace 'https://example.com' with your desired URL
+          return;
+        }
+
+        // Generate random bits
+        const bits = Array.from({ length: num_bits }, () =>
+          Math.round(Math.random())
+        );
+
+        // Fixed sequence of binary bits
+        const bits1 = bits; // Your fixed sequence
+
+        // Representation of transmitting binary information as digital signal
+        const { bitx: bitx1, tx: tx1 } = representDigitalSignal(bits1);
+
+        // Plot original signal
+        const originalData = [
+          {
+            x: tx1,
+            y: bitx1.flat(),
+            type: "scatter",
+            mode: "linear",
+            name: "Binary Information at transmitter",
+          },
+        ];
+
+        const originalLayout = {
+          title: "Binary Information at transmitter",
+
+          xaxis: {
+            title: "Bit Index",
+          },
+          yaxis: {
+            title: "Bit Value",
+          },
+        };
+
+        Plotly.newPlot("original", originalData, originalLayout);
+
+        // PSK modulation
+        const t = Array.from({ length: Math.floor(Fs) }, (_, i) => i / Fs); // Time vector for one bit
+        let modulated_signal = [];
+        const phase_shift = Math.PI * parseFloat(phase_shift_value); // Phase shift for bit 1
+
+        for (const bit of bits) {
+          const phase = bit === 0 ? 0 : phase_shift;
+          const signal = t.map((time) =>
+            Math.sin(2 * Math.PI * fc * time + phase)
+          );
+          modulated_signal = modulated_signal.concat(signal);
+        }
+
+        // Plot modulated signal
+        const modulatedData = [
+          {
+            x: Array.from({ length: modulated_signal.length }, (_, i) => i),
+            y: modulated_signal,
+            type: "scatter",
+            mode: "lines",
+            name: "Modulated Signal",
+          },
+        ];
+
+        const modulatedLayout = {
+          title: "PSK Modulated Signal",
+          xaxis: {
+            title: "Samples",
+          },
+          yaxis: {
+            title: "Amplitude",
+          },
+        };
+
+        Plotly.newPlot("modulated-plot", modulatedData, modulatedLayout);
+      }
+
+      function representDigitalSignal(bitsx) {
+        const bitx = [];
+        const Fs = parseInt(
+          document.getElementById("sampling_frequency").value
+        ); // Sampling frequency
+        const bp = 1; // Bit period
+
+        // Represent each bit as a sequence of 0s or 1s
+        for (let n = 0; n < bitsx.length; n++) {
+          if (bitsx[n] === 1) {
+            bitx.push(Array(Fs).fill(1)); // Fill Fs elements with 1
+          } else {
+            bitx.push(Array(Fs).fill(0)); // Fill Fs elements with 0
+          }
+        }
+
+        const tx = [];
+        // Generate time instances corresponding to each bit period
+        for (let i = 1; i <= Fs * bitsx.length; i++) {
+          tx.push((i * bp) / Fs); // Calculate time instance and push to array
+        }
+
+        return { bitx, tx }; // Return the digital signal and corresponding time instances
+      }
+    </script>
+  </body>
+</html>
