@@ -1,0 +1,341 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Virtual Labs</title>
+    <link rel="stylesheet" href=".././css/vlabs-style.css" />
+    <link rel="shortcut icon" href=".././images/favicon.ico" />
+    <style>
+      table {
+        width: 80%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="border-b-orange-500 border-b-8">
+      <nav class="flex justify-between">
+        <button class="px-4 py-1 rounded-r-md border-r" onclick="showModal()">
+          <img class="w-[30px] h-[30px]" src=".././images/menu.png" />
+        </button>
+        <div class="flex justify-center">
+          <a href="https://vlab.co.in" class="navbar-brand">
+            <img
+              src=".././images/vlabs-color-small-moe.jpg"
+              alt="vlabs logo"
+              class="mx-4 px-4 w-[118px] h-[70px] py-2"
+            />
+          </a>
+        </div>
+        <div
+          id="headerNavbar"
+          class="flex flex-1 justify-center text-[24px] text-[#2c99ce] items-center"
+        >
+          <h2>FSK BERvsSNR</h2>
+        </div>
+      </nav>
+      <!-- overlaynavbar -->
+      <div
+        class="overlaycontainer w-[100%] h-[100vh] bg-[#00000080] fixed top-[0%] -z-50 opacity-0"
+      ></div>
+      <div
+        class="overlaysignupform ease-in-out duration-100 fixed -top-[150%] left-[50%] -translate-x-1/2 z-50"
+      >
+        <div class="flex justify-center items-center px-4 h-[100vh] w-[100vw]">
+          <div
+            class="relative bg-white border border-solid border-[#00000033] rounded-md w-[498px] flex flex-col overflow-y-auto"
+          >
+            <div class="p-4 flex justify-between items-center border-b">
+              <div class="w-[87px] h-[50px] flex justify-center items-center">
+                <a href="https://vlab.co.in">
+                  <img
+                    src=".././images/vlabs-color-small-moe.jpg"
+                    alt="vlabs logo"
+                    class="w-[71px] h-[40px]"
+                  />
+                </a>
+              </div>
+              <button class="w-[24px] h-[24px]" onclick="closeModal()">
+                <img src=".././images/close.png" />
+              </button>
+            </div>
+            <div
+              class="p-4 flex flex-col text-[19.2px] font-bold text-[#3e6389]"
+            >
+              <div class="flex justify-center">
+                <a
+                  href="../index.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Aim
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../theory.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Theory
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../procedure.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Procedure
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../simulation.html"
+                  class="p-2 text-[#FF6600] hover:underline"
+                >
+                  Simulation
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../observations.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Observations
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../references.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  References
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../feedback.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Feedback
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 mt-1 flex-1">
+        <div class="">
+          <div class="flex flex-col justify-center">
+            <div class="flex max-lg:flex-col gap-x-12 gap-y-2 mt-2">
+              <div class="">
+                <div class="flex items-center justify-center gap-1">
+                  <label for="numBits">Number of Bits:</label>
+                  <input
+                    class="border border-black px-2 py-1 rounded-sm"
+                    type="number"
+                    id="numBits"
+                    min="1"
+                    value="10000"
+                  />
+                </div>
+              </div>
+              <div class="">
+                <div class="flex items-center justify-center gap-1">
+                  <label for="snr">SNR (dB):</label>
+                  <input
+                    class="max-lg:ml-10 border border-black px-2 py-1 rounded-sm"
+                    type="number"
+                    id="snr"
+                    min="0"
+                    step="1"
+                    value="0"
+                  />
+                </div>
+              </div>
+              <div class="flex justify-center">
+                <button
+                  class="bg-blue-500 text-white rounded-md px-2 py-1"
+                  id="calculate"
+                >
+                  Calculate BER
+                </button>
+              </div>
+              <div class="flex justify-center">
+                <button
+                  class="bg-blue-500 text-white rounded-md px-2 py-1"
+                  id="plotButton"
+                >
+                  Plot BER vs SNR
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex my-2 max-lg:flex-col">
+            <div class="flex-1 basis-2/5">
+              <h3 class="flex ml-3 text-[#42c7bc] text-[20px] font-medium">
+                BER Results
+              </h3>
+              <table class="mt-1" id="resultTable">
+                <tr class="bg-slate-300">
+                  <th onclick="sortTable(0)">SNR (dB)</th>
+                  <th>Bit Error Rate (BER)</th>
+                </tr>
+              </table>
+            </div>
+            <div class="flex-1 basis-3/5">
+              <div id="plotDiv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src=".././js/toggleSidebar.js"></script>
+    <script>
+      // Complementary error function (erfc) approximation
+      function erfc(x) {
+        var t = 1 / (1 + 0.5 * Math.abs(x));
+        var tau =
+          t *
+          Math.exp(
+            -Math.pow(x, 2) -
+              1.26551223 +
+              1.00002368 * t +
+              0.37409196 * Math.pow(t, 2) +
+              0.09678418 * Math.pow(t, 3) -
+              0.18628806 * Math.pow(t, 4) +
+              0.27886807 * Math.pow(t, 5) -
+              1.13520398 * Math.pow(t, 6) +
+              1.48851587 * Math.pow(t, 7) -
+              0.82215223 * Math.pow(t, 8) +
+              0.17087277 * Math.pow(t, 9)
+          );
+        return x >= 0 ? tau : 2 - tau;
+      }
+
+      // Theoretical BER calculation for BFSK
+      function theoreticalBER(SNRdB) {
+        let SNR = Math.pow(10, SNRdB / 10);
+        return 0.5 * erfc(Math.sqrt(SNR / 2));
+      }
+
+      document
+        .getElementById("calculate")
+        .addEventListener("click", function () {
+          let numBits = parseInt(document.getElementById("numBits").value);
+          let snr = parseFloat(document.getElementById("snr").value);
+          let ber = theoreticalBER(snr);
+
+          let table = document.getElementById("resultTable");
+          let snrExists = false;
+
+          // Check if the SNR already exists in the table
+          for (let i = 1; i < table.rows.length; i++) {
+            let existingSNR = parseFloat(table.rows[i].cells[0].textContent);
+            if (existingSNR === snr) {
+              snrExists = true;
+              break;
+            }
+          }
+
+          // If SNR doesn't exist, add it to the table and sort the table
+          if (!snrExists) {
+            let row = table.insertRow(-1); // Insert row at the end of the table
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+
+            cell1.textContent = snr.toFixed(2);
+            cell2.textContent = ber.toExponential(2);
+
+            // Sort the table based on SNR values
+            sortTable(0);
+          } else {
+            alert("SNR (dB) value already exists in the table.");
+          }
+        });
+
+      function sortTable(columnIndex) {
+        let table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("resultTable");
+        switching = true;
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < rows.length - 1; i++) {
+            shouldSwitch = false;
+            x = parseFloat(
+              rows[i].getElementsByTagName("td")[columnIndex].textContent
+            );
+            y = parseFloat(
+              rows[i + 1].getElementsByTagName("td")[columnIndex].textContent
+            );
+            if (x > y) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }
+
+      document
+        .getElementById("plotButton")
+        .addEventListener("click", function () {
+          let table = document.getElementById("resultTable");
+          let snrData = [];
+          let berData = [];
+
+          for (let i = 1; i < table.rows.length; i++) {
+            snrData.push(parseFloat(table.rows[i].cells[0].textContent));
+            berData.push(parseFloat(table.rows[i].cells[1].textContent));
+          }
+
+          // Plot BER vs SNR using Plotly.js
+          var data = [
+            {
+              x: snrData,
+              y: berData,
+              mode: "lines+markers",
+              line: {
+                color: "blue",
+              },
+              marker: {
+                symbol: "circle",
+                size: 8,
+              },
+            },
+          ];
+
+          var layout = {
+            title: "BER vs SNR",
+            xaxis: {
+              title: "SNR (dB)",
+            },
+            yaxis: {
+              title: "Bit Error Rate (BER)",
+              type: "log",
+              autorange: true,
+            },
+          };
+
+          Plotly.newPlot("plotDiv", data, layout);
+        });
+    </script>
+  </body>
+</html>
