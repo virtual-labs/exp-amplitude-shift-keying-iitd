@@ -1,0 +1,363 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href=".././css/vlabs-style.css" />
+    <link rel="shortcut icon" href=".././images/favicon.ico" />
+  </head>
+  <body>
+    <header class="border-b-orange-500 border-b-8">
+      <nav class="flex justify-between">
+        <button class="px-4 py-1 rounded-r-md border-r" onclick="showModal()">
+          <img class="w-[30px] h-[30px]" src=".././images/menu.png" />
+        </button>
+        <div class="flex justify-center">
+          <a href="https://vlab.co.in" class="navbar-brand">
+            <img
+              src=".././images/vlabs-color-small-moe.jpg"
+              alt="vlabs logo"
+              class="mx-4 px-4 w-[118px] h-[70px] py-2"
+            />
+          </a>
+        </div>
+        <div
+          id="headerNavbar"
+          class="flex flex-1 justify-center text-[24px] text-[#2c99ce] items-center"
+        >
+          <h2>QPSK Modulation and Demodulation</h2>
+        </div>
+      </nav>
+      <!-- overlaynavbar -->
+      <div
+        class="overlaycontainer w-[100%] h-[100vh] bg-[#00000080] fixed top-[0%] -z-50 opacity-0"
+      ></div>
+      <div
+        class="overlaysignupform ease-in-out duration-100 fixed -top-[150%] left-[50%] -translate-x-1/2 z-50"
+      >
+        <div class="flex justify-center items-center px-4 h-[100vh] w-[100vw]">
+          <div
+            class="relative bg-white border border-solid border-[#00000033] rounded-md w-[498px] flex flex-col overflow-y-auto"
+          >
+            <div class="p-4 flex justify-between items-center border-b">
+              <div class="w-[87px] h-[50px] flex justify-center items-center">
+                <a href="https://vlab.co.in">
+                  <img
+                    src=".././images/vlabs-color-small-moe.jpg"
+                    alt="vlabs logo"
+                    class="w-[71px] h-[40px]"
+                  />
+                </a>
+              </div>
+              <button class="w-[24px] h-[24px]" onclick="closeModal()">
+                <img src=".././images/close.png" />
+              </button>
+            </div>
+            <div
+              class="p-4 flex flex-col text-[19.2px] font-bold text-[#3e6389]"
+            >
+              <div class="flex justify-center">
+                <a
+                  href="../index.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Aim
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../theory.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Theory
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../procedure.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Procedure
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../simulation.html"
+                  class="p-2 text-[#FF6600] hover:underline"
+                >
+                  Simulation
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../observations.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Observations
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../references.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  References
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../feedback.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Feedback
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 flex-1">
+        <div class="flex">
+          <div class="flex-1 flex basis-4/5 flex-col">
+            <div class="flex max-lg:flex-col mt-5 items-center gap-x-2 gap-y-2">
+              <div class="flex-1 pl-2">
+                <div class="flex items-center gap-2">
+                  <label for="num-bits" class="text-[#2c99ce] font-medium"
+                    >Number of Bits:</label
+                  >
+                  <input
+                    class="border px-1 border-black py-1 rounded-sm"
+                    type="number"
+                    id="num-bits"
+                    value="100"
+                    min="1"
+                    step="1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 flex items-center gap-2 py-2 flex-col basis-1/5">
+            <a href="../bervssnr/QPSK_BervsSnr.html">
+              <button class="bg-blue-500 text-white rounded-md px-[18px] py-1">
+                Generate SERvsSNR
+              </button>
+            </a>
+            <a href="../constellation/qpsk_constellation.html">
+              <button class="bg-blue-500 text-white rounded-md px-2 py-1">
+                Generate Constellation
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t-2">
+          <div class="flex justify-center pt-2">
+            <button
+              class="bg-blue-500 text-white rounded-md px-2 py-1"
+              class="button"
+              onclick="generateAndPlot()"
+            >
+              Modulate and Demodulate QPSK
+            </button>
+          </div>
+          <div class="flex gap-2">
+            <div class="w-[50%] flex flex-col items-center">
+              <div class="relative my-4 w-[480px] h-[223px]">
+                <img
+                  src=".././images/simulation/qpsk_mod.png"
+                  alt="ask1"
+                  class="w-[100%] h-[100%]"
+                />
+              </div>
+              <div class="relative my-4 w-[500px] h-[233px]">
+                <img
+                  src=".././images/simulation/qpsk_demod.png"
+                  alt="ask1"
+                  class="w-[100%] h-[100%]"
+                />
+              </div>
+            </div>
+            <div class="flex w-[48%] flex-col justify-center items-center">
+              <div id="original-bits" class="w-[100%]"></div>
+              <div id="modulated-signal" class="w-[100%]"></div>
+              <div id="modulated-signal2" class="w-[100%]"></div>
+              <div id="demodulated-bits" class="w-[100%]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src=".././js/toggleSidebar.js"></script>
+    <script>
+      // Define 4-PSK modulation mapping
+      const modulationMapping = {
+        "00": { real: 1, imag: 0 },
+        "01": { real: 0, imag: 1 },
+        11: { real: -1, imag: 0 },
+        10: { real: 0, imag: -1 },
+      };
+
+      // Define 4-PSK demodulation mapping
+      const demodulationMapping = {
+        '{"real":1,"imag":0}': "00",
+        '{"real":0,"imag":1}': "01",
+        '{"real":-1,"imag":0}': "11",
+        '{"real":0,"imag":-1}': "10",
+      };
+
+      // Function to represent digital signal
+      function representDigitalSignal(bits) {
+        const Fs = 100; // Number of samples per bit period
+        const bitRepresentation = [];
+        const timeInstances = [];
+
+        // Represent each bit as a sequence of 0s or 1s
+        for (let n = 0; n < bits.length; n++) {
+          if (bits[n] === 1) {
+            bitRepresentation.push(Array(Fs).fill(1)); // Fill Fs elements with 1
+          } else {
+            bitRepresentation.push(Array(Fs).fill(0)); // Fill Fs elements with 0
+          }
+        }
+
+        // Generate time instances corresponding to each bit period
+        for (let i = 1; i <= Fs * bits.length; i++) {
+          timeInstances.push((i * 1) / Fs); // Calculate time instance and push to array
+        }
+
+        return { bitRepresentation, timeInstances }; // Return the digital signal and corresponding time instances
+      }
+
+      // 4-PSK modulation
+      function psk4Modulation(bits) {
+        const symbols = [];
+        for (let i = 0; i < bits.length; i += 2) {
+          const bitPair = bits.slice(i, i + 2).join("");
+          const symbol = modulationMapping[bitPair];
+          symbols.push(symbol);
+        }
+        return symbols;
+      }
+
+      // 4-PSK demodulation
+      function psk4Demodulation(symbols) {
+        const bits = [];
+        for (const symbol of symbols) {
+          const bitPair = demodulationMapping[JSON.stringify(symbol)];
+          bits.push(...bitPair.split("").map(Number));
+        }
+        return bits;
+      }
+
+      // Function to generate and plot bits
+      function generateAndPlot() {
+        const numBits = document.getElementById("num-bits").value;
+        const bits = Array.from({ length: parseInt(numBits, 10) }, () =>
+          Math.round(Math.random())
+        );
+
+        // Modulate the bits
+        const symbols = psk4Modulation(bits);
+
+        // Demodulate the symbols
+        const bitsDemodulated = psk4Demodulation(symbols);
+
+        // Plot the signals
+        plotOriginalBits(bits);
+        plotModulatedSignal(symbols);
+        plotModulatedSignal2(symbols);
+        plotDemodulatedBits(bitsDemodulated);
+      }
+
+      // Plotting functions
+      function plotOriginalBits(bits) {
+        const originalBits = bits.map((bit) => (bit === 0 ? 0 : 1));
+        const { bitRepresentation, timeInstances } =
+          representDigitalSignal(originalBits);
+        // Plot digital signal
+        Plotly.newPlot(
+          "original-bits",
+          [
+            {
+              x: timeInstances,
+              y: bitRepresentation.flat(), // Flatten the array
+              type: "scatter",
+              mode: "lines",
+              name: "Original Bits",
+              line: { color: "blue" },
+            },
+          ],
+          { title: "Original Bits" }
+        );
+      }
+
+      function plotModulatedSignal(symbols) {
+        const realPart = symbols.map((symbol) => symbol.real);
+        const { bitRepresentation, timeInstances } =
+          representDigitalSignal(realPart);
+        // Plot digital signal
+        Plotly.newPlot(
+          "modulated-signal",
+          [
+            {
+              x: timeInstances,
+              y: bitRepresentation.flat(), // Flatten the array
+              type: "scatter",
+              mode: "lines",
+              name: "Modulated Signal (Real Part)",
+              line: { color: "red" },
+            },
+          ],
+          { title: "QPSK Symbols (Real Part)" }
+        );
+      }
+
+      function plotModulatedSignal2(symbols) {
+        const imagPart = symbols.map((symbol) => symbol.imag);
+        const { bitRepresentation, timeInstances } =
+          representDigitalSignal(imagPart);
+        // Plot digital signal
+        Plotly.newPlot(
+          "modulated-signal2",
+          [
+            {
+              x: timeInstances,
+              y: bitRepresentation.flat(), // Flatten the array
+              type: "scatter",
+              mode: "lines",
+              name: "Modulated Signal (Imag Part)",
+              line: { color: "red" },
+            },
+          ],
+          { title: "QPSK Symbols (Imag Part)" }
+        );
+      }
+
+      function plotDemodulatedBits(bits) {
+        const { bitRepresentation, timeInstances } =
+          representDigitalSignal(bits);
+        // Plot digital signal
+        Plotly.newPlot(
+          "demodulated-bits",
+          [
+            {
+              x: timeInstances,
+              y: bitRepresentation.flat(), // Flatten the array
+              type: "scatter",
+              mode: "lines",
+              name: "Demodulated Bits",
+              line: { color: "orange" },
+            },
+          ],
+          { title: "Demodulated Bits" }
+        );
+      }
+    </script>
+  </body>
+</html>

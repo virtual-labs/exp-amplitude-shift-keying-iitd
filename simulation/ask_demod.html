@@ -1,0 +1,515 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href=".././css/vlabs-style.css" />
+    <link rel="shortcut icon" href=".././images/favicon.ico" />
+  </head>
+  <body>
+    <header class="border-b-orange-500 border-b-8">
+      <nav class="flex justify-between">
+        <button class="px-4 py-1 rounded-r-md border-r" onclick="showModal()">
+          <img class="w-[30px] h-[30px]" src=".././images/menu.png" />
+        </button>
+        <div class="flex justify-center">
+          <a href="https://vlab.co.in" class="navbar-brand">
+            <img
+              src=".././images/vlabs-color-small-moe.jpg"
+              alt="vlabs logo"
+              class="mx-4 px-4 w-[118px] h-[70px] py-2"
+            />
+          </a>
+        </div>
+        <div
+          id="headerNavbar"
+          class="flex flex-1 justify-center text-[24px] text-[#2c99ce] items-center"
+        >
+          <h2>ASK Demodulation</h2>
+        </div>
+      </nav>
+      <!-- overlaynavbar -->
+      <div
+        class="overlaycontainer w-[100%] h-[100vh] bg-[#00000080] fixed top-[0%] -z-50 opacity-0"
+      ></div>
+      <div
+        class="overlaysignupform ease-in-out duration-100 fixed -top-[150%] left-[50%] -translate-x-1/2 z-50"
+      >
+        <div class="flex justify-center items-center px-4 h-[100vh] w-[100vw]">
+          <div
+            class="relative bg-white border border-solid border-[#00000033] rounded-md w-[498px] flex flex-col overflow-y-auto"
+          >
+            <div class="p-4 flex justify-between items-center border-b">
+              <div class="w-[87px] h-[50px] flex justify-center items-center">
+                <a href="https://vlab.co.in">
+                  <img
+                    src=".././images/vlabs-color-small-moe.jpg"
+                    alt="vlabs logo"
+                    class="w-[71px] h-[40px]"
+                  />
+                </a>
+              </div>
+              <button class="w-[24px] h-[24px]" onclick="closeModal()">
+                <img src=".././images/close.png" />
+              </button>
+            </div>
+            <div
+              class="p-4 flex flex-col text-[19.2px] font-bold text-[#3e6389]"
+            >
+              <div class="flex justify-center">
+                <a
+                  href="../index.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Aim
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../theory.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Theory
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../procedure.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Procedure
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../simulation.html"
+                  class="p-2 text-[#FF6600] hover:underline"
+                >
+                  Simulation
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../observations.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Observations
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../references.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  References
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../feedback.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Feedback
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 flex-1">
+        <!--  -->
+        <div class="flex flex-col">
+          <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <label
+                  for="carrier_frequency"
+                  class="text-[#2c99ce] font-medium"
+                  >Carrier Frequency in Hz:</label
+                >
+                <input
+                  class="border ml-5 border-black px-2 py-1 rounded-sm"
+                  type="number"
+                  id="carrier_frequency"
+                  value="10"
+                />
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-1">
+                <label for="threshold" class="text-[#2c99ce] font-medium"
+                  >Enter Threshold:</label
+                >
+                (<input
+                  class="border border-black px-2 py-1 rounded-sm"
+                  type="number"
+                  id="threshold"
+                  value="0.5"
+                />*Carrier Amp)
+              </div>
+            </div>
+          </div>
+          <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <label
+                  for="sampling_frequency"
+                  class="text-[#2c99ce] font-medium"
+                  >Sampling Frequency in Hz:</label
+                >
+                <input
+                  class="border border-black px-2 py-1 rounded-sm"
+                  type="number"
+                  id="sampling_frequency"
+                  value="100"
+                />
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <label for="num_bits" class="text-[#2c99ce] font-medium"
+                  >Number of Bits:</label
+                >
+                <input
+                  class="border px-2 border-black py-1 rounded-sm"
+                  type="number"
+                  id="num_bits"
+                  value="100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 border-t-2">
+          <div class="flex gap-2">
+            <div class="w-[50%] flex flex-col items-center">
+              <div class="relative my-4 w-[650px] h-[233px]">
+                <!-- buttons -->
+                <div class="absolute top-[102px] left-[5px]">
+                  <button
+                    class="bg-blue-500 text-[14px] text-white rounded-md px-2 py-1"
+                    class="button"
+                    onclick="generateMessageSignal()"
+                  >
+                    Generate Message
+                  </button>
+                </div>
+                <div class="absolute top-[102px] -right-[10px]">
+                  <button
+                    class="bg-blue-500 text-[13px] text-white rounded-md px-2 py-1"
+                    class="button"
+                    onclick="simulateASK()"
+                  >
+                    Demodulate ASK
+                  </button>
+                </div>
+                <img
+                  src=".././images/simulation/askimg2.png"
+                  alt="ask1"
+                  class="w-[100%] h-[205px] my-2"
+                />
+              </div>
+            </div>
+            <div class="flex w-[48%] flex-col justify-end items-center">
+              <div id="demodulated-plot" class="w-[100%]"></div>
+              <div id="modulated-plot" class="w-[100%]"></div>
+              <div id="plot" class="w-[100%]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src=".././js/toggleSidebar.js"></script>
+    <script>
+      let messageSignal = null;
+      let f = null;
+      let m = null;
+      let fs = null;
+      let t2 = null; // Define t2 here to make it accessible globally
+      let bp = null; // Define bp here to make it accessible globally
+
+      function generateMessageSignal() {
+        const num_bits = parseInt(document.getElementById("num_bits").value);
+        fs = parseInt(document.getElementById("sampling_frequency").value);
+        messageSignal = [];
+        for (let i = 0; i < num_bits; i++) {
+          messageSignal.push(Math.round(Math.random()));
+        }
+        console.log("Message Signal:", messageSignal);
+        plotOriginalMessage(messageSignal, fs);
+      }
+
+      function plotOriginalMessage(messageSignal, fs) {
+        const bit = [];
+        bp = 1; // Define bp here
+        for (let n = 0; n < messageSignal.length; n++) {
+          if (messageSignal[n] === 1) {
+            bit.push(Array(fs).fill(1));
+          } else {
+            bit.push(Array(fs).fill(0));
+          }
+        }
+        const t1 = [];
+        for (let i = 1; i <= fs * messageSignal.length; i++) {
+          t1.push((i * bp) / fs);
+        }
+
+        const data = [
+          {
+            x: t1,
+            y: bit.flat(),
+            type: "scatter",
+            mode: "lines",
+            name: "Original Message Signal",
+            line: { color: "red" },
+          },
+        ];
+
+        Plotly.newPlot("plot", data, {
+          title: "Binary information at Transmitter",
+        });
+      }
+      function simulateASK() {
+        // Define the number of random bits
+        const num_bits = parseInt(document.getElementById("num_bits").value); // Change this to the desired number of bits
+        const fs = parseInt(
+          document.getElementById("sampling_frequency").value
+        );
+        // Generate random binary bits
+        const x = [];
+        for (let i = 0; i < num_bits; i++) {
+          x.push(Math.round(Math.random()));
+        }
+
+        // Log the binary information at transmitter
+        console.log("Binary information at Transmitter:");
+        console.log(x);
+
+        // Representation of transmitting binary information as digital signal
+        const bit = [];
+        const bp = 1; // Bit period
+        for (let n = 0; n < x.length; n++) {
+          if (x[n] === 1) {
+            bit.push(Array(fs).fill(1));
+          } else {
+            bit.push(Array(fs).fill(0));
+          }
+        }
+        const t1 = [];
+        for (let i = 1; i <= fs * x.length; i++) {
+          t1.push((i * bp) / fs);
+        }
+
+        // ASK modulation
+        const A1 = 10; // Amplitude of carrier signal for information 1
+        const A2 = 0; // Amplitude of carrier signal for information 0
+        const br = 1 / bp; // Bit rate
+        //const f = br * 10; // Carrier frequency
+        const f = parseFloat(
+          document.getElementById("carrier_frequency").value
+        );
+        const t2 = [];
+        for (let i = 1; i <= fs; i++) {
+          t2.push((i * bp) / (fs - 1));
+        }
+        const m = [];
+        for (let i = 0; i < x.length; i++) {
+          const y =
+            x[i] === 1
+              ? t2.map((t) => A1 * Math.cos(2 * Math.PI * f * t))
+              : t2.map(() => A2 * Math.cos(2 * Math.PI * f * t2[0]));
+          m.push(y);
+        }
+        const t3 = [];
+        for (let i = 1; i <= fs * x.length; i++) {
+          t3.push((i * bp) / (fs - 1));
+        }
+
+        // ASK demodulation
+        let mn = [];
+        let ss = fs - 1;
+        for (let n = 0; n < m.length; n += ss) {
+          // Generate time vector for one bit duration
+          let t = [];
+          for (let i = 1; i <= t2.length; i++) {
+            t.push((bp / (fs - 1)) * i);
+          }
+
+          // Generate carrier signal
+          const y = t.map((time) => Math.cos(2 * Math.PI * f * time));
+
+          // Extract modulated signal within the current bit duration
+          const mm = m.slice(n, n + ss).map((val, index) => val * y[index]);
+
+          // Perform integration
+          const z = mm.reduce((acc, val) => acc + val, 0) * (bp / (fs - 1));
+
+          // Round integrated value and compare to threshold
+          const zz = Math.round((2 * z) / bp);
+          const a = zz > 5 ? 1 : 0;
+
+          // Store demodulated bit
+          mn.push(a);
+        }
+
+        // Display demodulated bits
+        console.log("Binary information at Receiver:");
+        console.log(mn);
+
+        // Representation of binary information as digital signal
+        let bit_demod = [];
+        for (let n = 0; n < mn.length; n++) {
+          if (mn[n] === 1) {
+            bit_demod.push(Array(fs).fill(1));
+          } else {
+            bit_demod.push(Array(fs).fill(0));
+          }
+        }
+
+        // Generate time vector for demodulated signal
+        let t4 = [];
+        for (let i = 1; i <= fs * mn.length; i++) {
+          t4.push((i * bp) / fs);
+        }
+
+        //ASK Demodulation 2
+        const fc = f;
+        //const fs = fs;
+        const bitRate = 100;
+        const bitDuration = 1 / bitRate;
+        const t = Array.from({ length: Math.floor(fs) }, (_, i) => i / fs);
+
+        // Message signal (binary data)
+        //const data = [1, 0, 1, 1, 0, 1, 0, 0];
+
+        // Modulation (same as before)
+        const carrier = t.map((time) => Math.sin(2 * Math.PI * fc * time));
+        let modulated_signal = [];
+
+        for (const bit of x) {
+          if (bit === 1) {
+            modulated_signal = modulated_signal.concat(carrier);
+          } else {
+            modulated_signal = modulated_signal.concat(Array(t.length).fill(0));
+          }
+        }
+        // Demodulation
+        let demodulated_signal = [];
+
+        for (let i = 0; i < x.length; i++) {
+          const startIndex = i * Math.floor(fs);
+          const received = modulated_signal.slice(
+            startIndex,
+            startIndex + Math.floor(fs)
+          );
+          const product = received.map(
+            (sample, index) => sample * carrier[index]
+          );
+          const integral = product.reduce((acc, val) => acc + val, 0) / fs; // Normalizing integral
+
+          // Adjusting threshold based on modulation amplitude
+          const threshold =
+            Math.max(...carrier) *
+            parseInt(document.getElementById("threshold").value);
+
+          if (integral > threshold) {
+            demodulated_signal.push(1);
+          } else {
+            demodulated_signal.push(0);
+          }
+        }
+        console.log("demod", demodulated_signal);
+
+        /////////////////////////////////
+        // Function to represent binary bits as digital signal
+        function representDigitalSignal(bits) {
+          const bitx = [];
+          const bp = 1; // Bit period
+          // Represent each bit as a sequence of 0s or 1s
+          for (let n = 0; n < bits.length; n++) {
+            if (bits[n] === 1) {
+              bitx.push(Array(fs).fill(1)); // Fill 100 elements with 1
+            } else {
+              bitx.push(Array(fs).fill(0)); // Fill 100 elements with 0
+            }
+          }
+          const tx = [];
+          // Generate time instances corresponding to each bit period
+          for (let i = 1; i <= fs * bits.length; i++) {
+            tx.push((i * bp) / fs); // Calculate time instance and push to array
+          }
+          return { bitx, tx }; // Return the digital signal and corresponding time instances
+        }
+
+        // Fixed sequence of binary bits
+        const bits = demodulated_signal; // Your fixed sequence
+
+        // Representation of transmitting binary information as digital signal
+        const { bitx, tx } = representDigitalSignal(bits);
+        ////////////////////////////////
+
+        // Plotting original message signal, modulated signal, and demodulated signal
+        const data = [
+          {
+            x: t1,
+            y: bit.flat(),
+            type: "scatter",
+            mode: "lines",
+            name: "Original Message Signal",
+            line: { color: "red" },
+          },
+        ];
+
+        Plotly.newPlot("plot", data, {
+          title: "Binary information at Transmitter",
+        });
+
+        //Plot modulated signal
+
+        const modulatedData = [
+          {
+            x: t3,
+            y: m.flat(),
+            type: "scatter",
+            mode: "lines",
+            name: "Modulated Signal",
+            line: { color: "blue" },
+          },
+        ];
+
+        Plotly.newPlot("modulated-plot", modulatedData, {
+          title: "Modulated Signal",
+        });
+
+        // Plot demodulated signal
+
+        const demodulatedData = [
+          {
+            x: tx,
+            y: bitx.flat(),
+            type: "scatter",
+            mode: "lines",
+            name: "Demodulated Signal",
+          },
+        ];
+
+        const demodulatedLayout = {
+          title: "Demodulated Signal",
+          xaxis: {
+            title: "Bit Index",
+          },
+          yaxis: {
+            title: "Bit Value",
+          },
+        };
+
+        Plotly.newPlot("demodulated-plot", demodulatedData, demodulatedLayout);
+      }
+    </script>
+  </body>
+</html>
