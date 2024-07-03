@@ -7,24 +7,21 @@
 </head>
 <body>
 
-# Keying Techniques
+## Keying Techniques
 
-<ol class="mb-4 pl-4 list-decimal">
-  <li class="mb-2">
-    <a href="./theory/ASK.html" class="flex items-center text-blue-500 hover:text-blue-700 hover:underline">
-      <span class="text-black mr-4">1.</span>
+<ol class="mb-4 pl-4 list-decimal text-[#007bff] font-normal text-[19.2px]" style="font-family: Raleway, sans-serif">
+  <li>
+    <a href="./theory/ASK.html" class="hover:text-[#3e6389] hover:underline">
       <p>Amplitude Shift Keying (ASK)</p>
     </a>
   </li>
-  <li class="mb-2">
-    <a href="./theory/FSK.html" class="flex items-center text-blue-500 hover:text-blue-700 hover:underline">
-      <span class="text-black mr-4">2.</span>
+  <li>
+    <a href="./theory/FSK.html" class="hover:text-[#3e6389] hover:underline">
       <p>Frequency Shift Keying (FSK)</p>
     </a>
   </li>
-  <li class="mb-2">
-    <a href="./theory/PSK.html" class="flex items-center text-blue-500 hover:text-blue-700 hover:underline">
-      <span class="text-black mr-4">3.</span>
+  <li>
+    <a href="./theory/PSK.html" class="hover:text-[#3e6389] hover:underline">
       <p>Phase Shift Keying (PSK)</p>
     </a>
   </li>
