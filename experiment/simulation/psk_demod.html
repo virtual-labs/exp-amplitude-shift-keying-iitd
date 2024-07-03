@@ -5,128 +5,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Virtual Labs</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link rel="stylesheet" href=".././css/vlabs-style.css" />
-    <link rel="shortcut icon" href=".././images/favicon.ico" />
   </head>
   <body>
-    <header class="border-b-orange-500 border-b-8">
-      <nav class="flex justify-between">
-        <button class="px-4 py-1 rounded-r-md border-r" onclick="showModal()">
-          <img class="w-[30px] h-[30px]" src=".././images/menu.png" />
-        </button>
-        <div class="flex justify-center">
-          <a href="https://vlab.co.in" class="navbar-brand">
-            <img
-              src=".././images/vlabs-color-small-moe.jpg"
-              alt="vlabs logo"
-              class="mx-4 px-4 w-[118px] h-[70px] py-2"
-            />
-          </a>
-        </div>
-        <div
-          id="headerNavbar"
-          class="flex flex-1 justify-center text-[24px] text-[#2c99ce] items-center"
-        >
-          <h2>PSK Demodulation</h2>
-        </div>
-      </nav>
-      <!-- overlaynavbar -->
-      <div
-        class="overlaycontainer w-[100%] h-[100vh] bg-[#00000080] fixed top-[0%] -z-50 opacity-0"
-      ></div>
-      <div
-        class="overlaysignupform ease-in-out duration-100 fixed -top-[150%] left-[50%] -translate-x-1/2 z-50"
-      >
-        <div class="flex justify-center items-center px-4 h-[100vh] w-[100vw]">
-          <div
-            class="relative bg-white border border-solid border-[#00000033] rounded-md w-[498px] flex flex-col overflow-y-auto"
-          >
-            <div class="p-4 flex justify-between items-center border-b">
-              <div class="w-[87px] h-[50px] flex justify-center items-center">
-                <a href="https://vlab.co.in">
-                  <img
-                    src=".././images/vlabs-color-small-moe.jpg"
-                    alt="vlabs logo"
-                    class="w-[71px] h-[40px]"
-                  />
-                </a>
-              </div>
-              <button class="w-[24px] h-[24px]" onclick="closeModal()">
-                <img src=".././images/close.png" />
-              </button>
-            </div>
-            <div
-              class="p-4 flex flex-col text-[19.2px] font-bold text-[#3e6389]"
-            >
-              <div class="flex justify-center">
-                <a
-                  href="./index.html"
-                  class="p-2 hover:text-[#343a40] hover:underline"
-                >
-                  Aim
-                </a>
-              </div>
-              <div class="flex justify-center">
-                <a
-                  href="./theory.html"
-                  class="p-2 hover:text-[#343a40] hover:underline"
-                >
-                  Theory
-                </a>
-              </div>
-              <div class="flex justify-center">
-                <a
-                  href="./pretest.html"
-                  class="p-2 hover:text-[#343a40] hover:underline"
-                >
-                  Pretest
-                </a>
-              </div>
-              <div class="flex justify-center">
-                <a
-                  href="./procedure.html"
-                  class="p-2 hover:text-[#343a40] hover:underline"
-                >
-                  Procedure
-                </a>
-              </div>
-              <div class="flex justify-center">
-                <a
-                  href="./simulation.html"
-                  class="p-2 text-[#FF6600] hover:underline"
-                >
-                  Simulation
-                </a>
-              </div>
-              <div class="flex justify-center">
-                <a
-                  href="./posttest.html"
-                  class="p-2 hover:text-[#343a40] hover:underline"
-                >
-                  Posttest
-                </a>
-              </div>
-              <div class="flex justify-center">
-                <a
-                  href="./references.html"
-                  class="p-2 hover:text-[#343a40] hover:underline"
-                >
-                  References
-                </a>
-              </div>
-              <div class="flex justify-center">
-                <a
-                  href="./feedback.html"
-                  class="p-2 hover:text-[#343a40] hover:underline"
-                >
-                  Feedback
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
     <!-- sidebar and body -->
     <div class="flex min-h-[80vh]">
       <div class="px-6 pb-6 flex-1">
@@ -161,9 +41,6 @@
                     <option value="1">π</option>
                     <option value="π/2">π/2</option>
                   </select>
-                  <!-- <input
-                    class="border border-black px-2 py-1 rounded-sm"
-                  /> -->
                 </div>
               </div>
             </div>
@@ -247,7 +124,6 @@
         <!--  -->
       </div>
     </div>
-    <script src=".././js/toggleSidebar.js"></script>
     <script>
       function simulatePSK() {
         const Fs = parseInt(
