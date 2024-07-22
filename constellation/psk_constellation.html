@@ -1,0 +1,167 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Virtual Labs</title>
+  </head>
+  <body>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 mt-1 flex-1">
+        <div class="flex flex-col">
+          <div class="flex max-lg:flex-col gap-x-12 gap-y-2 mt-4">
+            <div class="flex items-center gap-1">
+              <label class="text-[#2c99ce] font-medium" for="numBits"
+                >Number of Random Bits:</label
+              >
+              <input
+                class="border border-black px-2 py-1 rounded-sm"
+                type="number"
+                id="numBits"
+                value="100"
+              />
+            </div>
+            <div class="flex items-center gap-1">
+              <label class="text-[#2c99ce] font-medium" for="snr"
+                >Signal-to-Noise Ratio (SNR) in dB:</label
+              >
+              <input
+                class="border border-black px-2 py-1 rounded-sm"
+                type="number"
+                id="snr"
+                value="20"
+              />
+            </div>
+          </div>
+          <div class="flex justify-center mt-2">
+            <canvas
+              id="constellationDiagram"
+              width="590px"
+              height="420px"
+            ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Function to generate BPSK modulated signal with AWGN
+      function generateSignal(numBits, snr_dB) {
+        // Generate random binary data
+        const binaryData = Array.from({ length: numBits }, () =>
+          Math.round(Math.random())
+        );
+
+        // BPSK modulation
+        const modulatedSignal = binaryData.map((bit) => (bit === 0 ? -1 : 1));
+
+        // Calculate noise power based on SNR (Signal-to-Noise Ratio) in dB
+        const signalPower =
+          modulatedSignal.reduce((acc, val) => acc + val * val, 0) / numBits;
+        const noisePower = signalPower / 10 ** (snr_dB / 10);
+
+        // Generate AWGN using Box-Muller transform
+        const noiseReal = [];
+        const noiseImag = [];
+        for (let i = 0; i < numBits; i++) {
+          const u1 = Math.random();
+          const u2 = Math.random();
+          const z0 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+          const z1 = Math.sqrt(-2 * Math.log(u1)) * Math.sin(2 * Math.PI * u2);
+          noiseReal.push(z0 * Math.sqrt(noisePower));
+          noiseImag.push(z1 * Math.sqrt(noisePower));
+        }
+
+        // Add noise to the modulated signal
+        const noisySignal = [];
+        for (let i = 0; i < numBits; i++) {
+          const real = modulatedSignal[i];
+          const imag = 0; // BPSK modulation has no imaginary component
+          const noiseRealValue = noiseReal[i];
+          const noiseImagValue = noiseImag[i];
+          const noisyReal = real + noiseRealValue;
+          const noisyImag = imag + noiseImagValue;
+          noisySignal.push({ real: noisyReal, imag: noisyImag });
+        }
+
+        return noisySignal;
+      }
+
+      // Plot constellation diagram function
+      function plotConstellationDiagram(signal) {
+        // Get canvas and context
+        const canvas = document.getElementById("constellationDiagram");
+        const ctx = canvas.getContext("2d");
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Plot constellation points
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = Math.min(canvas.width, canvas.height) * 0.4; // Adjust for visualization
+        const pointSize = 5;
+
+        ctx.fillStyle = "blue";
+        signal.forEach((point) => {
+          const x = centerX + (point.real / 2) * radius; // Scale x-axis to range from -2 to +2
+          const y = centerY - (point.imag / 2) * radius; // Scale y-axis to range from -2 to +2 (invert y-axis)
+          ctx.beginPath();
+          ctx.arc(x, y, pointSize, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Draw x-axis and y-axis
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.moveTo(centerX - radius, centerY);
+        ctx.lineTo(centerX + radius, centerY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY - radius);
+        ctx.lineTo(centerX, centerY + radius);
+        ctx.stroke();
+
+        // Draw scale values along x-axis (Q) at the right side
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        ctx.font = "bold 14px Arial";
+        ctx.fillText("-2", centerX - radius, centerY + 10);
+        ctx.fillText("2", centerX + radius, centerY + 10);
+
+        // Draw 'Q' label at the right side
+        ctx.fillText("Q", centerX + radius + 20, centerY);
+
+        // Draw scale values along y-axis (I) at the bottom
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        ctx.fillText("-2", centerX - 10, centerY + radius);
+        ctx.fillText("2", centerX - 10, centerY - radius);
+
+        // Draw 'I' label at the bottom
+        ctx.fillText("I", centerX, centerY + radius + 20);
+      }
+
+      // Function to handle input changes and update the plot
+      function handleInputChange() {
+        const numBits = parseInt(document.getElementById("numBits").value);
+        const snr_dB = parseInt(document.getElementById("snr").value);
+        const signal = generateSignal(numBits, snr_dB);
+        plotConstellationDiagram(signal);
+      }
+
+      // Initial plot
+      handleInputChange();
+
+      // Attach input change event listeners
+      document
+        .getElementById("numBits")
+        .addEventListener("input", handleInputChange);
+      document
+        .getElementById("snr")
+        .addEventListener("input", handleInputChange);
+    </script>
+  </body>
+</html>
