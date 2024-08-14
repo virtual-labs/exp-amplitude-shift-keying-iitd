@@ -1,1 +1,1 @@
-### Aim of the experiment
+### To design, implement, and evaluate the generation and detection techniques for Amplitude Shift Keying (ASK), Frequency Shift Keying (FSK), and Binary Phase Shift Keying (BPSK) modulation schemes
