@@ -13,9 +13,9 @@
         <div class="flex flex-col">
           <div class="flex max-lg:flex-col gap-x-12 gap-y-2 mt-4">
             <div class="flex items-center gap-1">
-              <label class="text-[#2c99ce] font-medium" for="numBits"
-                >Number of Random Bits:</label
-              >
+              <label class="text-[#2c99ce] font-medium" for="numBits">
+                Number of Random Bits:
+              </label>
               <input
                 class="border border-black px-2 py-1 rounded-sm"
                 type="number"
@@ -25,9 +25,9 @@
               />
             </div>
             <div class="flex items-center gap-1">
-              <label class="text-[#2c99ce] font-medium" for="snr"
-                >Signal-to-Noise Ratio (SNR) in dB:</label
-              >
+              <label class="text-[#2c99ce] font-medium" for="snr">
+                Signal-to-Noise Ratio (SNR) in dB:
+              </label>
               <input
                 class="border border-black px-2 py-1 rounded-sm"
                 type="number"
@@ -96,6 +96,9 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "black"; // Set color to black for all labels
 
+        // Set the font size to 14px for all labels
+        ctx.font = "14px Arial";
+
         // Define scaling values for x and y axes
         const scaleX = canvas.width / 4; // range from -1 to 1
         const scaleY = canvas.height / 4; // range from -2 to 2
@@ -107,14 +110,13 @@
           ctx.moveTo(x, canvas.height / 2 - 5);
           ctx.lineTo(x, canvas.height / 2 + 5);
           ctx.stroke();
-          ctx.fillText(i.toString(), x - 3, canvas.height / 2 + 15);
+          ctx.fillText(i.toString(), x - 3, canvas.height / 2 + 20);
         }
         // Label for x-axis
-        ctx.font = "bold 16px Arial";
-        ctx.fillText("Q", canvas.width - 15, canvas.height / 2 + 15);
+        ctx.fillText("Real (I)", canvas.width - 50, canvas.height / 2 + 25);
 
         // Draw tick marks and labels on y-axis
-        for (let i = -2; i <= 2; i++) {
+        for (let i = -1; i <= 1; i++) {
           const y = canvas.height / 2 - i * scaleY;
           ctx.beginPath();
           ctx.moveTo(canvas.width / 2 - 5, y);
@@ -122,14 +124,13 @@
           ctx.stroke();
           // Adjust the labels to represent -j, +j
           if (i === -1) {
-            ctx.fillText("-j", canvas.width / 2 - 20, y + 3);
+            ctx.fillText("-j", canvas.width / 2 + 10, y + 3);
           } else if (i === 1) {
-            ctx.fillText("+j", canvas.width / 2 - 15, y + 3);
+            ctx.fillText("+j", canvas.width / 2 + 10, y + 3);
           }
         }
         // Label for y-axis
-        ctx.font = "bold 16px Arial";
-        ctx.fillText("I", canvas.width / 2 - 15, 10);
+        ctx.fillText("Imaginary (Q)", canvas.width / 2 - 45, 20);
 
         // Plot the constellation points
         awgnSymbols.forEach((symbol) => {
