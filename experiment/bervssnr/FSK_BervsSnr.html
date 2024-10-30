@@ -20,9 +20,43 @@
       th {
         width: 100px;
       }
-    </style>
+
+	#h1 {
+    color: #333;
+    font-size: 22px; /* Increased font size */
+    margin-bottom: 20px;
+}
+	ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #e0e7ff;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px; /* Set font size for list items */
+}
+
+li::before {
+    content: "✔";
+    color: #4caf50;
+    margin-right: 10px;
+}
+	</style>
   </head>
   <body>
+  	<div id = "instructions">
+    <h1 id = "h1">Instructions for Calculating BER vs. SNR for Frequency Shift Keying (FSK)</h1>
+    <ul>
+        <li>Step 1: Enter the number of bits and SNR (dB) values in the input fields.</li>
+		<li>Step 2: Click on the "Calculate BER" button to view the BER value for the corresponding SNR (dB) value.</li>
+        <li>Step 3: Click on the "Plot BER vs. SNR" button to plot the results.</li>
+		<li>Step 4: Remember to reset the simulator if you change the number of bits, to plot BER vs. SNR for the updated bit count.</li>
+		</ul>
+	</div>
     <!-- sidebar and body -->
     <div class="flex min-h-[80vh]">
       <div class="px-6 pb-6 mt-1 flex-1">
@@ -57,7 +91,7 @@
               <div class="flex justify-center">
                 <button
                   class="bg-blue-500 text-white rounded-md px-2 py-1"
-                  id="calculate"
+                  id="runSimulationButton"
                 >
                   Calculate BER
                 </button>
@@ -69,6 +103,10 @@
                 >
                   Plot BER vs SNR
                 </button>
+              </div>
+			  			  			                <div class="flex items-center justify-center gap-1 mt-2">
+    <button style="position: absolute; right:200px;" class="button bg-green-500 text-white rounded-md px-2 py-1 text-base"
+	onclick="refreshPage()">Reset Simulator</button>
               </div>
             </div>
           </div>
@@ -92,137 +130,154 @@
       </div>
     </div>
     <script>
-      // Complementary error function (erfc) approximation
-      function erfc(x) {
-        var t = 1 / (1 + 0.5 * Math.abs(x));
-        var tau =
-          t *
-          Math.exp(
-            -Math.pow(x, 2) -
-              1.26551223 +
-              1.00002368 * t +
-              0.37409196 * Math.pow(t, 2) +
-              0.09678418 * Math.pow(t, 3) -
-              0.18628806 * Math.pow(t, 4) +
-              0.27886807 * Math.pow(t, 5) -
-              1.13520398 * Math.pow(t, 6) +
-              1.48851587 * Math.pow(t, 7) -
-              0.82215223 * Math.pow(t, 8) +
-              0.17087277 * Math.pow(t, 9)
-          );
-        return x >= 0 ? tau : 2 - tau;
+		function refreshPage() {
+    location.reload();
+}
+      let ber = 0;
+      let results = [];
+      let snrSet = new Set();
+      let BER = null;
+      let BERForHOne = null;
+
+      function upsampleSignal(signal, factor) {
+        return signal.flatMap(bit => Array(factor).fill(bit));
       }
 
-      // Theoretical BER calculation for BFSK
-      function theoreticalBER(SNRdB) {
-        let SNR = Math.pow(10, SNRdB / 10);
-        return 0.5 * erfc(Math.sqrt(SNR / 2));
+      function addAWGN(signal, snrDb) {
+        const snrLinear = Math.pow(10, snrDb / 10);
+        const noiseVariance = 1 / (2 * snrLinear);
+        return signal.map(x => x + Math.sqrt(noiseVariance) * randn_bm());
       }
 
-      document
-        .getElementById("calculate")
-        .addEventListener("click", function () {
-          let numBits = parseInt(document.getElementById("numBits").value);
-          let snr = parseFloat(document.getElementById("snr").value);
-          let ber = theoreticalBER(snr);
+      function randn_bm() {
+        let u = 0, v = 0;
+        while (u === 0) u = Math.random();
+        while (v === 0) v = Math.random();
+        return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+      }
 
-          let table = document.getElementById("resultTable");
-          let snrExists = false;
-
-          // Check if the SNR already exists in the table
-          for (let i = 1; i < table.rows.length; i++) {
-            let existingSNR = parseFloat(table.rows[i].cells[0].textContent);
-            if (existingSNR === snr) {
-              snrExists = true;
-              break;
+      function manualConv(signal, h) {
+        let result = new Array(signal.length).fill(0);
+        for (let n = 0; n < signal.length; n++) {
+          for (let k = 0; k < h.length; k++) {
+            if (n - k >= 0) {
+              result[n] += signal[n - k] * h[k];
             }
-          }
-
-          // If SNR doesn't exist, add it to the table and sort the table
-          if (!snrExists) {
-            let row = table.insertRow(-1); // Insert row at the end of the table
-            let cell1 = row.insertCell(0);
-            let cell2 = row.insertCell(1);
-
-            cell1.textContent = snr.toFixed(2);
-            cell2.textContent = ber.toExponential(2);
-
-            // Sort the table based on SNR values
-            sortTable(0);
-          } else {
-            alert("SNR (dB) value already exists in the table.");
-          }
-        });
-
-      function sortTable(columnIndex) {
-        let table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("resultTable");
-        switching = true;
-        while (switching) {
-          switching = false;
-          rows = table.rows;
-          for (i = 1; i < rows.length - 1; i++) {
-            shouldSwitch = false;
-            x = parseFloat(
-              rows[i].getElementsByTagName("td")[columnIndex].textContent
-            );
-            y = parseFloat(
-              rows[i + 1].getElementsByTagName("td")[columnIndex].textContent
-            );
-            if (x > y) {
-              shouldSwitch = true;
-              break;
-            }
-          }
-          if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
           }
         }
+        return result;
+      }
+function updateTable() {
+  const table = document.getElementById('resultTable');
+  
+  // Clear previous rows except the header
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
+
+  // Sort results by SNR in ascending order and update the table
+  results.sort((a, b) => a.snrDb - b.snrDb).forEach(result => {
+    const row = table.insertRow();
+    const snrCell = row.insertCell(0);
+    const berCell = row.insertCell(1);
+    snrCell.textContent = result.snrDb;
+    berCell.textContent = result.ber.toFixed(6);
+  });
+}
+      function runSimulation() {
+        const snrDb = parseFloat(document.getElementById('snr').value);
+        const excessDelayMs = 3;
+        const numTaps = 4;
+        const bitRate = 100;
+        const Sig_Length = parseFloat(document.getElementById('numBits').value);
+
+        const delays = Array.from({ length: numTaps }, (_, i) => i);
+        let h = delays.map(d => 0.8 * Math.exp(-d / (numTaps / 2)));
+        h = h.map(v => v / Math.sqrt(h.reduce((acc, x) => acc + x * x, 0)));
+
+        const R_BFSK = Array.from({ length: Sig_Length }, () => Math.round(Math.random()));
+        const I_BFSK = R_BFSK.map(bit => bit ^ 1);
+        const upsampledtransmittedSignal = upsampleSignal(R_BFSK, 10);
+
+        const modulatedSignalR = R_BFSK;
+        const upsampledmodulatedSignalR = upsampleSignal(modulatedSignalR, 10);
+        const modulatedSignalI = I_BFSK;
+        const upsampledmodulatedSignalI = upsampleSignal(modulatedSignalI, 10);
+
+        const Y_concatenated = modulatedSignalR.concat(modulatedSignalI);
+
+        const noisySignal = addAWGN(Y_concatenated, snrDb);
+
+        const convolvedSignal = manualConv(noisySignal, h);
+        const Z_real = convolvedSignal.slice(0, Sig_Length);
+        const Z_imag = convolvedSignal.slice(Sig_Length);
+
+        let E_BFSK = 0;
+        let demodulatedBits = [];
+        for (let k = 0; k < Sig_Length; k++) {
+          let demod_bit = Z_real[k] > Z_imag[k] ? 1 : 0;
+          demodulatedBits.push(demod_bit);
+          if (demod_bit !== R_BFSK[k]) {
+            E_BFSK += 1;
+          }
+        }
+
+        BER = E_BFSK / Sig_Length;
+
+        const h_one = [1];
+        const noisySignalForHOne = addAWGN(Y_concatenated, snrDb);
+        const convolvedSignalForHOne = manualConv(noisySignalForHOne, h_one);
+
+        const Z_realForHOne = convolvedSignalForHOne.slice(0, Sig_Length);
+        const Z_imagForHOne = convolvedSignalForHOne.slice(Sig_Length);
+
+        let E_BFSKForHOne = 0;
+        let demodbitForHOne = [];
+        for (let k = 0; k < Sig_Length; k++) {
+          let demod_bitForHOne = Z_realForHOne[k] > Z_imagForHOne[k] ? 1 : 0;
+          demodbitForHOne.push(demod_bitForHOne);
+          if (demod_bitForHOne !== R_BFSK[k]) {
+            E_BFSKForHOne += 1;
+          }
+        }
+
+        ber = E_BFSKForHOne / Sig_Length;
+        console.log(ber);
+
+            // Check for duplicate SNR and alert if exists
+            if (snrSet.has(snrDb)) {
+                alert("SNR value already exists in the table.");
+                return;
+            }
+			
+        results.push({ snrDb, ber });
+        snrSet.add(snrDb);
+		updateTable();
       }
 
-      document
-        .getElementById("plotButton")
-        .addEventListener("click", function () {
-          let table = document.getElementById("resultTable");
-          let snrData = [];
-          let berData = [];
+      function plotResults() {
+        const snrArray = Array.from(snrSet).sort((a, b) => a - b);
+        const berArray = snrArray.map(snr => results.find(result => result.snrDb === snr).ber);
 
-          for (let i = 1; i < table.rows.length; i++) {
-            snrData.push(parseFloat(table.rows[i].cells[0].textContent));
-            berData.push(parseFloat(table.rows[i].cells[1].textContent));
-          }
+        const trace = {
+          x: snrArray,
+          y: berArray,
+          type: 'scatter',
+          mode: 'lines+markers',
+          name: 'BER vs SNR'
+        };
 
-          // Plot BER vs SNR using Plotly.js
-          var data = [
-            {
-              x: snrData,
-              y: berData,
-              mode: "lines+markers",
-              line: {
-                color: "blue",
-              },
-              marker: {
-                symbol: "circle",
-                size: 8,
-              },
-            },
-          ];
+        const layout = {
+          title: 'BER vs SNR for FSK',
+          xaxis: { title: 'SNR (dB)' },
+          yaxis: { title: 'BER', type: 'log' },
+        };
 
-          var layout = {
-            title: "BER vs SNR",
-            xaxis: {
-              title: "SNR (dB)",
-            },
-            yaxis: {
-              title: "Bit Error Rate (BER)",
-              type: "log",
-              autorange: true,
-            },
-          };
+        Plotly.newPlot('plotDiv', [trace], layout);
+      }
 
-          Plotly.newPlot("plotDiv", data, layout);
-        });
+      document.getElementById('runSimulationButton').addEventListener('click', runSimulation);
+      document.getElementById('plotButton').addEventListener('click', plotResults);
     </script>
   </body>
 </html>
