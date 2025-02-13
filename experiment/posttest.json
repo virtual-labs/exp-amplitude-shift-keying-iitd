@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "In a coherent Frequency Shift Keying (FSK) system, what is the primary challenge in achieving coherent detection?",
+      "question": "1. In a coherent Frequency Shift Keying (FSK) system, what is the primary challenge in achieving coherent detection?",
       "answers": {
         "a": "Maintaining phase synchronization between transmitter and receiver",
         "b": "Ensuring the amplitude of the carrier signals remain constant",
@@ -19,7 +19,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Which of the following is a major disadvantage of Amplitude Shift Keying (ASK)?",
+      "question": "2. Which of the following is a major disadvantage of Amplitude Shift Keying (ASK)?",
       "answers": {
         "a": "Susceptibility to noise and interference",
         "b": "Complexity of implementation",
@@ -36,7 +36,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Which modulation scheme is typically more bandwidth-efficient?",
+      "question": "3. Which modulation scheme is typically more bandwidth-efficient?",
       "answers": {
         "a": "Amplitude Shift Keying (ASK)",
         "b": "Frequency Shift Keying (FSK)",
@@ -53,7 +53,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "In Phase Shift Keying (PSK), what is the impact of increasing the number of phase states?",
+      "question": "4. In Phase Shift Keying (PSK), what is the impact of increasing the number of phase states?",
       "answers": {
         "a": "Increased robustness to noise",
         "b": "Reduced bandwidth requirement",
@@ -70,7 +70,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Which of the following is a key advantage of using Non-Coherent FSK over Coherent FSK?",
+      "question": "5. Which of the following is a key advantage of using Non-Coherent FSK over Coherent FSK?",
       "answers": {
         "a": "Simpler receiver design",
         "b": "Higher data transmission rates",
@@ -87,7 +87,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Why is Phase Shift Keying (PSK) considered more power efficient than Frequency Shift Keying (FSK)?",
+      "question": "6. Why is Phase Shift Keying (PSK) considered more power efficient than Frequency Shift Keying (FSK)?",
       "answers": {
         "a": "PSK can maintain performance at lower signal-to-noise ratios.",
         "b": "PSK requires less bandwidth.",
@@ -104,7 +104,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Which characteristic of FSK modulation makes it advantageous for certain applications?",
+      "question": "7. Which characteristic of FSK modulation makes it advantageous for certain applications?",
       "answers": {
         "a": "Its resistance to phase jitter",
         "b": "Its robustness in high-noise environments",
@@ -121,7 +121,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "What is the primary disadvantage of using higher-order PSK modulation schemes?",
+      "question": "8. What is the primary disadvantage of using higher-order PSK modulation schemes?",
       "answers": {
         "a": "Increased bandwidth usage",
         "b": "Higher power consumption",
@@ -138,7 +138,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Which modulation scheme is typically used in radio broadcasting?",
+      "question": "9. Which modulation scheme is typically used in radio broadcasting?",
       "answers": {
         "a": "Amplitude Shift Keying (ASK)",
         "b": "Frequency Modulation (FM)",
@@ -155,7 +155,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "In a PSK system, what can be used to improve error performance?",
+      "question": "10. In a PSK system, what can be used to improve error performance?",
       "answers": {
         "a": "Increasing the carrier frequency",
         "b": "Using error correction coding",
