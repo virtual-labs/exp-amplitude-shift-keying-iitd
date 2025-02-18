@@ -146,13 +146,15 @@
         // Check the carrier frequency vs. bit rate
         if (carrierFrequency1 <= bitRate) {
             alert("Carrier frequency 1 should be much higher than bit rate.");
+			window.location.reload(true); 
             return; // Exit if the condition is not met
         }
 
         // Check the second carrier frequency vs. the first carrier frequency
         if (carrierFrequency2 <= carrierFrequency1) {
             alert("Carrier frequency 2 should be higher than Carrier frequency 1.");
-            return; // Exit if the condition is not met
+            window.location.reload(true); 
+			return; // Exit if the condition is not met
         }
 
         // If all conditions are met
@@ -280,6 +282,7 @@
     function simulateFSK() {
         if (!isGenerated1 || !isGenerated2) {
             alert("Please generate both carrier signals first.");
+			window.location.reload(true); 
             return;
         }
 
@@ -325,6 +328,7 @@
     function demodulateFSK() {
         if (!modulated_signal || modulated_signal.length === 0) {
             alert("Please simulate FSK modulation first.");
+			window.location.reload(true); 
             return;
         }
 
