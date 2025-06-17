@@ -2,173 +2,173 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "1. How does binary Frequency Shift Keying (BFSK) differentiate between binary 0 and 1?",
+      "question": "1. Why is coherent detection preferred over non-coherent detection in PSK systems under AWGN?",
       "answers": {
-        "a": "By using different amplitudes for binary 0 and 1.",
-        "b": "By using different phases for binary 0 and 1.",
-        "c": "By using two distinct frequencies for binary 0 and 1.",
-        "d": "By using a combination of amplitude and phase shifts."
+        "a": "It simplifies the receiver design.",
+        "b": "It does not require carrier synchronization.",
+        "c": "It provides better bit error performance.",
+        "d": "It consumes less power."
       },
       "explanations": {
-        "a": "BFSK does not vary amplitude to differentiate binary data.",
-        "b": "BFSK does not use phase differences to differentiate binary data.",
-        "c": "BFSK uses two distinct frequencies, one for binary 0 and another for binary 1.",
-        "d": "BFSK does not combine amplitude and phase shifts."
+        "a": "Coherent detection is usually more complex.",
+        "b": "Coherent detection *requires* carrier synchronization.",
+        "c": "Coherent detection provides superior BER performance due to phase alignment.",
+        "d": "Power consumption is not the main factor in choosing coherent detection."
       },
       "correctAnswer": "c",
       "difficulty": "intermediate"
     },
     {
-      "question": "2. In Phase Shift Keying (PSK), what does the term 'constellation diagram' refer to?",
+      "question": "2. Which mathematical expression best represents the power spectral density (PSD) of a Binary FSK signal with non-coherent detection?",
       "answers": {
-        "a": "A diagram showing different frequency levels used in modulation.",
-        "b": "A plot representing the complex envelope of the modulated signal.",
-        "c": "A diagram showing various amplitude levels used in modulation.",
-        "d": "A plot representing the time domain representation of the signal."
+        "a": "S(f) = sinc²(f)",
+        "b": "S(f) = 1/T * [δ(f - f1) + δ(f - f2)]",
+        "c": "S(f) = (A²/2) * [rect((f - f1)/B) + rect((f - f2)/B)]",
+        "d": "S(f) = A² * cos(2πft)"
       },
       "explanations": {
-        "a": "Constellation diagrams do not show frequency levels.",
-        "b": "Constellation diagrams plot the phase and amplitude of a modulated signal on a complex plane.",
-        "c": "Constellation diagrams are not used for amplitude levels in isolation.",
-        "d": "Constellation diagrams are not time domain representations."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "3. What is a major disadvantage of Amplitude Shift Keying (ASK)?",
-      "answers": {
-        "a": "High power consumption",
-        "b": "High susceptibility to noise",
-        "c": "Complex implementation",
-        "d": "High bandwidth requirement"
-      },
-      "explanations": {
-        "a": "ASK generally does not consume more power than other modulations.",
-        "b": "ASK is highly susceptible to noise because it affects the amplitude, which can be easily distorted.",
-        "c": "ASK is relatively simple to implement.",
-        "d": "ASK does not necessarily have a high bandwidth requirement compared to other modulations."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "4. Which digital modulation technique is more robust to non-linear distortion?",
-      "answers": {
-        "a": "Amplitude Shift Keying (ASK)",
-        "b": "Frequency Shift Keying (FSK)",
-        "c": "Phase Shift Keying (PSK)",
-        "d": "All are equally robust"
-      },
-      "explanations": {
-        "a": "ASK is susceptible to amplitude distortion.",
-        "b": "FSK is less affected by non-linear distortion due to frequency variation.",
-        "c": "PSK can be affected by non-linearities in phase.",
-        "d": "FSK stands out as more robust compared to ASK and PSK."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "5. Which modulation technique is often used for radio frequency (RF) applications due to its robustness to interference?",
-      "answers": {
-        "a": "Amplitude Shift Keying (ASK)",
-        "b": "Frequency Shift Keying (FSK)",
-        "c": "Phase Shift Keying (PSK)",
-        "d": "Pulse Code Modulation (PCM)"
-      },
-      "explanations": {
-        "a": "ASK is not as robust to interference as FSK.",
-        "b": "FSK is used in RF applications due to its robustness to interference.",
-        "c": "PSK is robust but not as commonly used as FSK in RF applications.",
-        "d": "PCM is not a modulation technique used in RF applications."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "6. What is the primary disadvantage of Binary Phase Shift Keying (BPSK) in comparison to other modulation techniques?",
-      "answers": {
-        "a": "BPSK requires higher bandwidth.",
-        "b": "BPSK is less noise-resistant.",
-        "c": "BPSK supports lower data rates.",
-        "d": "BPSK is more complex to implement."
-      },
-      "explanations": {
-        "a": "BPSK actually requires less bandwidth than many other modulations.",
-        "b": "BPSK is generally more noise-resistant than other modulations.",
-        "c": "BPSK supports lower data rates because it transmits one bit per symbol.",
-        "d": "BPSK is simpler to implement compared to more complex modulations."
+        "a": "sinc²(f) describes rectangular pulse shaping, not FSK PSD.",
+        "b": "This only applies to idealized tones, not the actual PSD.",
+        "c": "This approximates the real PSD shape of BFSK with bandwidth B centered at f1 and f2.",
+        "d": "This is a time-domain representation, not a PSD."
       },
       "correctAnswer": "c",
       "difficulty": "intermediate"
     },
     {
-      "question": "7. Which modulation technique is typically used in Bluetooth communication?",
+      "question": "3. Consider a 4-PSK system. What is the minimum Euclidean distance between symbols if the signal power is normalized to 1?",
       "answers": {
-        "a": "Amplitude Shift Keying (ASK)",
-        "b": "Frequency Shift Keying (FSK)",
-        "c": "Phase Shift Keying (PSK)",
-        "d": "Time Division Multiplexing (TDM)"
+        "a": "2",
+        "b": "1",
+        "c": "√2",
+        "d": "√2/2"
       },
       "explanations": {
-        "a": "ASK is not typically used in Bluetooth communication.",
-        "b": "FSK is used in Bluetooth, specifically Gaussian FSK (GFSK).",
-        "c": "PSK is not the primary modulation technique used in Bluetooth.",
-        "d": "TDM is a multiplexing technique, not a modulation technique."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "8. In digital communication, what is the primary purpose of using modulation techniques such as ASK, FSK, and PSK?",
-      "answers": {
-        "a": "To decrease the bandwidth requirement.",
-        "b": "To increase the complexity of the system.",
-        "c": "To adapt the signal for transmission over various media.",
-        "d": "To minimize power consumption."
-      },
-      "explanations": {
-        "a": "Modulation does not necessarily decrease bandwidth requirements.",
-        "b": "Modulation can increase system complexity but that is not the primary purpose.",
-        "c": "Modulation allows signals to be transmitted efficiently over different media types.",
-        "d": "Modulation is not primarily used to minimize power consumption."
+        "a": "Too large for unit circle placement.",
+        "b": "Not correct for 4-PSK constellation.",
+        "c": "Correct: Adjacent symbols in 4-PSK have angular spacing of π/2 radians, so distance = √2.",
+        "d": "This would be the projection, not the Euclidean distance."
       },
       "correctAnswer": "c",
       "difficulty": "intermediate"
     },
     {
-      "question": "9. How does non-coherent FSK differ from coherent FSK?",
+      "question": "4. In digital modulation, what factor primarily determines the bandwidth efficiency of a scheme?",
       "answers": {
-        "a": "Non-coherent FSK requires carrier phase synchronization.",
-        "b": "Non-coherent FSK does not require carrier phase synchronization.",
-        "c": "Non-coherent FSK uses a single frequency for all bits.",
-        "d": "Non-coherent FSK is more complex to implement."
+        "a": "Symbol rate alone",
+        "b": "Modulation index",
+        "c": "Number of bits per symbol",
+        "d": "Carrier frequency"
       },
       "explanations": {
-        "a": "Non-coherent FSK does not require synchronization, unlike coherent FSK.",
-        "b": "Non-coherent FSK does not require phase synchronization, making it simpler.",
-        "c": "Non-coherent FSK still uses multiple frequencies.",
-        "d": "Non-coherent FSK is generally simpler to implement than coherent FSK."
+        "a": "Symbol rate impacts bandwidth, but efficiency depends on bits per symbol.",
+        "b": "Modulation index is relevant for analog schemes like FM.",
+        "c": "Higher bits per symbol improve bandwidth efficiency.",
+        "d": "Carrier frequency is orthogonal to bandwidth efficiency."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "5. In QPSK, what is the theoretical bit error rate (BER) under AWGN with coherent detection and Eb/N0 = 10 dB?",
+      "answers": {
+        "a": "Q(√(2*10))",
+        "b": "Q(√(20))",
+        "c": "0.5 * erfc(√(10))",
+        "d": "Q(√(10))"
+      },
+      "explanations": {
+        "a": "Q(√(2Eb/N0)) is used for BPSK, not QPSK.",
+        "b": "Correct: QPSK BER ≈ Q(√(2Eb/N0)), and Eb/N0 = 10 => √20.",
+        "c": "This form is more for BPSK error approximations.",
+        "d": "Not precise for QPSK under Eb/N0 = 10 dB."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "10. In PSK, what is the result of increasing the number of phase states in terms of data transmission?",
+      "question": "6. In M-ary PSK, what is the primary trade-off when increasing the value of M?",
       "answers": {
-        "a": "Decreases the data rate.",
-        "b": "Increases the error rate.",
-        "c": "Increases the data rate.",
-        "d": "Decreases the bandwidth requirement."
+        "a": "Lower data rate but better noise immunity",
+        "b": "Higher bandwidth requirement and lower complexity",
+        "c": "Higher spectral efficiency but increased symbol error rate",
+        "d": "Increased power efficiency but reduced robustness"
       },
       "explanations": {
-        "a": "Increasing phase states generally increases the data rate.",
-        "b": "More phase states can make the system more susceptible to noise, but it increases data rate.",
-        "c": "Increasing phase states allows more bits to be transmitted per symbol, increasing data rate.",
-        "d": "It does not necessarily decrease bandwidth requirements."
+        "a": "Higher M typically increases data rate.",
+        "b": "Bandwidth efficiency increases with M; complexity also increases.",
+        "c": "Correct: Larger M allows more bits/symbol but reduces distance between symbols.",
+        "d": "Power efficiency does not necessarily improve with M."
       },
       "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "7. Which modulation technique exhibits a constant envelope, making it suitable for nonlinear power amplifiers?",
+      "answers": {
+        "a": "QAM",
+        "b": "ASK",
+        "c": "GMSK",
+        "d": "PSK"
+      },
+      "explanations": {
+        "a": "QAM combines amplitude and phase, resulting in a non-constant envelope.",
+        "b": "ASK varies amplitude and is not constant-envelope.",
+        "c": "Correct: GMSK has a constant envelope and is power-efficient.",
+        "d": "PSK may not maintain a constant envelope due to phase transitions."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "8. A digital system transmits 16-QAM symbols at 1 Msymbol/s. What is the bit rate of the system?",
+      "answers": {
+        "a": "1 Mbps",
+        "b": "2 Mbps",
+        "c": "4 Mbps",
+        "d": "16 Mbps"
+      },
+      "explanations": {
+        "a": "Incorrect: Each symbol carries more than 1 bit.",
+        "b": "Incorrect for 16-QAM.",
+        "c": "Correct: 16-QAM carries 4 bits/symbol → 1M × 4 = 4 Mbps.",
+        "d": "Too high: 16-QAM = 4 bits per symbol, not 16."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "9. How does Gray coding benefit digital modulation schemes like QAM?",
+      "answers": {
+        "a": "Reduces signal power consumption",
+        "b": "Minimizes adjacent symbol errors",
+        "c": "Decreases required bandwidth",
+        "d": "Improves synchronization time"
+      },
+      "explanations": {
+        "a": "Gray coding doesn't affect power directly.",
+        "b": "Correct: Only one bit differs between adjacent symbols, reducing bit errors.",
+        "c": "Bandwidth is not impacted by Gray coding.",
+        "d": "Synchronization isn't directly improved by Gray coding."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "10. For a signal with bit rate R and modulation with k bits per symbol, what is the symbol rate?",
+      "answers": {
+        "a": "R + k",
+        "b": "R / k",
+        "c": "R × k",
+        "d": "R² / k"
+      },
+      "explanations": {
+        "a": "Incorrect addition: units don’t match.",
+        "b": "Correct: Symbol rate = bit rate / bits per symbol.",
+        "c": "This would increase the rate incorrectly.",
+        "d": "Not a valid formula."
+      },
+      "correctAnswer": "b",
       "difficulty": "intermediate"
     }
   ]
