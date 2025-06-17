@@ -2,171 +2,171 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "1. In a coherent Frequency Shift Keying (FSK) system, what is the primary challenge in achieving coherent detection?",
+      "question": "1. In a binary ASK system over an AWGN channel, if the energy of symbol '1' is E_s and symbol '0' is represented by zero energy, what is the theoretical bit error probability?",
       "answers": {
-        "a": "Maintaining phase synchronization between transmitter and receiver",
-        "b": "Ensuring the amplitude of the carrier signals remain constant",
-        "c": "Minimizing frequency deviation",
-        "d": "Reducing the noise floor of the system"
+        "a": "Q(√(E_s/N₀))",
+        "b": "Q(√(E_s/(2N₀)))",
+        "c": "1/2 × erfc(√(E_s/(2N₀)))",
+        "d": "Q(√(2E_s/N₀))"
       },
       "explanations": {
-        "a": "Coherent detection requires maintaining phase synchronization to correctly demodulate the signal.",
-        "b": "Amplitude consistency is less critical in FSK as it relies on frequency changes.",
-        "c": "Frequency deviation is not the primary challenge in coherent detection.",
-        "d": "While important, reducing the noise floor is not specific to coherent detection."
+        "a": "This is correct for unipolar ASK in AWGN.",
+        "b": "This applies for coherent BPSK or antipodal signaling.",
+        "c": "Same as (b), expressed in erfc form.",
+        "d": "Too optimistic, applies for antipodal PSK."
       },
       "correctAnswer": "a",
       "difficulty": "hard"
     },
     {
-      "question": "2. Which of the following is a major disadvantage of Amplitude Shift Keying (ASK)?",
+      "question": "2. In binary FSK with coherent detection, how do you ensure orthogonality between the two tones in a symbol duration T?",
       "answers": {
-        "a": "Susceptibility to noise and interference",
-        "b": "Complexity of implementation",
-        "c": "High bandwidth requirements",
-        "d": "Inability to use high-frequency carriers"
+        "a": "Ensure Δf = 1/(2T)",
+        "b": "Ensure Δf = 1/T",
+        "c": "Set both frequencies to the same value",
+        "d": "Ensure Δf = T/2"
       },
       "explanations": {
-        "a": "ASK is highly susceptible to noise because it relies on amplitude changes.",
-        "b": "ASK is generally simpler to implement than other modulation types.",
-        "c": "ASK does not inherently require high bandwidth compared to other modulations.",
-        "d": "ASK can use high-frequency carriers."
-      },
-      "correctAnswer": "a",
-      "difficulty": "hard"
-    },
-    {
-      "question": "3. Which modulation scheme is typically more bandwidth-efficient?",
-      "answers": {
-        "a": "Amplitude Shift Keying (ASK)",
-        "b": "Frequency Shift Keying (FSK)",
-        "c": "Phase Shift Keying (PSK)",
-        "d": "Pulse Amplitude Modulation (PAM)"
-      },
-      "explanations": {
-        "a": "ASK is not as bandwidth-efficient due to its simple encoding.",
-        "b": "FSK requires more bandwidth due to frequency changes.",
-        "c": "PSK is more bandwidth-efficient because it encodes information in phase shifts.",
-        "d": "PAM is not inherently more bandwidth-efficient than PSK."
-      },
-      "correctAnswer": "c",
-      "difficulty": "hard"
-    },
-    {
-      "question": "4. In Phase Shift Keying (PSK), what is the impact of increasing the number of phase states?",
-      "answers": {
-        "a": "Increased robustness to noise",
-        "b": "Reduced bandwidth requirement",
-        "c": "Higher data rates",
-        "d": "Simpler receiver design"
-      },
-      "explanations": {
-        "a": "Increasing the number of phase states makes the system more sensitive to noise.",
-        "b": "More phase states generally require similar or increased bandwidth.",
-        "c": "More phase states allow higher data rates as more bits can be encoded per symbol.",
-        "d": "The receiver design becomes more complex with more phase states."
-      },
-      "correctAnswer": "c",
-      "difficulty": "hard"
-    },
-    {
-      "question": "5. Which of the following is a key advantage of using Non-Coherent FSK over Coherent FSK?",
-      "answers": {
-        "a": "Simpler receiver design",
-        "b": "Higher data transmission rates",
-        "c": "Lower power consumption",
-        "d": "Better performance in noisy environments"
-      },
-      "explanations": {
-        "a": "Non-Coherent FSK has a simpler receiver design because it does not require phase synchronization.",
-        "b": "Coherent FSK can achieve higher data rates due to phase detection.",
-        "c": "Non-Coherent FSK does not inherently use less power.",
-        "d": "Non-Coherent FSK does not generally perform better in noise compared to Coherent FSK."
-      },
-      "correctAnswer": "a",
-      "difficulty": "hard"
-    },
-    {
-      "question": "6. Why is Phase Shift Keying (PSK) considered more power efficient than Frequency Shift Keying (FSK)?",
-      "answers": {
-        "a": "PSK can maintain performance at lower signal-to-noise ratios.",
-        "b": "PSK requires less bandwidth.",
-        "c": "PSK is simpler to implement.",
-        "d": "PSK does not require frequency modulation."
-      },
-      "explanations": {
-        "a": "PSK is more power efficient because it can achieve good performance at lower signal-to-noise ratios.",
-        "b": "PSK typically requires similar bandwidth compared to FSK.",
-        "c": "PSK is often more complex due to synchronization requirements.",
-        "d": "PSK relies on phase modulation rather than frequency modulation."
-      },
-      "correctAnswer": "a",
-      "difficulty": "hard"
-    },
-    {
-      "question": "7. Which characteristic of FSK modulation makes it advantageous for certain applications?",
-      "answers": {
-        "a": "Its resistance to phase jitter",
-        "b": "Its robustness in high-noise environments",
-        "c": "Its ability to encode more data per symbol",
-        "d": "Its minimal bandwidth requirement"
-      },
-      "explanations": {
-        "a": "FSK is not directly related to phase jitter.",
-        "b": "FSK is robust in noisy environments because the frequency changes are distinct.",
-        "c": "FSK does not inherently encode more data per symbol than other methods.",
-        "d": "FSK typically requires more bandwidth due to the frequency changes."
+        "a": "This spacing ensures minimum separation but not orthogonality.",
+        "b": "Correct. Orthogonality requires Δf = 1/T.",
+        "c": "Then there is no frequency shift.",
+        "d": "Incorrect dimensionality."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
     },
     {
-      "question": "8. What is the primary disadvantage of using higher-order PSK modulation schemes?",
+      "question": "3. In PSK modulation, what is the key impact of using Gray coding in symbol mapping?",
       "answers": {
-        "a": "Increased bandwidth usage",
-        "b": "Higher power consumption",
-        "c": "Increased sensitivity to noise",
-        "d": "Greater amplitude variations"
+        "a": "Reduces average power consumption",
+        "b": "Maximizes bandwidth efficiency",
+        "c": "Minimizes the number of bit errors per symbol error",
+        "d": "Increases spectral resolution"
       },
       "explanations": {
-        "a": "Higher-order PSK does not necessarily increase bandwidth usage.",
-        "b": "Higher-order PSK does not inherently require more power.",
-        "c": "Increased sensitivity to noise due to smaller phase differences between symbols.",
-        "d": "PSK is not typically associated with amplitude variations."
+        "a": "Gray coding does not affect power.",
+        "b": "Bandwidth is fixed by symbol rate and modulation.",
+        "c": "Correct. Gray coding ensures adjacent symbols differ by one bit.",
+        "d": "Not relevant to PSK mapping."
       },
       "correctAnswer": "c",
       "difficulty": "hard"
     },
     {
-      "question": "9. Which modulation scheme is typically used in radio broadcasting?",
+      "question": "4. A coherent BFSK system uses orthogonal frequencies. What is the minimum bit error probability in AWGN for equal energy signals?",
       "answers": {
-        "a": "Amplitude Shift Keying (ASK)",
-        "b": "Frequency Modulation (FM)",
-        "c": "Phase Shift Keying (PSK)",
-        "d": "Frequency Shift Keying (FSK)"
+        "a": "Q(√(E_s/N₀))",
+        "b": "1/2 × exp(-E_s/(2N₀))",
+        "c": "1/2 × erfc(√(E_s/(2N₀)))",
+        "d": "Q(√(E_s/(2N₀)))"
       },
       "explanations": {
-        "a": "ASK is not typically used in radio broadcasting.",
-        "b": "FM is commonly used in radio broadcasting due to its robustness to noise.",
-        "c": "PSK is used in digital communication, not typically in radio broadcasting.",
-        "d": "FSK is used in digital communication, not typically in radio broadcasting."
+        "a": "This is for ASK or antipodal signals.",
+        "b": "Correct. Coherent orthogonal BFSK has this closed-form BER.",
+        "c": "Used for antipodal PSK signals.",
+        "d": "Too simplistic for BFSK."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
     },
     {
-      "question": "10. In a PSK system, what can be used to improve error performance?",
+      "question": "5. In an 8-PSK system, how many bits are affected on average per symbol error if Gray coding is not used?",
       "answers": {
-        "a": "Increasing the carrier frequency",
-        "b": "Using error correction coding",
-        "c": "Reducing the modulation order",
-        "d": "Increasing the power of the transmitted signal"
+        "a": "1",
+        "b": "2 or more",
+        "c": "0.5",
+        "d": "Same as Gray coded"
       },
       "explanations": {
-        "a": "Increasing the carrier frequency does not directly improve error performance.",
-        "b": "Error correction coding helps to detect and correct errors, improving performance.",
-        "c": "Reducing modulation order decreases data rate but improves error performance.",
-        "d": "Increasing power can improve signal-to-noise ratio, enhancing performance."
+        "a": "Only true for Gray coding.",
+        "b": "Correct. Without Gray coding, multiple bits can flip.",
+        "c": "Too optimistic.",
+        "d": "Gray coding ensures minimal bit flips."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "6. In non-coherent binary FSK, what causes the degradation in bit error rate compared to coherent FSK?",
+      "answers": {
+        "a": "Lack of orthogonality between tones",
+        "b": "Use of envelope detection instead of correlation detection",
+        "c": "Greater phase noise at the transmitter",
+        "d": "Excessive bandwidth usage"
+      },
+      "explanations": {
+        "a": "Orthogonality can still exist.",
+        "b": "Correct. Non-coherent detection is less optimal and more susceptible to noise.",
+        "c": "Phase noise is more relevant to PSK.",
+        "d": "Bandwidth is not the primary reason."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "7. In M-ASK with M > 2, what limits the minimum distance between signal levels for fixed average power?",
+      "answers": {
+        "a": "The number of levels M",
+        "b": "The symbol rate",
+        "c": "The carrier frequency",
+        "d": "The modulation index"
+      },
+      "explanations": {
+        "a": "Correct. More levels mean closer spacing for fixed energy.",
+        "b": "Affects bandwidth but not signal spacing.",
+        "c": "Carrier frequency doesn’t affect amplitude levels.",
+        "d": "Relevant to analog modulation, not M-ASK."
+      },
+      "correctAnswer": "a",
+      "difficulty": "hard"
+    },
+    {
+      "question": "8. What is the peak-to-average power ratio (PAPR) concern in M-ASK compared to BPSK or BFSK?",
+      "answers": {
+        "a": "M-ASK has lower PAPR",
+        "b": "M-ASK has higher PAPR due to varying amplitudes",
+        "c": "M-ASK and BPSK have same PAPR",
+        "d": "FSK has the highest PAPR"
+      },
+      "explanations": {
+        "a": "Incorrect. Amplitude variation increases PAPR.",
+        "b": "Correct. Unequal amplitudes result in higher peaks.",
+        "c": "BPSK uses fixed amplitude.",
+        "d": "FSK typically has constant envelope."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "9. In M-PSK, why does increasing M increase the bit error rate at fixed SNR?",
+      "answers": {
+        "a": "More bits per symbol increases decision complexity",
+        "b": "Constellation points become closer",
+        "c": "Bandwidth increases linearly",
+        "d": "Carrier phase cannot be recovered"
+      },
+      "explanations": {
+        "a": "This is true, but not the core reason.",
+        "b": "Correct. Closer phase angles increase symbol confusion.",
+        "c": "Bandwidth remains roughly constant.",
+        "d": "Phase recovery is possible."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "10. In a binary ASK system with coherent detection, what kind of filter maximizes the SNR at the detector?",
+      "answers": {
+        "a": "Low-pass filter",
+        "b": "Matched filter",
+        "c": "Band-pass filter",
+        "d": "Rectifier followed by LPF"
+      },
+      "explanations": {
+        "a": "Passes noise as well.",
+        "b": "Correct. Matched filter is optimal for SNR.",
+        "c": "May not maximize SNR.",
+        "d": "Used in envelope detection, not optimal for coherent detection."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
