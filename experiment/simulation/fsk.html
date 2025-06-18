@@ -68,6 +68,15 @@
                                 <div class="absolute top-[165px] left-[184px]">
                                     <button class="bg-blue-500 text-sm text-white rounded-md px-2 py-1" class="button" onclick="generateCarrierSignal2()">Generate Carrier 2</button>
                                 </div>
+                                <div class="absolute top-[300px] left-[177px]">
+                                    <button
+                                      class="bg-gray-500 text-white rounded-md px-2 py-1"
+                                      class="button"
+                                      onclick="generateSpectrumFSK()"
+                                    >
+                                      Show Frequency Spectrums
+                                    </button>
+                                  </div>
                                 <div class="absolute top-[132px] right-[75px]">
                                     <button class="bg-blue-500 text-white rounded-md px-2 py-1" class="button" onclick="simulateFSK()">Simulate FSK</button>
                                 </div>
@@ -79,6 +88,7 @@
                             <div id="carrier-plot2"></div>
                             <div id="carrier-plot"></div>
                             <div id="original"></div>
+                            <div id="frequencySpectrum"></div>
                         </div>
                     </div>
                 </div>
@@ -389,6 +399,44 @@
 
         Plotly.newPlot("demodulated-plot", [traceDemodulated], layoutDemodulated);
     }
+
+
+//const fs = 1000;
+let Tb;
+   let fc1, fc2;
+    function sinc(x) {
+      return x === 0 ? 1 : Math.sin(Math.PI * x) / (Math.PI * x);
+    }
+
+    function generateSpectrum(centerFreqs, label, color) {
+      const f = Array.from({ length: 1000 }, (_, i) => -150 + i * 0.3);
+      const y = f.map(freq => {
+        return centerFreqs.reduce((acc, fc) => acc + Math.abs(sinc((freq - fc) * Tb)), 0);
+      });
+      return {
+        x: f,
+        y: y,
+        name: label,
+        line: { color },
+        mode: 'lines'
+      };
+    }
+
+    function generateSpectrumFSK() {
+    Tb = 1/parseInt(document.getElementById("bit_rate").value);//1/bitRate;
+    console.log(Tb);
+    let A = 1;
+    fc1 = parseInt(document.getElementById("carrier_frequency1").value);
+    fc2 = parseInt(document.getElementById("carrier_frequency2").value);
+    const fskSpec = generateSpectrum([fc1, fc2, -fc1, -fc2], 'FSK Spectrum', 'blue');
+
+    Plotly.newPlot('frequencySpectrum', [fskSpec], {
+      title: 'Spectra of FSK',
+      xaxis: { title: 'Frequency (Hz)' },
+      yaxis: { title: 'Amplitude', rangemode: 'tozero' }
+    });
+    document.getElementById('frequencySpectrum').scrollIntoView({ behavior: 'smooth' });
+  }
 </script>
 
   <style>

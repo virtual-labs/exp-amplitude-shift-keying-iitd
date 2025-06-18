@@ -120,6 +120,15 @@
                   Simulate ASK
                 </button>
               </div>
+              <div class="absolute top-[300px] left-[177px]">
+                <button
+                  class="bg-gray-500 text-white rounded-md px-2 py-1"
+                  class="button"
+                  onclick="generateSpectrumASK()"
+                >
+                  Show Frequency Spectrums
+                </button>
+              </div>
               <img
                 src=".././images/simulation/askimg1.png"
                 alt="ask1"
@@ -131,6 +140,7 @@
             <div id="modulated-plot" class="w-[100%]"></div>
             <div id="carrier-plot" class="w-[100%]"></div>
             <div id="plot" class="w-[100%]"></div>
+            <div id="frequencySpectrum" class="w-[100%]"></div>
           </div>
         </div>
       </div>
@@ -510,6 +520,46 @@ function awgn(data, snr) {
   }
   return noisyData;
 }
+
+
+//const fs = 1000;
+    let Tb;
+   let fc;
+    function sinc(x) {
+      return x === 0 ? 1 : Math.sin(Math.PI * x) / (Math.PI * x);
+    }
+
+    function generateSpectrum(centerFreqs, label, color) {
+      const f = Array.from({ length: 1000 }, (_, i) => -150 + i * 0.3);
+      const y = f.map(freq => {
+        return centerFreqs.reduce((acc, fc) => acc + Math.abs(sinc((freq - fc) * Tb)), 0);
+      });
+      return {
+        x: f,
+        y: y,
+        name: label,
+        line: { color },
+        mode: 'lines'
+      };
+    }
+
+    function generateSpectrumASK() {
+    Tb = 1/parseInt(document.getElementById("bit_rate").value);//1/bitRate;
+    console.log(Tb);
+    let A = 1;
+    fc = parseInt(document.getElementById("carrier_frequency").value);;
+    let deltaF = 5;
+    const askSpec = generateSpectrum([fc, -fc], 'ASK Spectrum', 'red');
+    const fskSpec = generateSpectrum([fc + deltaF, fc - deltaF, -(fc + deltaF), -(fc - deltaF)], 'FSK Spectrum', 'blue');
+    const pskSpec = generateSpectrum([fc, -fc], 'PSK Spectrum', 'green');
+
+    Plotly.newPlot('frequencySpectrum', [askSpec], {
+      title: 'Spectra of ASK',
+      xaxis: { title: 'Frequency (Hz)' },
+      yaxis: { title: 'Amplitude', rangemode: 'tozero' }
+    });
+    document.getElementById('frequencySpectrum').scrollIntoView({ behavior: 'smooth' });
+  }
   </script>
   
   <style>
