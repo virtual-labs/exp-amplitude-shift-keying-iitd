@@ -10,11 +10,16 @@
 
 <div id = "container">
     <h1>Instructions for Amplitude Shift Keying Modulation (ASK)</h1>
-    <ul>
-        <li class="step step1">Step 1: Click on 'Generate Message' button to generate input message signal</li>
-        <li class="step step2">Step 2: Then click on 'Generate Carrier' button to generate carrier signal</li>
-		<li class="step step3">Step 3: You can change the carrier signal frequency from the input field</li>
-        <li class="step step4">Step 4: Click on 'Simulate ASK' button to generate Amplitude Shift Keying Signal</li>
+	    <ul>
+      <li class="step step4"><strong>Note:</strong> Use the input fields to enter the carrier frequency, sampling frequency, number of bits and the bit rate.</li>
+    
+      <li class="step step1"><strong>Step 1:</strong> Click on <em>'Generate Message'</em> button to generate input message signal.</li>
+    
+      <li class="step step2"><strong>Step 2:</strong> Then click on <em>'Generate Carrier'</em> button to generate carrier signal.</li>
+    
+      <li class="step step3"><strong>Step 3:</strong> Click on <em>'Simulate ASK'</em> button to generate Amplitude Shift Keying Signal.</li>
+    
+      <li class="step step4"><strong>Step 4:</strong> Click the <em>"Show Frequency Spectrums"</em> button to view the spectra of the ASK signal.</li>
     </ul>
 <br/>
 
@@ -148,7 +153,7 @@
   </div>
   
   <br/><br/><hr/>
-  
+  <div id = "demodulation">
   <div id = "container">
     <h1>Instructions for Amplitude Shift Keying (ASK) Demodulation</h1>
     <ul>
@@ -199,7 +204,8 @@
       </div>
     </div>
   </div>
-	
+
+</div>	
 	     <script>
         function checkFrequencies() {
             // Get values from input fields
@@ -349,6 +355,8 @@
       Plotly.newPlot("modulated-plot", modulatedData, {
         title: "ASK Modulated Signal",
       });
+	  
+	  saveData();
     }
 
     let isCarrierGenerated = false; // Track if carrier is generated
@@ -560,9 +568,26 @@ function awgn(data, snr) {
     });
     document.getElementById('frequencySpectrum').scrollIntoView({ behavior: 'smooth' });
   }
+  
+  
+  function saveData() {
+  const fs = parseFloat(document.getElementById('sampling_frequency').value);
+  const fc = parseFloat(document.getElementById('carrier_frequency').value);
+  const num_bits = parseFloat(document.getElementById('num_bits').value);
+ const bitRate = parseFloat(document.getElementById('bit_rate').value);
+
+  // Store as an object (use the variables you actually defined)
+  const myData = { fs: fs, fc: fc, num_bits: num_bits, bitRate: bitRate, messageSignal: messageSignal };
+
+  localStorage.setItem('sharedData', JSON.stringify(myData));
+}
+
   </script>
   
   <style>
+    #demodulation {
+  display: none;
+  }
 #container {
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
