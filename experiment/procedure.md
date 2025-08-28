@@ -10,8 +10,8 @@
         <li>
             <strong>Input Parameters:</strong>
             <ul>
-                <li><strong>Carrier Frequency:</strong> Use the input field to enter the desired carrier frequency.</li>
-                <li><strong>Sampling Frequency:</strong> Specify the sampling frequency to be used in the simulation.</li>
+                <li><strong>Carrier Frequency (Hz):</strong> Use the input field to enter the desired carrier frequency.</li>
+                <li><strong>Sampling Frequency (Hz):</strong> Specify the sampling frequency to be used in the simulation.</li>
                 <li><strong>Number of Bits:</strong> Enter the number of bits for the message signal, which will be randomly generated binary bits.</li>
                 <li><strong>Bit Rate in bps:</strong> Define the bit rate (bps) for the signal.</li>
             </ul>
