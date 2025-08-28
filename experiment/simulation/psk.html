@@ -11,10 +11,15 @@
 	<div id = "container">
     <h1>Instructions for Phase Shift Keying Modulation (PSK)</h1>
     <ul>
-        <li class="step step1">Step 1: Click on 'Generate Message' button to generate input message signal</li>
-        <li class="step step2">Step 2: Then click on 'Generate Carrier' button to generate carrier signal</li>
-		<li class="step step3">Step 3: You can change the carrier signal frequency from the input fields</li>
-        <li class="step step4">Step 4: Click on 'Simulate PSK' button to generate Phase Shift Keying Signal</li>
+      <li class="step step4"><strong>Note:</strong> Use the input fields to enter the carrier frequency, sampling frequency, number of bits, and the bit rate.</li>
+    
+      <li class="step step1"><strong>Step 1:</strong> Click the <em>"Generate Message"</em> button to generate the input message signal.</li>
+    
+      <li class="step step2"><strong>Step 2:</strong> Click the <em>"Generate Carrier"</em> button to generate the carrier signal.</li>
+    
+      <li class="step step3"><strong>Step 3:</strong> Click the <em>"Simulate PSK"</em> button to generate the PSK signal.</li>
+    
+      <li class="step step4"><strong>Step 4:</strong> Click the <em>"Show Frequency Spectrums"</em> button to view the spectra of the PSK signal.</li>
     </ul>
 <br/>
     <div class="flex min-h-[80vh]">
@@ -113,7 +118,7 @@
           <div class="flex flex-col">
 
             <div class="flex gap-2">
-              <div class="flex-1 flex flex-col items-center">
+              <div class="flex-1 flex flex-col items-start">
                 <div class="w-[550px]">
                   <img
                     class="w-[100%] h-[100%]"
@@ -121,6 +126,7 @@
                     alt="psk_mod"
                   />
                 </div>
+				<!/div>
 <!-- Vertical stack -->
 <div class="flex flex-col items-center pt-4">
     <button class="bg-blue-500 text-white rounded-md px-2 py-1 mb-2" onclick="generateMessageSignal()">
@@ -129,7 +135,6 @@
     <button class="bg-blue-500 text-white rounded-md px-2 py-1 mb-2" onclick="generateCarrierSignal()">
         Generate Carrier
     </button>
-  </div>
     <button class="bg-blue-500 text-white rounded-md px-2 py-1 mb-2" onclick="generatePSKModulatedSignal()">
         Simulate PSK
     </button>
@@ -153,6 +158,7 @@
       </div>
     </div>
 	
+	<div id = "demodulation">
 	<br/><br/><hr/>
 	    <!-- sidebar and body -->
 			  <div id = "container">
@@ -225,7 +231,7 @@
       </div>
     </div>
 	
-	
+	</div>
  
      <script>
         function checkFrequencies() {
@@ -347,6 +353,8 @@
             };
 
             Plotly.newPlot("modulated-plot", modulatedData, modulatedLayout);
+			
+			saveData();
         }
 
        function demodulateSignal() {
@@ -452,10 +460,25 @@
     document.getElementById('frequencySpectrum').scrollIntoView({ behavior: 'smooth' });
   }
 	
+	
+	function saveData() {
+  const Fs = parseFloat(document.getElementById('sampling_frequency').value);
+  const fc = parseFloat(document.getElementById('carrier_frequency').value);
+  const num_bits = parseFloat(document.getElementById('num_bits').value);
+ const bit_rate = parseFloat(document.getElementById('bit_rate').value);
+
+  // Store as an object (use the variables you actually defined)
+  const myData = { Fs: Fs, fc: fc, num_bits: num_bits, bit_rate: bit_rate, bits: bits };
+
+  localStorage.setItem('sharedData', JSON.stringify(myData));
+}
     </script>
 	
 	
 	<style>
+	#demodulation {
+	display: none;
+	}
 	#phase_shift {
 	display: none;
 	}

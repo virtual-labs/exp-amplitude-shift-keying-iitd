@@ -10,11 +10,16 @@
 
 <div id = "container">
     <h1>Instructions for Frequency Shift Keying Modulation (FSK)</h1>
-    <ul>
-        <li class="step step1">Step 1: Click on 'Generate Message' button to generate input message signal</li>
-        <li class="step step2">Step 2: Then click on 'Generate Carrier' button to generate carrier signal</li>
-		<li class="step step3">Step 3: You can change the carrier signal frequencies from the input fields</li>
-        <li class="step step4">Step 4: Click on 'Simulate FSK' button to generate Frequency Shift Keying Signal</li>
+		    <ul>
+      <li class="step step4"><strong>Note:</strong> Use the input fields to enter the carrier frequencies, sampling frequency, and the bit rate.</li>
+    
+      <li class="step step1"><strong>Step 1:</strong> Click on <em>'Generate Message'</em> button to generate input message signal.</li>
+    
+      <li class="step step2"><strong>Step 2:</strong> Then click on <em>'Generate Carrier'</em> button to generate carrier signal. </li>
+    
+      <li class="step step3"><strong>Step 3:</strong> Click on <em>'Simulate FSK'</em> button to generate Frequency Shift Keying Signal.</li>
+    
+      <li class="step step4"><strong>Step 4:</strong> Click the <em>"Show Frequency Spectrums"</em> button to view the spectra of the FSK signal.</li>
     </ul>
 <br/>
     <!-- sidebar and body -->
@@ -95,8 +100,9 @@
             </div>
         </div>
     </div>
-
+<div id = "demodulation">
     <br /><br /><hr />
+
 	  <div id = "container">
     <h1>Instructions for Frequency Shift Keying (FSK) Demodulation</h1>
     <ul>
@@ -144,7 +150,7 @@
             </div>
         </div>
     </div>
-
+</div>
 
 <script>
     function checkFrequencies() {
@@ -333,6 +339,8 @@
         };
 
         Plotly.newPlot("modulated-plot", [traceModulated], layoutModulated);
+		
+		saveData();
     }
 
     function demodulateFSK() {
@@ -437,9 +445,31 @@ let Tb;
     });
     document.getElementById('frequencySpectrum').scrollIntoView({ behavior: 'smooth' });
   }
+  
+function saveData() {
+  const samplingFrequency = parseFloat(document.getElementById('sampling_frequency').value);
+  const carrierFrequency = parseFloat(document.getElementById('carrier_frequency1').value);
+  const carrierFrequency2 = parseFloat(document.getElementById('carrier_frequency2').value);
+  const bitRate = parseFloat(document.getElementById('bit_rate').value);
+
+  // Store as an object
+  const myData = { 
+    samplingFrequency: samplingFrequency, 
+    carrierFrequency: carrierFrequency, 
+    carrierFrequency2: carrierFrequency2,  
+    bitRate: bitRate,                      
+    modulated_signal: modulated_signal     
+  };
+
+  localStorage.setItem('sharedData', JSON.stringify(myData));
+}
+
 </script>
 
   <style>
+  #demodulation {
+  display: none;
+  }
 #container {
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
