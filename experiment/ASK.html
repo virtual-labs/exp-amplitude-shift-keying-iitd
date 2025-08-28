@@ -1,0 +1,647 @@
+<!DOCTYPE html><html lang="en"><head>
+      <!--Google Tag Manager-->
+      <script class="gtm">
+        var dataLayer = [{
+        'labName': 'Virtual Lab',
+        'discipline': 'Test',
+        'college': 'IITD',
+        'phase': 'Testing',
+        'expName': 'AMPLITUDE SHIFT KEYING, FREQUENCY SHIFT KEYING, BINARY PHASE SHIFT KEYING:
+    GENERATION AND DETECTION',
+        'expShortName': 'amplitude-shift-keying'
+        }];
+    
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5NMQ9NQ');
+      </script>
+      <!--End Google Tag Manager-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    
+    	<meta name="experiment-short-name" content="amplitude-shift-keying">
+    	<meta name="developer-institute" content="IITD">
+    	<meta name="learning-unit" content="AMPLITUDE SHIFT KEYING, FREQUENCY SHIFT KEYING, BINARY PHASE SHIFT KEYING:
+    GENERATION AND DETECTION">
+    	<meta name="task-name" content="Theory">
+    
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#4076e0">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4076e0">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4076e0">
+    <title>Virtual Labs</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=Raleway&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/github-markdown.min.css">
+    <link rel="stylesheet" href="./assets/css/vlabs-style.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
+    <link rel="stylesheet" href="./assets/katex_assets/katex.min.css">
+    
+    <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      h1 {
+      font-size: 1.8rem;
+      }
+      h2 {
+      font-size: 1.4rem;
+      }
+      h3 {
+      font-size: 1.2rem;
+      }
+
+      h2, h3 {
+      font-weight: 800;
+      }
+    </style>
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"></head>
+  <body class="p-0 container-fluid vlabs-page d-flex flex-column justify-content-between">
+      <!--Google Tag Manager (noscript)-->
+      <noscript class="gtm">
+        <iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-5NMQ9NQ" style="display:none;visibility:hidden" width="0">
+        </iframe>
+      </noscript>
+      <!--End Google Tag Manager (noscript)-->
+  
+      <header class="vlabs-header sticky-top bg-white">
+        <nav class="p-0 navbar navbar-light d-flex align-items-stretch">
+          
+          <button class="navbar-toggler px-4" type="button" onclick="toggle()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="d-flex justify-content-center">        
+            <a href="https://vlab.co.in" class="navbar-brand">
+              <img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+            </a>
+          </div>
+          
+          <div id="headerNavbar" class="d-none border-top flex-grow-1 d-lg-flex align-items-center justify-content-end">
+            <div class="svc-rating-display">
+                <rating-display spreadsheetid="1x12nhpp0QvnsA6x-O1sV4IA9SAbfVsq_wiexWkutOmU" sheetname="Experiment-Database" columnname="Experiment Short Name" columnvalue="amplitude-shift-keying" imagesdirectory="/plugins/svc-rating/images/">
+                </rating-display>
+            </div>      <div class="svc-rating-submit">
+                <rating-submit title="Rate" this="" experiment="">
+                </rating-submit>
+            </div>      <bug-report id="bug-report" title="[BUG REPORT] AMPLITUDE SHIFT KEYING, FREQUENCY SHIFT KEYING, BINARY PHASE SHIFT KEYING:
+      GENERATION AND DETECTION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;IITD&quot;,&quot;expname&quot;:&quot;AMPLITUDE SHIFT KEYING, FREQUENCY SHIFT KEYING, BINARY PHASE SHIFT KEYING:\nGENERATION AND DETECTION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" button_style="border: none; color: #fff; background-color: #288ec8; text-align: center; font-size: 1.05rem; border-radius: 1em;padding: 0.6em 1.2em; margin: 0 10px" position="override" custom_button_class="v-button"></bug-report>
+          </div>
+        </nav>
+      </header>
+      <div class="container-fluid flex-fill d-flex flex-column vlabs-page-main">
+        <div class="row d-flex justify-content-between">
+          <div class="flex-column">
+          <div class="row py-4 px-4 breadcrumbs">
+          	<div class="title is-4 tools">Tools</div>
+          	<span class="mx-2">
+          		<i aria-hidden="true" class="fa fa-angle-right"></i>
+          	</span>
+          	<a href="performance-report.html" class="my-2 mx-3" target="_blank">
+          		<button class="v-button">Performance Tool</button>
+          	</a>
+          	<a href="validator-report.html" class="my-2 mx-3" target="_blank">
+          		<button class="v-button">Validation Tool</button>
+          	</a>
+          </div>
+          </div>
+        </div>
+        <div class="row flex-grow-1 d-flex flex-nowrap flex-column flex-lg-row">
+          <div class="modal fade popupmenu" id="popupMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                              <a href="https://vlab.co.in" class="navbar-brand">
+                                  <img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+                              </a>
+                          </h5>
+                          <button type="button" class="btn-close align-self-center" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body nav-menu">
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="index.html" class="p-2 ">
+                                      Aim
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="theory.html" class="p-2  current-item ">
+                                      Theory
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="pretest.html" class="p-2 ">
+                                      Pretest
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="procedure.html" class="p-2 ">
+                                      Procedure
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="simulation.html" class="p-2 ">
+                                      Simulation
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="posttest.html" class="p-2 ">
+                                      Posttest
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="references.html" class="p-2 ">
+                                      References
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="feedback.html" class="p-2 ">
+                                      Feedback
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="nav flex-column sidebar nav-menu flex-shrink-0 px-lg-4 align-items-center align-items-lg-start hidden d-none d-lg-flex" id="menu">
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="index.html" class="p-2 ">
+                        Aim
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="theory.html" class="p-2  current-item ">
+                        Theory
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="pretest.html" class="p-2 ">
+                        Pretest
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="procedure.html" class="p-2 ">
+                        Procedure
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="simulation.html" class="p-2 ">
+                        Simulation
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="posttest.html" class="p-2 ">
+                        Posttest
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="references.html" class="p-2 ">
+                        References
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="feedback.html" class="p-2 ">
+                        Feedback
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+          </div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+            <div class="text-center fix-spacing">
+              <h2 id="amplitude-shift-keying-frequency-shift-keying-binary-phase-shift-keying-generation-and-detection">Amplitude shift keying, Frequency Shift Keying, Binary Phase Shift Keying: Generation and Detection</h2>
+          
+            </div>
+              
+          
+ <!---------->    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script> 
+      <h2>
+        Amplitude Shift Keying (ASK)
+      </h2>
+
+      <h3>Theory:</h3>
+      <p class="mb-4">
+        Amplitude Shift Keying (ASK) is one of the simplest digital modulation
+        techniques. In this method, a single carrier wave is switched ON or OFF
+        to transmit binary symbols. The binary ASK system was an early form of
+        digital modulation, used in wireless telegraphy. In a binary ASK system,
+        binary symbol '1' is represented by transmitting a sinusoidal carrier
+        wave of fixed amplitude A<sub>c</sub> and fixed frequency f<sub>c</sub>
+        for the bit duration T<sub>b</sub>. Binary symbol '0' is represented by
+        switching off the carrier for T<sub>b</sub> seconds. This signal can be
+        generated simply by turning a sinusoidal oscillator's carrier ON and OFF
+        according to the modulating pulse train, which is why this scheme is
+        also known as On-Off Keying (OOK). The ASK signal can be generated by
+        applying the incoming binary data and the sinusoidal carrier to the two
+        inputs of a product modulator. The resulting output is the ASK wave.
+      </p>
+
+      <p class="mb-4">
+        In this modulation, binary '1' is represented by the presence of a
+        carrier and binary '0' by the absence of a carrier.
+      </p>
+      <br />
+      <h3>ASK Transmitter:</h3>
+      <div class="flex justify-center">
+        <img src="././images/theory/digitalmodulation/ask1.png" alt="ask_image" />
+      </div>
+      <p>
+        Here, the electrical signal representation technique is ON-OFF coding.
+        In which <br />
+        1 => +V (positive voltage) <br />
+        0 => 0 V (zero voltage)
+      </p>
+      <h3 class="text-[24px] font-semibold text-black py-2">ASK Receiver:</h3>
+      <p>
+        For the demodulation of ASK, a coherent detector is typically used. This
+        involves correlating the received signal with the carrier wave.
+      </p>
+      <ul>
+        <li>
+          For binary '1' (carrier present): The output of the correlator (or
+          matched filter) will be proportional to the amplitude of the received
+          carrier, e.g., A<sub>c</sub> * T<sub>b</sub> / 2.
+        </li>
+        <li>
+          For binary '0' (carrier absent): The output will be close to zero.
+        </li>
+      </ul>
+      <p>
+        A threshold detector then compares this output to a predetermined
+        threshold to decide whether a '1' or '0' was transmitted.
+      </p>
+      <div class="flex justify-center">
+        <img src="././images/theory/digitalmodulation/ask2.png" alt="ask_image" />
+      </div>
+      <p>
+        The receiver aims to differentiate between the presence and absence of
+        the carrier to recover the original binary data.
+      </p>
+      <h3>
+       Constellation Diagram of ASK
+      </h3>
+	  <br/>
+      <div class="flex justify-center">
+        <img src="././images/theory/digitalmodulation/ask3.png" alt="ask_image" />
+      </div>
+      <p class="mb-4 text-center font-semibold text-black">
+        Figure: Constellation Diagram of Binary ASK
+      </p>
+      <p class="pl-8">
+        In the above figure, the reference axis corresponds to the normalized
+        basis function &#x03C6;<sub>1</sub>(t) = √(2/T<sub>b</sub>) cos(2Пf<sub>c</sub>t) for 0
+        &#x2264; t &#x2264; T<sub>b</sub>.
+        <br />
+        <br />
+        Distance of the '1' symbol from the origin is √(E<sub>b</sub>). Energy
+        of the '1' symbol = {√(E<sub>b</sub>)}<sup>2</sup> = E<sub>b</sub>.
+        <br />
+        Distance of the '0' symbol from the origin is 0. Energy of the '0'
+        symbol = 0 <br />
+        Distance between signaling points, d<sub>12</sub> = √(E<sub>b</sub>).
+        <br />
+        High-order Amplitude Shift Keying (ASK) refers to using a large number
+        of amplitude levels to represent digital data. For instance, in binary
+        ASK (BASK), there are two amplitude levels, usually represented as 0 and
+        1. High-order ASK can have more than two amplitude levels, such as 4,
+        8, 16, 64, etc.
+      </p>
+
+      <h3>
+       Under different noise configurations
+      </h3>
+      <p class="pl-8">
+        Let's explore ASK modulation under two common noise scenarios: AWGN
+        (Additive White Gaussian Noise) and Rayleigh fading.
+      </p>
+      <h4>
+        ASK Modulation with AWGN:
+      </h4>
+      <p class="pl-8">
+        We've already discussed the effect of AWGN on ASK modulation in the
+        previous response. The mathematical effect involves adding
+        Gaussian-distributed noise to the modulated signal. The received signal
+        y(t) is given by: <br />
+        y(t) = x(t) + n(t) <br />
+        Where: <br />
+        x(t) is the modulated ASK signal. <br />
+        n(t) is the AWGN. <br />
+        The effect of AWGN is to add random variations to the amplitude of the
+        signal, which can lead to erroneous detection of the transmitted
+        symbols. The SNR (signal-to-noise ratio) plays a crucial role in
+        determining the quality of demodulation, with higher SNR values leading
+        to better performance. <br />
+      </p>
+      <h4>
+        ASK Modulation with Rayleigh Fading:
+      </h4>
+      <p class="pl-8">
+        Rayleigh fading is a type of multipath fading that occurs in wireless
+        communication channels. It's characterized by a random variation in the
+        amplitude of the received signal due to constructive and destructive
+        interference of multiple signal paths. <br />
+        <br />
+        Mathematically, Rayleigh fading can be represented as a complex Gaussian
+        random variable with zero mean and a certain variance. The received
+        signal y(t) in the presence of Rayleigh fading can be represented as:
+        <br />
+        y(t) = h . x(t) + n(t) <br />
+        Where: <br />
+
+        h is the complex fading coefficient, representing the channel gain and
+        phase shift. <br />
+        x(t) is the modulated ASK signal. <br />
+        n(t) is the noise <br />
+        <br />
+        The fading coefficient h introduces random amplitude and phase
+        variations to the signal. Due to the randomness of h, the received
+        signal's amplitude will experience fluctuations, impacting the detection
+        of transmitted symbols. The actual fading distribution might vary
+        depending on the specific channel characteristics. <br />
+        <br />
+
+        When ASK modulation is subjected to different noise configurations, the
+        mathematical representation of the received signal changes. Under AWGN,
+        Gaussian noise is added to the signal's amplitude. Under Rayleigh
+        fading, the complex fading coefficient introduces random amplitude and
+        phase variations. The performance of ASK modulation in these scenarios
+        depends on the SNR for AWGN and the characteristics of the fading
+        channel for Rayleigh fading.
+      </p>
+	  <!---
+      <h3 class="text-[28px] font-semibold text-black py-2">
+        c. Under Different Scenarios
+      </h3>
+      <p class="pl-8">
+        Amplitude Shift Keying (ASK) is a modulation technique that varies the
+        amplitude of a carrier signal to convey digital information. The
+        behavior of ASK modulation can vary in different scenarios based on
+        factors like noise, signal-to-noise ratio (SNR), and channel
+        characteristics. <br />
+        <br />
+
+        <span class="font-semibold">Low Noise Environment: </span> <br />
+        In a scenario with low noise and a high SNR, ASK modulation tends to
+        perform well. The transmitted signal's amplitude variations are
+        accurately detected at the receiver, resulting in reliable data
+        transmission. The demodulator can easily distinguish between the
+        different amplitude levels, leading to low error rates. <br />
+        <br />
+
+        <span class="font-semibold">High Noise Environment:</span> <br />
+        In the presence of high noise levels, ASK modulation can become less
+        reliable. The noise can lead to amplitude fluctuations in the received
+        signal, making it challenging for the receiver to accurately detect the
+        intended amplitude levels. This can result in higher bit error rates
+        and decreased communication reliability compared to scenarios with lower
+        noise levels. <br />
+        <br />
+
+        <span class="font-semibold">Multi-Path Fading Channels: </span><br />
+        In scenarios with multi-path fading channels, where the transmitted
+        signal takes multiple paths due to reflections and scattering, ASK
+        modulation might experience fading. Fading can lead to rapid changes in
+        signal amplitude at the receiver, causing difficulties in demodulation.
+        To combat fading, techniques like diversity reception and error
+        correction coding can be employed.<br />
+        <br />
+
+        <span class="font-semibold">Frequency Selective Channels: </span><br />
+        ASK modulation can be affected by frequency-selective channels, where
+        certain frequency components of the signal experience more attenuation
+        than others. This can result in distortion of the
+        amplitude-modulated signal, leading to errors in detection at the
+        receiver.<br />
+        <br />
+
+        <span class="font-semibold"> Varying Signal Amplitude:</span><br />
+        ASK modulation relies on varying the carrier signal's amplitude. If the
+        transmitted signal encounters amplifiers or attenuators along its path,
+        the modulation depth can change, affecting the ability to accurately
+        detect the signal's amplitude variations at the receiver.<br />
+        <br />
+
+        <span class="font-semibold"> Adaptive Modulation:</span><br />
+        In some scenarios, adaptive modulation techniques can be used with ASK.
+        This involves dynamically changing the modulation depth or
+        constellation points based on the changing channel conditions. In good
+        channel conditions, higher modulation levels (larger constellation
+        points) can be used for increased data rates, while in poor conditions,
+        lower modulation levels can be employed for better reliability.<br />
+        <br />
+
+        <span class="font-semibold"> Error Correction Coding:</span><br />
+        To improve ASK modulation's performance in noisy environments, error
+        correction codes can be employed. These codes add redundancy to the
+        transmitted data, allowing the receiver to correct errors that might
+        have occurred during transmission. This is particularly useful in
+        scenarios where ASK modulation alone might result in unacceptably high
+        error rates.<br />
+        <br />
+
+        In summary, ASK modulation's performance is influenced by noise, channel
+        characteristics, and modulation depth. While ASK is straightforward to
+        implement, it might not be as robust as other modulation techniques
+        like Phase Shift Keying (PSK) or Quadrature Amplitude Modulation (QAM)
+        in scenarios with significant noise or fading. Therefore, the choice of
+        modulation technique should be based on the specific requirements and
+        challenges of the communication scenario.
+      </p>
+	  -->    
+  <!---->        
+          </div>
+          <div class="bug-report-mobile">
+              <bug-report id="bug-report" title="[BUG REPORT] AMPLITUDE SHIFT KEYING, FREQUENCY SHIFT KEYING, BINARY PHASE SHIFT KEYING:
+          GENERATION AND DETECTION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;IITD&quot;,&quot;expname&quot;:&quot;AMPLITUDE SHIFT KEYING, FREQUENCY SHIFT KEYING, BINARY PHASE SHIFT KEYING:\nGENERATION AND DETECTION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
+                          position: fixed; 
+                          bottom: 20px;
+                          right: 20px;
+                          z-index: 1;
+                          font-size: 0;
+                          padding: 25px;
+                          border-radius: 50%;
+                          border: none;
+                          background-color: #0fc0ff;
+                          background-image: url(data:image/png;base64,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);
+                          background-repeat: no-repeat;
+                          background-position: center;
+                          background-size: 30px;
+                          filter: invert(1);">
+              </bug-report>
+          </div>        </div>
+      </div>
+      <footer class="text-light pt-2 vlabs-footer d-flex flex-column">
+        <div class="row px-5 mx-0">
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Community Links</span>
+            <a href="https://www.sakshat.ac.in/" class="text-light">Sakshat Portal</a>
+            <a href="http://outreach.vlabs.ac.in/" class="text-light">Outreach Portal</a>
+            <a href="https://vlab.co.in/faq" class="text-light">FAQ: Virtual Labs</a>
+          </div>
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Contact Us</span>
+            <span> Phone: General Information: 011-26582050 </span>
+            <span> Email: support@vlabs.ac.in </span>
+          </div>
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Follow Us</span>
+            <div class="social-links">
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #55acee;" href="https://twitter.com/TheVirtualLabs">
+      	  <i class="fab fa-twitter"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #3b5998;" href="https://www.facebook.com/Virtual-Labs-IIT-Delhi-301510159983871/">
+      	  <i class="fab fa-facebook"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #e52d27;" href="https://www.youtube.com/watch?v=asxRaOgk6a0">
+      	  <i class="fab fa-youtube"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #2867B2;" href="https://in.linkedin.com/in/virtual-labs-008ba9136">
+      	  <i class="fab fa-linkedin"></i>
+      	</a>
+            </div>
+          </div>
+        </div>
+        <div class="m-0 py-2 text-center" style="font-family: &quot;Open Sans&quot;, sans-serif; background: #212121;">
+          <a class="text-primary font-weight-bold" href="https://www.gnu.org/licenses/agpl-3.0.en.html"> AGPL 3.0 </a>
+          &nbsp;&amp;&nbsp;
+          <a class="text-primary font-weight-bold" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative Commons (CC BY-NC-SA 4.0) </a>
+        </div>
+      </footer>
+    <script src="./assets/js/toggleSidebar.js"></script>
+    <script src="./assets/js/event-handler.js"></script>
+
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register("sw.js");
+        });
+      }
+    </script>
+  
+
+<script type="module" src="https://cdn.vlabs.ac.in/bug-report/vlabs-bug-report.js"></script><script type="module" src="/exp-amplitude-shift-keying-iitd/plugins/svc-rating/index.js"></script><script type="module" src="/exp-amplitude-shift-keying-iitd/plugins/svc-rating/config.js"></script><script type="module" src="https://apis.google.com/js/api.js"></script></body></html>
