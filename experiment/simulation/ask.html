@@ -143,6 +143,7 @@
           </div>
           <div class="flex w-[48%] flex-col justify-center items-center">
             <div id="modulated-plot" class="w-[100%]"></div>
+			<div id="superimposed" class="w-[100%]"></div>
             <div id="carrier-plot" class="w-[100%]"></div>
             <div id="plot" class="w-[100%]"></div>
             <div id="frequencySpectrum" class="w-[100%]"></div>
@@ -305,7 +306,7 @@
         console.error("Message signal is not generated yet.");
         return;
       }
-
+  superimposed();
       fs = parseInt(document.getElementById("sampling_frequency").value);
       f = parseFloat(document.getElementById("carrier_frequency").value);
 
@@ -570,6 +571,72 @@ function awgn(data, snr) {
   }
   
   
+function superimposed() {
+  // Get user input values
+  const num_bits = parseInt(document.getElementById("num_bits").value);
+  const fs = parseInt(document.getElementById("sampling_frequency").value);
+  const bitRate = parseInt(document.getElementById("bit_rate").value);
+  const fc = parseInt(document.getElementById("carrier_frequency").value);
+
+  const bp = 1 / bitRate; // Bit period
+  const totalSamples = fs * messageSignal.length;
+
+  // 1. Generate random binary message bits (0 or 1)
+  const messageBits = [];
+  for (let i = 0; i < num_bits; i++) {
+    messageBits.push(Math.round(Math.random()));
+  }
+
+  // 2. Expand message bits to sampled waveform
+  const messageSamples = [];
+  messageSignal.forEach(bit => {
+    for (let i = 0; i < fs; i++) {
+      messageSamples.push(bit);
+    }
+  });
+
+  // 3. Generate carrier signal
+  const t = [];
+  const carrierSamples = [];
+  for (let i = 0; i < totalSamples; i++) {
+    const time = (i*bp) / fs;
+    t.push(time);
+    carrierSamples.push(10 * Math.cos(2 * Math.PI * fc * time)); // Amplitude = 10
+  }
+
+  // 4. Prepare plot data (both signals separately, on same time axis)
+  const data = [
+    {
+      x: t,
+      y: messageSamples,
+      type: "scatter",
+      mode: "lines",
+      name: "Message Signal",
+      line: { color: "red" }
+    },
+    {
+      x: t,
+      y: carrierSamples,
+      type: "scatter",
+      mode: "lines",
+      name: "Carrier Signal",
+      line: { color: "green" }
+    }
+  ];
+
+  const layout = {
+    title: "Superposition of Message and Carrier Signals",
+    xaxis: { title: "Time (s)" },
+    yaxis: { title: "Amplitude" },
+    showlegend: true
+  };
+
+  // 5. Plot both signals in the same plot
+  Plotly.newPlot("superimposed", data, layout);
+}
+
+
+
   function saveData() {
   const fs = parseFloat(document.getElementById('sampling_frequency').value);
   const fc = parseFloat(document.getElementById('carrier_frequency').value);
