@@ -135,10 +135,22 @@
                     <div class="flex gap-2">
                         <div class="flex-1 flex flex-col items-center">
                             <div class="">
+                                <button
+                                onclick="FSKInput();"
+                                class="bg-blue-500 text-white py-1 px-3 mt-1 rounded-md hover:bg-[#0c9c0c] hover:scale-105"
+                              >
+                                FSK Input
+                              </button>
                                 <img src=".././images/simulation/fskimg2.png" alt="fsk2" />
                             </div>
                         </div>
                         <div class="flex flex-1 flex-col justify-center items-center">
+                            <div id="SSBSCInput1" class="flex gap-4">
+                                <!-- Time-domain plot -->
+                                <div id="FSKInput" class="flex-1  w-[50%]"></div>
+                                <!-- Frequency-domain plot -->
+                                <div id="frequencySpectrum1" class="flex-1  w-[50%]"></div>
+                              </div>
                             <div id="demodulated-plot"></div>
                         </div>
                     </div>
@@ -434,14 +446,50 @@ let Tb;
     fc2 = parseInt(document.getElementById("carrier_frequency2").value);
     let fskSpec = generateSpectrum([fc1, fc2, -fc1, -fc2], 'FSK Spectrum', 'blue');
 
-    Plotly.newPlot('frequencySpectrum', [fskSpec], {
+    Plotly.newPlot('frequencySpectrum1', [fskSpec], {
       title: 'Spectra of FSK',
       xaxis: { title: 'Frequency (Hz)' },
       yaxis: { title: 'Amplitude', rangemode: 'tozero' }
     });
-    document.getElementById('frequencySpectrum').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('frequencySpectrum1').scrollIntoView({ behavior: 'smooth' });
   }
   
+
+
+  function FSKInput() {
+    if (!modulated_signal) {
+            alert("Please perform FM modulation first!");
+			window.location.reload(true); 
+            return;
+        }
+
+        let carrierFrequency = parseInt(document.getElementById("carrier_frequency1").value); // Hz
+        let carrierFrequency2 = parseInt(document.getElementById("carrier_frequency2").value); // Hz
+        let samplingFrequency = parseInt(document.getElementById("sampling_frequency").value); // Hz
+        let bitRate = parseInt(document.getElementById("bit_rate").value);
+
+        let durationInSeconds = 1; // Duration of 1 second
+        let numSamples = Math.floor(samplingFrequency * durationInSeconds);
+        let t = Array.from({ length: numSamples }, (_, i) => i / samplingFrequency);
+
+
+        let traceModulated = {
+            x: t,
+            y: modulated_signal,
+            mode: "lines",
+            name: "Modulated Signal",
+        };
+
+        let layoutModulated = {
+            title: "FSK Modulated Signal",
+            xaxis: { title: "Time (s)" },
+            yaxis: { title: "Amplitude" },
+        };
+
+        Plotly.newPlot("FSKInput", [traceModulated], layoutModulated);
+  generateSpectrumFSK();
+}
+
 function loadData() {
   const data = localStorage.getItem('sharedData');
   if (data) {

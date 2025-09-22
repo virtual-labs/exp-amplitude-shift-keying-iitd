@@ -54,6 +54,14 @@
                                 <input class="border px-2 ml-[72px] border-black py-1 rounded-sm" type="number" id="bit_rate" value="10" />
                             </div>
                         </div>
+
+                                <button 
+                                class="bg-green-500 text-white rounded-md px-3 py-1 hover:scale-105 mt-3"
+                                onclick="location.reload();"
+                              >
+                                Reset Simulator
+                              </button>                  
+
                     </div>
                 </div>
 
@@ -153,6 +161,15 @@
     </div>
 </div>
 
+<div align = "center">
+    <a href = ".\fsk_demod.html">
+    <button
+    class="bg-blue-500 text-white py-1 px-3  rounded-md hover:scale-105"
+  >
+    Perform FSK Demodulation
+  </button>
+  </a>
+  </div>
 <script>
     function checkFrequencies() {
         // Get values from input fields
