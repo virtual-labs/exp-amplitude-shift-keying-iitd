@@ -203,10 +203,8 @@
             <div id="carrier-plot" class="w-[100%]"></div>
             <div id="plot" class="w-[100%]"></div>
             <div id="SSBSCInput1" class="flex gap-4 w-[100%]">
-              <!-- Time-domain plot -->
-              <div id="ASKInput" class="flex-1"></div>
-              <!-- Frequency-domain plot -->
-              <div id="frequencySpectrum1" class="flex-1"></div>
+              <div id="ASKInput" class="w-[60%]"></div>
+              <div id="frequencySpectrum1" class="w-[40%]"></div>
             </div>
             <div id="demodulated-plot" class="w-[100%]"></div>
           </div>
@@ -598,7 +596,7 @@ function awgn(data, snr) {
   }
 
   // 3. Generate ASK modulated signal
-  const A1 = 10; // Amplitude for information '1'
+  const A1 = 1; // Amplitude for information '1'
   const A2 = 0;  // Amplitude for information '0'
   
   // 4. Modulate the signal
