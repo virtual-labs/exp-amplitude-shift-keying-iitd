@@ -71,7 +71,7 @@
                   class="border px-1 w-36 border-black py-1 rounded-sm"
                   type="number"
                   id="num_bits"
-                  value="100"
+                  value="20"
                 />
               </div>
             </div>
@@ -143,6 +143,16 @@
                 >
                   Show Frequency Spectrums
                 </button>
+              </div>
+              <div class="absolute top-[340px] left-[177px]">
+                <a href="../constellation/ask_constellation.html">
+                <button
+                  class="bg-gray-500 text-white rounded-md px-2 py-1"
+                  class="button"
+                >
+                  Plot Constellation Diagram
+                </button>
+                </a>
               </div>
               <img
                 src=".././images/simulation/askimg1.png"
@@ -345,7 +355,7 @@
         t1.push((i * bp) / fs);
       }
 
-      const A1 = 10; // Amplitude of carrier signal for information 1
+      const A1 = 1; // Amplitude of carrier signal for information 1
       const A2 = 0; // Amplitude of carrier signal for information 0
       t2 = []; // Define t2 here
       for (let i = 1; i <= fs; i++) {
@@ -389,7 +399,7 @@
       const fc = parseInt(document.getElementById("carrier_frequency").value);
       const fs = parseInt(document.getElementById("sampling_frequency").value);
 
-      const carrierAmplitude = 10; // Amplitude of the carrier signal
+      const carrierAmplitude = 1; // Amplitude of the carrier signal
       const t = [];
       const carrier = [];
 
@@ -620,7 +630,7 @@ function superimposed() {
   for (let i = 0; i < totalSamples; i++) {
     const time = (i*bp) / fs;
     t.push(time);
-    carrierSamples.push(10 * Math.cos(2 * Math.PI * fc * time)); // Amplitude = 10
+    carrierSamples.push(Math.cos(2 * Math.PI * fc * time)); // Amplitude = 10
   }
 
   // 4. Prepare plot data (both signals separately, on same time axis)
