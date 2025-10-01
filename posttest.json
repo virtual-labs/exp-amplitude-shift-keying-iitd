@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. In a binary ASK system over an AWGN channel, if the energy of symbol '1' is E_s and symbol '0' is represented by zero energy, what is the theoretical bit error probability?",
+      "answers": {
+        "a": "Q(√(E_s/N₀))",
+        "b": "Q(√(E_s/(2N₀)))",
+        "c": "1/2 × erfc(√(E_s/(2N₀)))",
+        "d": "Q(√(2E_s/N₀))"
+      },
+      "explanations": {
+        "a": "This is correct for unipolar ASK in AWGN.",
+        "b": "This applies for coherent BPSK or antipodal signaling.",
+        "c": "Same as (b), expressed in erfc form.",
+        "d": "Too optimistic, applies for antipodal PSK."
+      },
+      "correctAnswer": "a",
+      "difficulty": "hard"
+    },
+    {
+      "question": "2. In binary FSK with coherent detection, how do you ensure orthogonality between the two tones in a symbol duration T?",
+      "answers": {
+        "a": "Ensure Δf = 1/(2T)",
+        "b": "Ensure Δf = 1/T",
+        "c": "Set both frequencies to the same value",
+        "d": "Ensure Δf = T/2"
+      },
+      "explanations": {
+        "a": "This spacing ensures minimum separation but not orthogonality.",
+        "b": "Correct. Orthogonality requires Δf = 1/T.",
+        "c": "Then there is no frequency shift.",
+        "d": "Incorrect dimensionality."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "3. In PSK modulation, what is the key impact of using Gray coding in symbol mapping?",
+      "answers": {
+        "a": "Reduces average power consumption",
+        "b": "Maximizes bandwidth efficiency",
+        "c": "Minimizes the number of bit errors per symbol error",
+        "d": "Increases spectral resolution"
+      },
+      "explanations": {
+        "a": "Gray coding does not affect power.",
+        "b": "Bandwidth is fixed by symbol rate and modulation.",
+        "c": "Correct. Gray coding ensures adjacent symbols differ by one bit.",
+        "d": "Not relevant to PSK mapping."
+      },
+      "correctAnswer": "c",
+      "difficulty": "hard"
+    },
+    {
+      "question": "4. A coherent BFSK system uses orthogonal frequencies. What is the minimum bit error probability in AWGN for equal energy signals?",
+      "answers": {
+        "a": "Q(√(E_s/N₀))",
+        "b": "1/2 × exp(-E_s/(2N₀))",
+        "c": "1/2 × erfc(√(E_s/(2N₀)))",
+        "d": "Q(√(E_s/(2N₀)))"
+      },
+      "explanations": {
+        "a": "This is for ASK or antipodal signals.",
+        "b": "Correct. Coherent orthogonal BFSK has this closed-form BER.",
+        "c": "Used for antipodal PSK signals.",
+        "d": "Too simplistic for BFSK."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "5. In an 8-PSK system, how many bits are affected on average per symbol error if Gray coding is not used?",
+      "answers": {
+        "a": "1",
+        "b": "2 or more",
+        "c": "0.5",
+        "d": "Same as Gray coded"
+      },
+      "explanations": {
+        "a": "Only true for Gray coding.",
+        "b": "Correct. Without Gray coding, multiple bits can flip.",
+        "c": "Too optimistic.",
+        "d": "Gray coding ensures minimal bit flips."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "6. In non-coherent binary FSK, what causes the degradation in bit error rate compared to coherent FSK?",
+      "answers": {
+        "a": "Lack of orthogonality between tones",
+        "b": "Use of envelope detection instead of correlation detection",
+        "c": "Greater phase noise at the transmitter",
+        "d": "Excessive bandwidth usage"
+      },
+      "explanations": {
+        "a": "Orthogonality can still exist.",
+        "b": "Correct. Non-coherent detection is less optimal and more susceptible to noise.",
+        "c": "Phase noise is more relevant to PSK.",
+        "d": "Bandwidth is not the primary reason."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "7. In M-ASK with M > 2, what limits the minimum distance between signal levels for fixed average power?",
+      "answers": {
+        "a": "The number of levels M",
+        "b": "The symbol rate",
+        "c": "The carrier frequency",
+        "d": "The modulation index"
+      },
+      "explanations": {
+        "a": "Correct. More levels mean closer spacing for fixed energy.",
+        "b": "Affects bandwidth but not signal spacing.",
+        "c": "Carrier frequency doesn’t affect amplitude levels.",
+        "d": "Relevant to analog modulation, not M-ASK."
+      },
+      "correctAnswer": "a",
+      "difficulty": "hard"
+    },
+    {
+      "question": "8. What is the peak-to-average power ratio (PAPR) concern in M-ASK compared to BPSK or BFSK?",
+      "answers": {
+        "a": "M-ASK has lower PAPR",
+        "b": "M-ASK has higher PAPR due to varying amplitudes",
+        "c": "M-ASK and BPSK have same PAPR",
+        "d": "FSK has the highest PAPR"
+      },
+      "explanations": {
+        "a": "Incorrect. Amplitude variation increases PAPR.",
+        "b": "Correct. Unequal amplitudes result in higher peaks.",
+        "c": "BPSK uses fixed amplitude.",
+        "d": "FSK typically has constant envelope."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "9. In M-PSK, why does increasing M increase the bit error rate at fixed SNR?",
+      "answers": {
+        "a": "More bits per symbol increases decision complexity",
+        "b": "Constellation points become closer",
+        "c": "Bandwidth increases linearly",
+        "d": "Carrier phase cannot be recovered"
+      },
+      "explanations": {
+        "a": "This is true, but not the core reason.",
+        "b": "Correct. Closer phase angles increase symbol confusion.",
+        "c": "Bandwidth remains roughly constant.",
+        "d": "Phase recovery is possible."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "10. In a binary ASK system with coherent detection, what kind of filter maximizes the SNR at the detector?",
+      "answers": {
+        "a": "Low-pass filter",
+        "b": "Matched filter",
+        "c": "Band-pass filter",
+        "d": "Rectifier followed by LPF"
+      },
+      "explanations": {
+        "a": "Passes noise as well.",
+        "b": "Correct. Matched filter is optimal for SNR.",
+        "c": "May not maximize SNR.",
+        "d": "Used in envelope detection, not optimal for coherent detection."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    }
+  ]
+}

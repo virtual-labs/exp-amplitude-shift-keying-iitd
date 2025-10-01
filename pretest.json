@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. Why is coherent detection preferred over non-coherent detection in PSK systems under AWGN?",
+      "answers": {
+        "a": "It simplifies the receiver design.",
+        "b": "It does not require carrier synchronization.",
+        "c": "It provides better bit error performance.",
+        "d": "It consumes less power."
+      },
+      "explanations": {
+        "a": "Coherent detection is usually more complex.",
+        "b": "Coherent detection *requires* carrier synchronization.",
+        "c": "Coherent detection provides superior BER performance due to phase alignment.",
+        "d": "Power consumption is not the main factor in choosing coherent detection."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "2. Which mathematical expression best represents the power spectral density (PSD) of a Binary FSK signal with non-coherent detection?",
+      "answers": {
+        "a": "S(f) = sinc²(f)",
+        "b": "S(f) = 1/T * [δ(f - f1) + δ(f - f2)]",
+        "c": "S(f) = (A²/2) * [rect((f - f1)/B) + rect((f - f2)/B)]",
+        "d": "S(f) = A² * cos(2πft)"
+      },
+      "explanations": {
+        "a": "sinc²(f) describes rectangular pulse shaping, not FSK PSD.",
+        "b": "This only applies to idealized tones, not the actual PSD.",
+        "c": "This approximates the real PSD shape of BFSK with bandwidth B centered at f1 and f2.",
+        "d": "This is a time-domain representation, not a PSD."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "3. Consider a 4-PSK system. What is the minimum Euclidean distance between symbols if the signal power is normalized to 1?",
+      "answers": {
+        "a": "2",
+        "b": "1",
+        "c": "√2",
+        "d": "√2/2"
+      },
+      "explanations": {
+        "a": "Too large for unit circle placement.",
+        "b": "Not correct for 4-PSK constellation.",
+        "c": "Correct: Adjacent symbols in 4-PSK have angular spacing of π/2 radians, so distance = √2.",
+        "d": "This would be the projection, not the Euclidean distance."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "4. In digital modulation, what factor primarily determines the bandwidth efficiency of a scheme?",
+      "answers": {
+        "a": "Symbol rate alone",
+        "b": "Modulation index",
+        "c": "Number of bits per symbol",
+        "d": "Carrier frequency"
+      },
+      "explanations": {
+        "a": "Symbol rate impacts bandwidth, but efficiency depends on bits per symbol.",
+        "b": "Modulation index is relevant for analog schemes like FM.",
+        "c": "Higher bits per symbol improve bandwidth efficiency.",
+        "d": "Carrier frequency is orthogonal to bandwidth efficiency."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "5. In QPSK, what is the theoretical bit error rate (BER) under AWGN with coherent detection and Eb/N0 = 10 dB?",
+      "answers": {
+        "a": "Q(√(2*10))",
+        "b": "Q(√(20))",
+        "c": "0.5 * erfc(√(10))",
+        "d": "Q(√(10))"
+      },
+      "explanations": {
+        "a": "Q(√(2Eb/N0)) is used for BPSK, not QPSK.",
+        "b": "Correct: QPSK BER ≈ Q(√(2Eb/N0)), and Eb/N0 = 10 => √20.",
+        "c": "This form is more for BPSK error approximations.",
+        "d": "Not precise for QPSK under Eb/N0 = 10 dB."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "6. In M-ary PSK, what is the primary trade-off when increasing the value of M?",
+      "answers": {
+        "a": "Lower data rate but better noise immunity",
+        "b": "Higher bandwidth requirement and lower complexity",
+        "c": "Higher spectral efficiency but increased symbol error rate",
+        "d": "Increased power efficiency but reduced robustness"
+      },
+      "explanations": {
+        "a": "Higher M typically increases data rate.",
+        "b": "Bandwidth efficiency increases with M; complexity also increases.",
+        "c": "Correct: Larger M allows more bits/symbol but reduces distance between symbols.",
+        "d": "Power efficiency does not necessarily improve with M."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "7. Which modulation technique exhibits a constant envelope, making it suitable for nonlinear power amplifiers?",
+      "answers": {
+        "a": "QAM",
+        "b": "ASK",
+        "c": "GMSK",
+        "d": "PSK"
+      },
+      "explanations": {
+        "a": "QAM combines amplitude and phase, resulting in a non-constant envelope.",
+        "b": "ASK varies amplitude and is not constant-envelope.",
+        "c": "Correct: GMSK has a constant envelope and is power-efficient.",
+        "d": "PSK may not maintain a constant envelope due to phase transitions."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "8. A digital system transmits 16-QAM symbols at 1 Msymbol/s. What is the bit rate of the system?",
+      "answers": {
+        "a": "1 Mbps",
+        "b": "2 Mbps",
+        "c": "4 Mbps",
+        "d": "16 Mbps"
+      },
+      "explanations": {
+        "a": "Incorrect: Each symbol carries more than 1 bit.",
+        "b": "Incorrect for 16-QAM.",
+        "c": "Correct: 16-QAM carries 4 bits/symbol → 1M × 4 = 4 Mbps.",
+        "d": "Too high: 16-QAM = 4 bits per symbol, not 16."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "9. How does Gray coding benefit digital modulation schemes like QAM?",
+      "answers": {
+        "a": "Reduces signal power consumption",
+        "b": "Minimizes adjacent symbol errors",
+        "c": "Decreases required bandwidth",
+        "d": "Improves synchronization time"
+      },
+      "explanations": {
+        "a": "Gray coding doesn't affect power directly.",
+        "b": "Correct: Only one bit differs between adjacent symbols, reducing bit errors.",
+        "c": "Bandwidth is not impacted by Gray coding.",
+        "d": "Synchronization isn't directly improved by Gray coding."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "10. For a signal with bit rate R and modulation with k bits per symbol, what is the symbol rate?",
+      "answers": {
+        "a": "R + k",
+        "b": "R / k",
+        "c": "R × k",
+        "d": "R² / k"
+      },
+      "explanations": {
+        "a": "Incorrect addition: units don’t match.",
+        "b": "Correct: Symbol rate = bit rate / bits per symbol.",
+        "c": "This would increase the rate incorrectly.",
+        "d": "Not a valid formula."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    }
+  ]
+}
