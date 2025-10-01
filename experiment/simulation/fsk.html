@@ -292,7 +292,7 @@
 
         // Convert bits to time-domain signal
         const numSamplesPerBit = Math.floor(samplingFrequency / bitRate);
-        const messageSignal = bits.flatMap((bit) =>
+        messageSignal = bits.flatMap((bit) =>
             Array.from({ length: numSamplesPerBit }, () => bit) // Amplitude of 1 for bit 1, and 0 for bit 0
         );
 
@@ -553,7 +553,8 @@ function saveData() {
     carrierFrequency: carrierFrequency, 
     carrierFrequency2: carrierFrequency2,  
     bitRate: bitRate,                      
-    modulated_signal: modulated_signal     
+    modulated_signal: modulated_signal, 
+    messageSignal: messageSignal,   
   };
 
   localStorage.setItem('sharedData', JSON.stringify(myData));

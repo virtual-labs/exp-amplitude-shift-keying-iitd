@@ -349,6 +349,7 @@
         Plotly.newPlot("modulated-plot", [traceModulated], layoutModulated);
     }
 
+    let traceDemodulated;
     function demodulateFSK() {
 	generateCarrierSignal();
 	generateCarrierSignal2();
@@ -392,7 +393,7 @@
         let t = Array.from({ length: numSamples }, (_, i) => i / samplingFrequency);
 
         // Plot demodulated signal
-        let traceDemodulated = {
+        traceDemodulated = {
             x: t,
             y: demodulatedSignal,
             mode: "lines",
@@ -457,6 +458,7 @@ let Tb;
 
 
   function FSKInput() {
+    demodulateFSK();
     if (!modulated_signal) {
             alert("Please perform FM modulation first!");
 			window.location.reload(true); 
@@ -471,8 +473,7 @@ let Tb;
         let durationInSeconds = 1; // Duration of 1 second
         let numSamples = Math.floor(samplingFrequency * durationInSeconds);
         let t = Array.from({ length: numSamples }, (_, i) => i / samplingFrequency);
-
-
+        
         let traceModulated = {
             x: t,
             y: modulated_signal,
@@ -481,12 +482,13 @@ let Tb;
         };
 
         let layoutModulated = {
-            title: "FSK Modulated Signal",
+            title: "Superimposition of Message and FSK Modulated Signal",
             xaxis: { title: "Time (s)" },
             yaxis: { title: "Amplitude" },
+            showlegend: false
         };
 
-        Plotly.newPlot("FSKInput", [traceModulated], layoutModulated);
+        Plotly.newPlot("FSKInput", [traceDemodulated, traceModulated], layoutModulated);
   generateSpectrumFSK();
 }
 
@@ -502,6 +504,7 @@ function loadData() {
     document.getElementById('bit_rate').value = parsed.bitRate ?? '';
 
     modulated_signal = parsed.modulated_signal ?? null; 
+    messageSignal = parsed.messageSignal ?? null;
   }
 }
 
