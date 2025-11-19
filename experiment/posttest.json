@@ -155,21 +155,21 @@
       "difficulty": "hard"
     },
     {
-      "question": "10. In a binary ASK system with coherent detection, what kind of filter maximizes the SNR at the detector?",
+      "question": "10. Which mathematical expression best represents the power spectral density (PSD) of a Binary FSK signal with non-coherent detection?",
       "answers": {
-        "a": "Low-pass filter",
-        "b": "Matched filter",
-        "c": "Band-pass filter",
-        "d": "Rectifier followed by LPF"
+        "a": "S(f) = sinc²(f)",
+        "b": "S(f) = 1/T * [δ(f - f1) + δ(f - f2)]",
+        "c": "S(f) = (A²/2) * [rect((f - f1)/B) + rect((f - f2)/B)]",
+        "d": "S(f) = A² * cos(2πft)"
       },
       "explanations": {
-        "a": "Passes noise as well.",
-        "b": "Correct. Matched filter is optimal for SNR.",
-        "c": "May not maximize SNR.",
-        "d": "Used in envelope detection, not optimal for coherent detection."
+        "a": "sinc²(f) describes rectangular pulse shaping, not FSK PSD.",
+        "b": "This only applies to idealized tones, not the actual PSD.",
+        "c": "This approximates the real PSD shape of BFSK with bandwidth B centered at f1 and f2.",
+        "d": "This is a time-domain representation, not a PSD."
       },
-      "correctAnswer": "b",
-      "difficulty": "hard"
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
     }
   ]
 }

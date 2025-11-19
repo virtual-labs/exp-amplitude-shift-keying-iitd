@@ -19,24 +19,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "2. Which mathematical expression best represents the power spectral density (PSD) of a Binary FSK signal with non-coherent detection?",
-      "answers": {
-        "a": "S(f) = sinc²(f)",
-        "b": "S(f) = 1/T * [δ(f - f1) + δ(f - f2)]",
-        "c": "S(f) = (A²/2) * [rect((f - f1)/B) + rect((f - f2)/B)]",
-        "d": "S(f) = A² * cos(2πft)"
-      },
-      "explanations": {
-        "a": "sinc²(f) describes rectangular pulse shaping, not FSK PSD.",
-        "b": "This only applies to idealized tones, not the actual PSD.",
-        "c": "This approximates the real PSD shape of BFSK with bandwidth B centered at f1 and f2.",
-        "d": "This is a time-domain representation, not a PSD."
-      },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "3. Consider a 4-PSK system. What is the minimum Euclidean distance between symbols if the signal power is normalized to 1?",
+      "question": "2. Consider a 4-PSK system. What is the minimum Euclidean distance between symbols if the signal power is normalized to 1?",
       "answers": {
         "a": "2",
         "b": "1",
@@ -53,7 +36,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "4. In digital modulation, what factor primarily determines the bandwidth efficiency of a scheme?",
+      "question": "3. In digital modulation, what factor primarily determines the bandwidth efficiency of a scheme?",
       "answers": {
         "a": "Symbol rate alone",
         "b": "Modulation index",
@@ -70,24 +53,24 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "5. In QPSK, what is the theoretical bit error rate (BER) under AWGN with coherent detection and Eb/N0 = 10 dB?",
+      "question": "4. In BPSK, what is the theoretical bit error rate (BER) under AWGN with coherent detection and Eb/N0 = 10 dB?",
       "answers": {
-        "a": "Q(√(2*10))",
+        "a": "Q(√(10))",
         "b": "Q(√(20))",
         "c": "0.5 * erfc(√(10))",
         "d": "Q(√(10))"
       },
       "explanations": {
-        "a": "Q(√(2Eb/N0)) is used for BPSK, not QPSK.",
-        "b": "Correct: QPSK BER ≈ Q(√(2Eb/N0)), and Eb/N0 = 10 => √20.",
+        "a": "Q(√(Eb/N0)) is not used for BPSK.",
+        "b": "Correct: BPSK BER ≈ Q(√(2Eb/N0)), and Eb/N0 = 10 => √20.",
         "c": "This form is more for BPSK error approximations.",
-        "d": "Not precise for QPSK under Eb/N0 = 10 dB."
+        "d": "Not precise for BPSK under Eb/N0 = 10 dB."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "6. In M-ary PSK, what is the primary trade-off when increasing the value of M?",
+      "question": "5. In M-ary PSK, what is the primary trade-off when increasing the value of M?",
       "answers": {
         "a": "Lower data rate but better noise immunity",
         "b": "Higher bandwidth requirement and lower complexity",
@@ -104,41 +87,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "7. Which modulation technique exhibits a constant envelope, making it suitable for nonlinear power amplifiers?",
-      "answers": {
-        "a": "QAM",
-        "b": "ASK",
-        "c": "GMSK",
-        "d": "PSK"
-      },
-      "explanations": {
-        "a": "QAM combines amplitude and phase, resulting in a non-constant envelope.",
-        "b": "ASK varies amplitude and is not constant-envelope.",
-        "c": "Correct: GMSK has a constant envelope and is power-efficient.",
-        "d": "PSK may not maintain a constant envelope due to phase transitions."
-      },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "8. A digital system transmits 16-QAM symbols at 1 Msymbol/s. What is the bit rate of the system?",
-      "answers": {
-        "a": "1 Mbps",
-        "b": "2 Mbps",
-        "c": "4 Mbps",
-        "d": "16 Mbps"
-      },
-      "explanations": {
-        "a": "Incorrect: Each symbol carries more than 1 bit.",
-        "b": "Incorrect for 16-QAM.",
-        "c": "Correct: 16-QAM carries 4 bits/symbol → 1M × 4 = 4 Mbps.",
-        "d": "Too high: 16-QAM = 4 bits per symbol, not 16."
-      },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "9. How does Gray coding benefit digital modulation schemes like QAM?",
+      "question": "6. How does Gray coding benefit digital modulation schemes?",
       "answers": {
         "a": "Reduces signal power consumption",
         "b": "Minimizes adjacent symbol errors",
@@ -155,7 +104,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "10. For a signal with bit rate R and modulation with k bits per symbol, what is the symbol rate?",
+      "question": "7. For a signal with bit rate R and modulation with k bits per symbol, what is the symbol rate?",
       "answers": {
         "a": "R + k",
         "b": "R / k",
@@ -170,6 +119,57 @@
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
+    },
+    {
+      "question": "8. Which modulation technique exhibits a constant envelope, making it suitable for nonlinear power amplifiers?",
+      "answers": {
+        "a": "QAM",
+        "b": "ASK",
+        "c": "GMSK",
+        "d": "PSK"
+      },
+      "explanations": {
+        "a": "QAM combines amplitude and phase, resulting in a non-constant envelope.",
+        "b": "ASK varies amplitude and is not constant-envelope.",
+        "c": "Correct: GMSK has a constant envelope and is power-efficient.",
+        "d": "PSK may not maintain a constant envelope due to phase transitions."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "9. A digital system transmits 16-QAM symbols at 1 Msymbol/s. What is the bit rate of the system?",
+      "answers": {
+        "a": "1 Mbps",
+        "b": "2 Mbps",
+        "c": "4 Mbps",
+        "d": "16 Mbps"
+      },
+      "explanations": {
+        "a": "Incorrect: Each symbol carries more than 1 bit.",
+        "b": "Incorrect for 16-QAM.",
+        "c": "Correct: 16-QAM carries 4 bits/symbol → 1M × 4 = 4 Mbps.",
+        "d": "Too high: 16-QAM = 4 bits per symbol, not 16."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "10. In a binary ASK system with coherent detection, what kind of filter maximizes the SNR at the detector?",
+      "answers": {
+        "a": "Low-pass filter",
+        "b": "Matched filter",
+        "c": "Band-pass filter",
+        "d": "Rectifier followed by LPF"
+      },
+      "explanations": {
+        "a": "Passes noise as well.",
+        "b": "Correct. Matched filter is optimal for SNR.",
+        "c": "May not maximize SNR.",
+        "d": "Used in envelope detection, not optimal for coherent detection."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
     }
   ]
 }
