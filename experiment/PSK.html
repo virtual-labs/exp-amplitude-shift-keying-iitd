@@ -364,11 +364,13 @@
             In PSK, binary ‘1’ is represented by the actual carrier, and binary
             ‘0’ by the 180-degree phase shift of the carrier.
           </p>
-          <div class="flex justify-center">
+          <div align = "center">
             <img
               src="././images/theory/digitalmodulation/psk1.png"
               alt="Block diagram of a PSK transmitter"
             />
+            <br/>
+            <strong>Fig 1: PSK Transmitter</strong>
           </div>
           <p>
             For binary '1': $S_1(t) = A_c \cos(2\Pi f_c t)$ <br />
@@ -381,11 +383,13 @@
           </p>
           <h3>PSK Receiver:</h3>
           <p>For the demodulation of PSK, a soft detector (SD) will be used.</p>
-          <div class="flex justify-center">
+          <div align = "center">
             <img
               src="././images/theory/digitalmodulation/psk2.png"
               alt="Block diagram of a PSK receiver using a soft detector"
             />
+            <br/>
+            <strong>Fig 2: PSK Receiver</strong>
           </div>
           <p class="mb-4">
             If the received signal is $A_c \cos(2\Pi f_c t)$, then after multiplication and integration: <br/>
@@ -404,7 +408,7 @@
             />
           </div>
           <p class="mb-4 text-center font-semibold text-black">
-            Figure: Constellation Diagram of BPSK
+            Fig 3: Constellation Diagram of BPSK
           </p>
           <p>
             So, energy of $S_1(t) = (\sqrt{E_b})^2 = E_b$ <br />

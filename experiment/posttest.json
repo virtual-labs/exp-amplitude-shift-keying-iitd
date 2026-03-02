@@ -10,10 +10,10 @@
         "d": "Q(√(2E_s/N₀))"
       },
       "explanations": {
-        "a": "This is correct for unipolar ASK in AWGN.",
-        "b": "This applies for coherent BPSK or antipodal signaling.",
-        "c": "Same as (b), expressed in erfc form.",
-        "d": "Too optimistic, applies for antipodal PSK."
+        "a": "Correct! This is correct for unipolar ASK in AWGN.",
+        "b": "Incorrect! This applies for coherent BPSK or antipodal signaling.",
+        "c": "Incorrect! Same as (b), expressed in erfc form.",
+        "d": "Incorrect! This is too optimistic and applies for antipodal PSK."
       },
       "correctAnswer": "a",
       "difficulty": "hard"
@@ -27,10 +27,10 @@
         "d": "Ensure Δf = T/2"
       },
       "explanations": {
-        "a": "This spacing ensures minimum separation but not orthogonality.",
-        "b": "Correct. Orthogonality requires Δf = 1/T.",
-        "c": "Then there is no frequency shift.",
-        "d": "Incorrect dimensionality."
+        "a": "Incorrect! This spacing gives minimum separation but not strict orthogonality.",
+        "b": "Correct! Orthogonality requires Δf = 1/T.",
+        "c": "Incorrect! If both frequencies are the same, there is no frequency shift.",
+        "d": "Incorrect! This is dimensionally inconsistent."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
@@ -44,10 +44,10 @@
         "d": "Increases spectral resolution"
       },
       "explanations": {
-        "a": "Gray coding does not affect power.",
-        "b": "Bandwidth is fixed by symbol rate and modulation.",
-        "c": "Correct. Gray coding ensures adjacent symbols differ by one bit.",
-        "d": "Not relevant to PSK mapping."
+        "a": "Incorrect! Gray coding does not affect signal power.",
+        "b": "Incorrect! Bandwidth depends on symbol rate and modulation order.",
+        "c": "Correct! Gray coding ensures adjacent symbols differ by one bit.",
+        "d": "Incorrect! Spectral resolution is not determined by symbol mapping."
       },
       "correctAnswer": "c",
       "difficulty": "hard"
@@ -61,10 +61,10 @@
         "d": "Q(√(E_s/(2N₀)))"
       },
       "explanations": {
-        "a": "This is for ASK or antipodal signals.",
-        "b": "Correct. Coherent orthogonal BFSK has this closed-form BER.",
-        "c": "Used for antipodal PSK signals.",
-        "d": "Too simplistic for BFSK."
+        "a": "Incorrect! This expression applies to ASK or antipodal signaling.",
+        "b": "Correct! Coherent orthogonal BFSK has this closed-form BER expression.",
+        "c": "Incorrect! This is used for antipodal PSK signals.",
+        "d": "Incorrect! This is not the correct BER form for coherent BFSK."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
@@ -78,10 +78,10 @@
         "d": "Same as Gray coded"
       },
       "explanations": {
-        "a": "Only true for Gray coding.",
-        "b": "Correct. Without Gray coding, multiple bits can flip.",
-        "c": "Too optimistic.",
-        "d": "Gray coding ensures minimal bit flips."
+        "a": "Incorrect! This is typically true only when Gray coding is used.",
+        "b": "Correct! Without Gray coding, multiple bits may change per symbol error.",
+        "c": "Incorrect! This underestimates the average bit errors.",
+        "d": "Incorrect! Gray coding reduces the number of bit errors."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
@@ -95,10 +95,10 @@
         "d": "Excessive bandwidth usage"
       },
       "explanations": {
-        "a": "Orthogonality can still exist.",
-        "b": "Correct. Non-coherent detection is less optimal and more susceptible to noise.",
-        "c": "Phase noise is more relevant to PSK.",
-        "d": "Bandwidth is not the primary reason."
+        "a": "Incorrect! Orthogonality can still be maintained.",
+        "b": "Correct! Non-coherent detection is less optimal and more susceptible to noise.",
+        "c": "Incorrect! Phase noise is more relevant to PSK systems.",
+        "d": "Incorrect! Bandwidth is not the primary cause of BER degradation."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
@@ -112,10 +112,10 @@
         "d": "The modulation index"
       },
       "explanations": {
-        "a": "Correct. More levels mean closer spacing for fixed energy.",
-        "b": "Affects bandwidth but not signal spacing.",
-        "c": "Carrier frequency doesn’t affect amplitude levels.",
-        "d": "Relevant to analog modulation, not M-ASK."
+        "a": "Correct! Increasing M forces the signal levels closer together for fixed average power.",
+        "b": "Incorrect! Symbol rate affects bandwidth, not amplitude spacing.",
+        "c": "Incorrect! Carrier frequency does not affect amplitude spacing.",
+        "d": "Incorrect! Modulation index is relevant to analog modulation."
       },
       "correctAnswer": "a",
       "difficulty": "hard"
@@ -129,10 +129,10 @@
         "d": "FSK has the highest PAPR"
       },
       "explanations": {
-        "a": "Incorrect. Amplitude variation increases PAPR.",
-        "b": "Correct. Unequal amplitudes result in higher peaks.",
-        "c": "BPSK uses fixed amplitude.",
-        "d": "FSK typically has constant envelope."
+        "a": "Incorrect! Amplitude variations increase PAPR.",
+        "b": "Correct! Unequal amplitude levels produce higher peak-to-average power ratio.",
+        "c": "Incorrect! BPSK has constant amplitude.",
+        "d": "Incorrect! FSK typically maintains a constant envelope."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
@@ -146,10 +146,10 @@
         "d": "Carrier phase cannot be recovered"
       },
       "explanations": {
-        "a": "This is true, but not the core reason.",
-        "b": "Correct. Closer phase angles increase symbol confusion.",
-        "c": "Bandwidth remains roughly constant.",
-        "d": "Phase recovery is possible."
+        "a": "Incorrect! Increased complexity is not the primary cause of higher BER.",
+        "b": "Correct! Increasing M reduces angular separation between constellation points.",
+        "c": "Incorrect! Bandwidth does not increase linearly with M in PSK.",
+        "d": "Incorrect! Carrier phase recovery is still possible."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
@@ -163,10 +163,10 @@
         "d": "S(f) = A² * cos(2πft)"
       },
       "explanations": {
-        "a": "sinc²(f) describes rectangular pulse shaping, not FSK PSD.",
-        "b": "This only applies to idealized tones, not the actual PSD.",
-        "c": "This approximates the real PSD shape of BFSK with bandwidth B centered at f1 and f2.",
-        "d": "This is a time-domain representation, not a PSD."
+        "a": "Incorrect! sinc²(f) corresponds to rectangular pulse spectra.",
+        "b": "Incorrect! This represents ideal tones, not the practical PSD.",
+        "c": "Correct! This approximates the practical PSD shape of BFSK centered at f1 and f2.",
+        "d": "Incorrect! This is a time-domain signal expression, not a PSD."
       },
       "correctAnswer": "c",
       "difficulty": "intermediate"
