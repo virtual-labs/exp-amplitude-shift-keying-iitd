@@ -34,7 +34,7 @@
     robust to noise compared to ASK.
   </p>
 
-  <h2 class="text-2xl font-semibold mb-4">Digital Modulation Techniques</h2>
+  <h4 class="text-2xl font-semibold mb-4">Digital Modulation Techniques</h4>
 
   <ol class="mb-4 pl-6 list-decimal text-[#007bff] text-[18px]" style="font-family: Raleway, sans-serif">
     <li class="mb-2">
