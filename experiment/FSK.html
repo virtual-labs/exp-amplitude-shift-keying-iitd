@@ -336,315 +336,211 @@
               
           
  <!---------->    
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script> 
-      <h2>
-        Frequency Shift Keying (FSK)
-      </h2>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <script src="https://cdn.tailwindcss.com"></script> 
+ <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
-      <h3>Theory:</h3>
-      <p class="mb-4">
-        Frequency-Shift Keying (FSK) is a frequency modulation scheme in which
-        digital information is transmitted through discrete frequency changes of
-        a carrier wave. The simplest form of FSK is Binary FSK (BFSK), which
-        uses a pair of discrete frequencies to transmit binary (0s and 1s)
-        information. With this scheme, the frequency representing a "1" is
-        called the mark frequency (f<sub>1</sub>) and the frequency representing
-        a "0" is called the space frequency (f<sub>2</sub>). If the incoming
-        bit is 1, a signal with frequency f<sub>1</sub> is sent for the
-        duration of the bit. If the bit is 0, a signal with frequency f<sub>2</sub>
-        is sent for the duration of this bit. This is the basic principle
-        behind FSK modulation.
-      </p>
-      <br />
-      <h3>FSK Transmitter:</h3>
+ 
+ <h2>Frequency Shift Keying (FSK)</h2>
+ 
+ <h3>Theory:</h3>
+ <p class="mb-4">
+     Frequency Shift Keying (FSK) is a digital modulation technique in which information is transmitted by changing the frequency of a carrier signal. 
+     The simplest form is Binary FSK (BFSK), where two distinct frequencies are used.
+ </p>
+ 
+ <p class="mb-4">
+     Binary '1' is represented by a carrier of frequency \( f_1 \) (mark frequency), and binary '0' is represented by a carrier of frequency \( f_2 \) (space frequency). 
+     Each signal is transmitted for one bit duration \( T_b \).
+ </p>
+ 
+ <br />
+ 
+ <h3>FSK Transmitter:</h3>
+ <p class="mb-4">
+     In BFSK, the output signal is:
+ </p>
+ 
+ <p class="pl-8">
+     \[
+     s(t) =
+     \begin{cases}
+     A_c \cos(2\pi f_1 t), & \text{for binary 1} \\
+     A_c \cos(2\pi f_2 t), & \text{for binary 0}
+     \end{cases}
+     \]
+ </p>
+ 
+ <div align="center">
+     <img src="./fsk1.png" alt="fsk_image" />
+     <br/>
+     <strong>Fig 1: BFSK Transmitter</strong>
+ </div>
+ <p>
+  In a Binary Frequency Shift Keying (BFSK) transmitter, the digital input signal,
+  consisting of binary bits (0s and 1s), is applied to a Voltage-Controlled Oscillator (VCO).
+  The VCO generates a sinusoidal carrier signal whose frequency depends on the input bit value.
+  When the input bit is '1', the VCO produces a carrier signal with frequency f1, represented as
+  S1(t) = Ac cos(2πf1t). When the input bit is '0', the VCO switches to a different frequency f2,
+  producing the signal S2(t) = Ac cos(2πf2t). The amplitude of the carrier remains constant in both cases,
+  while only the frequency changes according to the input data. This variation in frequency allows the
+  digital information to be transmitted over a communication channel.
+</p>
+ <br /> <br />
+ 
+ <h3>Coherent FSK Receiver</h3>
 
-      <p class="mb-4">
-        In this binary scheme, '1' is represented by a higher frequency carrier
-        (say, f<sub>1</sub>) and binary '0' by a lower frequency carrier (say,
-        f<sub>2</sub>).
-      </p>
-      <div align = "center">
-        <img
-          src="././images/theory/digitalmodulation/fsk1.png"
-          alt="fsk_image"
-        />
-        <br/>
-      <strong>Fig 1: FSK Transmitter</strong>
-      </div>
-      <h3>VCO (Voltage Controlled Oscillator):</h3>
-      <div align = "center">
-        <img
-          src="././images/theory/digitalmodulation/fsk2.png"
-          alt="fsk_image"
-        />
-        <br/>
-        <strong>Fig 2: Voltage Controlled Oscillator (VCO)</strong>
-      </div>
-      <p class="mb-1">
-        The output frequency (f<sub>i</sub>) of the LC tank circuit in the VCO
-        is given by: <br />
-        f<sub>i</sub> = 1 / (2П√((L<sub>1</sub>+L<sub>2</sub>)(C+C')) )
-      </p>
-      <br />
-      <h3>FSK Receiver:</h3>
-      <p>
-        The figure below illustrates a coherent FSK receiver. This type of
-        receiver uses two correlators, each matched to one of the possible FSK
-        frequencies (f<sub>1</sub> for binary '1' and f<sub>2</sub> for binary
-        '0').
-      </p>
-      <div align = "center">
-        <img
-          src="././images/theory/digitalmodulation/fsk5.png"
-          alt="fsk_image"
-        />
-        <br/>
-        <strong>Fig 3: Coherent FSK Receiver</strong>
-      </div>
-      <p>
-        The received FSK signal, r(t), is fed into both branches of the
-        receiver. Each branch mixes r(t) with its respective local carrier (e.g.,
-        cos(2Пf<sub>1</sub>t) or cos(2Пf<sub>2</sub>t)) and then integrates the
-        product over the bit duration T<sub>b</sub>.
-      </p>
-      <p>
-        Let's denote the output of the upper correlator (matched to
-        f<sub>1</sub>) as Y<sub>1</sub> and the output of the lower correlator
-        (matched to f<sub>2</sub>) as Y<sub>2</sub>.
-      </p>
-      <ul>
-        <li>
-          If binary '1' (A<sub>c</sub>cos(2Пf<sub>1</sub>t)) was transmitted:
-          <ul>
-            <li>
-              Y<sub>1</sub> will have a significant positive value (proportional
-              to E<sub>b</sub>).
-            </li>
-            <li>
-              Y<sub>2</sub> will be close to zero, assuming f<sub>1</sub> and
-              f<sub>2</sub> are orthogonal over T<sub>b</sub>.
-            </li>
-          </ul>
-        </li>
-        <li>
-          If binary '0' (A<sub>c</sub>cos(2Пf<sub>2</sub>t)) was transmitted:
-          <ul>
-            <li>Y<sub>1</sub> will be close to zero.</li>
-            <li>
-              Y<sub>2</sub> will have a significant positive value (proportional
-              to E<sub>b</sub>).
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <p>
-        The difference between these two correlator outputs, Y<sub>1</sub> -
-        Y<sub>2</sub>, is then fed to a threshold comparator.
-      </p>
-      <ul>
-        <li>
-          If Y<sub>1</sub> - Y<sub>2</sub> > 0 (or a threshold close to 0), the
-          receiver decides '1'.
-        </li>
-        <li>
-          If Y<sub>1</sub> - Y<sub>2</sub> < 0 (or a threshold close to 0), the
-          receiver decides '0'.
-        </li>
-      </ul>
-      <p>
-        In an ideal scenario with no noise and perfectly orthogonal frequencies:
-        <br />
-        - If '1' is sent, Y<sub>1</sub> &#x2248; E<sub>b</sub> and Y<sub>2</sub>
-        &#x2248; 0, so the difference is E<sub>b</sub>.
-        <br />
-        - If '0' is sent, Y<sub>1</sub> &#x2248; 0 and Y<sub>2</sub> &#x2248;
-        E<sub>b</sub>, so the difference is -E<sub>b</sub>.
-        <br />
-        The optimal decision threshold for binary FSK in AWGN is typically 0 V.
-      </p>
-      <h3>
-      Constellation Diagram of FSK
-      </h3>
-	  <br/>
-      <div class="flex justify-center my-4">
-        <img
-          src="././images/theory/digitalmodulation/fsk6.png"
-          alt="fsk_image"
-        />
-      </div>
-      <p class="mb-4 text-center font-semibold text-black">
-        Fig 4: Constellation diagram of FSK
-      </p>
-      <p>
-        In the above figure, the points are plotted in terms of the coordinates
-        along the two orthogonal basis functions. <br />
-        The distance between signaling points, d<sub>12</sub> = √( (√(E<sub>b</sub>)
-        - 0)<sup>2</sup> + (0 - √(E<sub>b</sub>))<sup>2</sup> ) = √(E<sub>b</sub>
-        + E<sub>b</sub>) = √(2E<sub>b</sub>). <br />
-        Due to the orthogonality of the basis functions, the signal points in
-        the constellation diagram lie on perpendicular axes, forming a
-        90-degree angle between their vector representations. <br />
-        <br />
-        High-order frequency shift keying (FSK) refers to using a larger number
-        of frequency shifts to represent multiple symbols or bits of digital
-        data. In FSK, each frequency represents a unique symbol or set of bits.
-        High-order FSK schemes enable higher data rates but can also be more
-        susceptible to noise and channel impairments.
-      </p>
-      <h3>
-       Under different noise configurations
-      </h3>
-      <p class="pl-4">
-        <span class="font-semibold my-1">FSK Modulation with AWGN:</span> <br />
-        In FSK modulation, digital data is represented by varying the frequency
-        of the carrier signal. Let's consider a basic case of binary FSK with
-        two different carrier frequencies f<sub>1</sub> and f<sub>2</sub>,
-        corresponding to the two binary symbols. <br />
-        <br />
-
-        Mathematically, the FSK-modulated signal x(t) can be represented as:
-        <br />
-        x(t) = A<sub>c</sub>cos(2Пf<sub>1</sub>t), { for binary symbol 1} <br />
-        x(t) = A<sub>c</sub>cos(2Пf<sub>2</sub>t), { for binary symbol 0} <br />
-        <br />
-        In the presence of AWGN, the received signal y(t) becomes: <br />
-        y(t) = x(t) + n(t) <br />
-        Where: <br />
-        x(t) is the FSK-modulated signal. <br />
-        n(t) is the AWGN. <br />
-        <br />
-        The AWGN introduces noise across all frequencies, affecting both the
-        amplitudes and phases of the signal components. Since FSK relies on
-        frequency differences for symbol differentiation, the noise can cause
-        frequency shifts and amplitude variations, leading to errors in
-        demodulation. The impact of noise can be quantified using the SNR
-        (signal-to-noise ratio).
-      </p>
-      <p class="pl-4">
-        <span class="font-semibold my-1"
-          >FSK Modulation with Rayleigh Fading:</span
-        >
-        <br />
-        Rayleigh fading, as discussed previously, introduces random amplitude
-        and phase variations to the received signal due to multipath
-        propagation. In the case of FSK modulation, the mathematical
-        representation of the received signal y(t) under Rayleigh fading is:
-        <br />
-        <br />
-        y(t) = h . x(t) + n(t) <br />
-        Where: <br />
-        h is the complex fading coefficient. <br />
-        x(t) is the FSK-modulated signal. <br />
-        n(t) is the noise. <br />
-        <br />
-
-        The fading coefficient h introduces random variations in both amplitude
-        and phase to the signal components. As a result, the amplitudes and
-        phases of the two carrier frequencies can experience fluctuations due to
-        fading, potentially causing errors in symbol detection. <br />
-        <br />
-
-        FSK modulation under different noise configurations involves adding
-        noise to the modulated signal. AWGN introduces amplitude and phase noise
-        across all frequencies, affecting the differentiation between FSK
-        symbols. Rayleigh fading introduces random amplitude and phase
-        variations due to multipath propagation, impacting the signal's
-        components. In both cases, the reliability of FSK demodulation depends
-        on the SNR for AWGN and the characteristics of the fading channel for
-        Rayleigh fading.
-      </p>
-	  <!---
-      <h3 class="text-[24px] font-semibold text-black">
-        c. Under Different Scenarios
-      </h3>
-      <p class="pl-4">
-        Frequency Shift Keying (FSK) is a modulation technique where the
-        frequency of a carrier signal is varied to transmit digital information.
-        The performance of FSK modulation can vary in different scenarios based
-        on factors such as signal-to-noise ratio (SNR), noise, interference,
-        and channel conditions. <br />
-        <br />
-        <span class="font-semibold my-1">High SNR (Low Noise): </span><br />
-        FSK modulation performs well in scenarios with high SNR and low noise
-        levels. The different frequency components corresponding to binary
-        states can be easily distinguished at the receiver, leading to accurate
-        data detection and low error rates.<br />
-        <br />
-
-        <span class="font-semibold my-1"> Low SNR (High Noise):</span><br />
-        FSK modulation is generally more robust against noise compared to other
-        modulation techniques like Amplitude Shift Keying (ASK). In scenarios
-        with low SNR and high noise, the receiver can still detect the dominant
-        frequency component, resulting in relatively lower error rates compared
-        to ASK.<br />
-        <br />
-
-        <span class="font-semibold my-1"> Frequency Separation:</span><br />
-        FSK modulation relies on having a sufficient frequency separation
-        between the carrier frequencies representing binary states. In scenarios
-        where the frequency separation is small, the likelihood of error due to
-        frequency overlaps or interference increases.<br />
-        <br />
-
-        <span class="font-semibold my-1">Interference and Crosstalk: </span><br />
-        FSK modulation can be affected by interference from other signals or
-        crosstalk in shared communication channels. If the interfering signal is
-        close in frequency to one of the FSK carrier frequencies, it might lead
-        to errors in frequency detection at the receiver.<br />
-        <br />
-
-        <span class="font-semibold my-1"> Frequency Selective Fading:</span><br />
-        Similar to other modulation techniques, FSK modulation can experience
-        frequency-selective fading, where different frequency components
-        experience varying levels of attenuation. This can lead to distortions
-        in the received signal's frequency components, affecting data
-        detection.<br />
-        <br />
-
-        <span class="font-semibold my-1">Channel Bandwidth: </span><br />
-        The channel bandwidth needs to accommodate the frequency separation
-        between the FSK carrier frequencies. In scenarios with limited
-        bandwidth, the choice of carrier frequency separation becomes crucial to
-        avoid overlap and distortion.<br />
-        <br />
-
-        <span class="font-semibold my-1"
-          >Coherent vs. Non-Coherent Detection: </span
-        ><br />
-        FSK modulation can be detected coherently (using synchronized local
-        oscillators for correlation) or non-coherently (using frequency
-        discriminators or bandpass filters and envelope detectors). Coherent
-        detection offers better performance in terms of SNR but requires more
-        complex circuitry. Non-coherent detection is simpler to implement but
-        might have higher error rates, especially in noisy environments.<br />
-        <br />
-
-        <span class="font-semibold my-1"> Adaptive Modulation:</span><br />
-        Adaptive modulation techniques can be applied to FSK modulation to
-        dynamically adjust the frequency separation based on channel conditions.
-        In favorable conditions, a larger frequency separation can be used for
-        higher data rates, while a smaller separation can be chosen for
-        reliability in challenging conditions. <br />
-        <br />
-
-        <span class="font-semibold my-1"> Error Correction Coding:</span><br />
-        Adding error correction codes to the FSK-modulated signal can enhance
-        its performance in noisy scenarios. The redundancy provided by the codes
-        helps the receiver detect and correct errors. <br />
-        <br />
-
-        FSK modulation offers advantages in scenarios with varying levels of
-        noise and interference, making it a robust choice for certain
-        communication environments. Its performance depends on factors like
-        frequency separation, channel bandwidth, and the presence of
-        interference. Understanding these factors and potentially employing
-        techniques like adaptive modulation and error correction coding can
-        optimize FSK modulation's performance in various scenarios.
-      </p>
-	  --->   
-  <!---->        
+ <p>
+ A coherent (synchronous) binary FSK demodulator is called "coherent" because the mark and space frequencies are regenerated locally at the receiver.
+ The incoming FSK signal is applied to two multipliers. One multiplier uses the locally generated mark frequency \( f_1 \),
+ while the other uses the locally generated space frequency \( f_2 \). The outputs are then passed through low-pass filters (LPFs) to extract the baseband signal.
+ </p>
+ 
+ <div align="center">
+     <img src="./fsk5.png" alt="fsk_receiver" 
+     width="800"
+     height="600"
+     />
+     <br/>
+     <strong>Fig 2: Coherent BFSK Receiver</strong>
+ </div>
+ 
+ <h4>FSK Signal Representation</h4>
+ 
+ <p>
+ At any instant, the received FSK signal can be represented as:
+ </p>
+ 
+ <p class="pl-8">
+     \( S_{1}(t) = A \cos(2\pi f_1 t) \) &nbsp;&nbsp; (for binary '1')<br/>
+     \( S_{2}(t) = A \cos(2\pi f_2 t) \) &nbsp;&nbsp; (for binary '0')
+ </p>
+ 
+ <p>
+ Where:
+ <ul class="pl-8">
+     <li>\( A \) is the signal amplitude.</li>
+     <li>\( f_1 \) is the mark frequency representing binary '1'.</li>
+     <li>\( f_2 \) is the space frequency representing binary '0'.</li>
+     <li>\( \Delta f = f_1 - f_2 \) is the frequency deviation.</li>
+ </ul>
+ </p>
+ 
+ <h4>Case 1: Binary '1' Transmitted</h4>
+ 
+ <p><strong>Multiplier 1 Output:</strong></p>
+ <p class="pl-8">
+     \( A \cos(2\pi f_1 t) \cdot A \cos(2\pi f_1 t) = \frac{A^2}{2} \left[ 1 + \cos(4\pi f_1 t) \right] \)
+ </p>
+ 
+ <p><strong>LPF 1 Output:</strong> \( \frac{A^2}{2} \)</p>
+ 
+ <p><strong>Multiplier 2 Output:</strong></p>
+ <p class="pl-8">
+     \( A \cos(2\pi f_1 t) \cdot A \cos(2\pi f_2 t) = \frac{A^2}{2} \left[ \cos(2\pi(f_1 + f_2)t) + \cos(2\pi(f_1 - f_2)t) \right] \)
+ </p>
+ 
+ <p><strong>LPF 2 Output:</strong> 0 (since high-frequency terms are filtered out)</p>
+ 
+ <p><strong>Decision:</strong> Output is binary '1' because LPF 1 > LPF 2.</p>
+ 
+ <h4>Case 2: Binary '0' Transmitted</h4>
+ 
+ <p><strong>Multiplier 1 Output:</strong></p>
+ <p class="pl-8">
+     \( A \cos(2\pi f_2 t) \cdot A \cos(2\pi f_1 t) = \frac{A^2}{2} \left[ \cos(2\pi(f_1 + f_2)t) + \cos(2\pi(f_1 - f_2)t) \right] \)
+ </p>
+ 
+ <p><strong>LPF 1 Output:</strong> 0</p>
+ 
+ <p><strong>Multiplier 2 Output:</strong></p>
+ <p class="pl-8">
+     \( A \cos(2\pi f_2 t) \cdot A \cos(2\pi f_2 t) = \frac{A^2}{2} \left[ 1 + \cos(4\pi f_2 t) \right] \)
+ </p>
+ 
+ <p><strong>LPF 2 Output:</strong> \( \frac{A^2}{2} \)</p>
+ 
+ <p><strong>Decision:</strong> Output is binary '0' because LPF 2 > LPF 1.</p>
+ 
+ <h3>Constellation Diagram of FSK</h3>
+ <br/>
+ 
+ <div class="flex justify-center my-4">
+     <img src="././images/theory/digitalmodulation/fsk6.png" alt="fsk_image" 
+     width="350"
+     height="350"
+     />
+ </div>
+ 
+ <p class="mb-4 text-center font-semibold text-black">
+     Fig 3: Constellation diagram of BFSK
+ </p>
+ 
+ <p class="pl-8">
+     BFSK signals are represented using two <strong>orthonormal basis functions</strong>, since two different frequencies are used:
+ </p>
+ 
+ <p class="pl-8">
+     \[
+     \phi_1(t) = \sqrt{\frac{2}{T_b}} \cos(2\pi f_1 t), \quad
+     \phi_2(t) = \sqrt{\frac{2}{T_b}} \cos(2\pi f_2 t)
+     \]
+ </p>
+ 
+ <p class="pl-8">
+     These basis functions are orthogonal over \( T_b \), meaning:
+     \[
+     \int_0^{T_b} \phi_1(t)\phi_2(t)\,dt = 0
+     \]
+ </p>
+ 
+ <ul class="pl-8">
+     <li>
+         Binary '1': \( s_1(t) = \sqrt{E_b}\,\phi_1(t) \)
+     </li>
+     <li>
+         Binary '0': \( s_2(t) = \sqrt{E_b}\,\phi_2(t) \)
+     </li>
+ </ul>
+ 
+ <p class="pl-8">
+     The constellation points lie on two perpendicular axes. The distance between them is:
+ </p>
+ 
+ <p class="pl-8">
+     \[
+     d_{12} = \sqrt{(\sqrt{E_b})^2 + (\sqrt{E_b})^2} = \sqrt{2E_b}
+     \]
+ </p>
+ 
+ <p class="pl-8">
+     This orthogonal structure improves noise performance compared to ASK.
+ </p>
+ 
+ <h3>Effect of Noise</h3>
+ 
+ <p class="pl-4">
+     <strong>AWGN Channel:</strong><br />
+     The received signal is:
+     <br/>
+     \(
+     y(t) = x(t) + n(t)
+     \)
+     <br/>
+     where \( n(t) \) is noise. Noise affects detection but BFSK is more robust than ASK since information is carried in frequency.
+ </p>
+ 
+ <p class="pl-4">
+     <strong>Rayleigh Fading:</strong><br />
+     The received signal is:
+     <br/>
+     \(
+     y(t) = h \cdot x(t) + n(t)
+     \)
+     <br/>
+     where \( h \) represents channel effects. This causes amplitude and phase variations, making detection more difficult.
+ </p>
           </div>
           <div class="bug-report-mobile">
               <bug-report id="bug-report" title="[BUG REPORT] AMPLITUDE SHIFT KEYING, FREQUENCY SHIFT KEYING, BINARY PHASE SHIFT KEYING:
