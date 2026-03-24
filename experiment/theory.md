@@ -5,40 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="p-6">
 
-<p>
-Digital modulation schemes are techniques used to encode information into a carrier signal by varying its properties according to discrete signal levels or symbols. Here’s an overview of three common digital modulation schemes: Amplitude Shift Keying (ASK), Frequency Shift Keying (FSK), and Phase Shift Keying (PSK). 
+  <p class="mb-6 text-[18px] leading-relaxed">
+    Digital modulation schemes are techniques used to encode information onto a carrier signal by varying
+    its properties according to discrete symbols. The three fundamental digital modulation techniques are
+    Amplitude Shift Keying (ASK), Frequency Shift Keying (FSK), and Phase Shift Keying (PSK).
+  </p>
 
-<b>Amplitude Shift Keying (ASK)</b> is the simplest digital modulation technique. In this method, there is only one carrier, which is switched ON or OFF depending on the input binary sequence to transmit symbols 0 and 1. The binary ASK system was one of the earliest forms of digital modulation used in wireless telegraphy. 
+  <p class="mb-4 text-[18px] leading-relaxed">
+    <b>Amplitude Shift Keying (ASK)</b> is the simplest form of digital modulation. In this technique, the
+    amplitude of a carrier signal is varied according to the binary input. Typically, a carrier is transmitted
+    for a binary '1' and turned OFF for a binary '0', a method also known as On-Off Keying (OOK). ASK was one
+    of the earliest modulation schemes used in wireless communication systems.
+  </p>
 
-For <b>Frequency Shift Keying (FSK)</b>, two binary values are represented by two different frequencies. For example, we choose two carrier frequencies, f1 and f2, with f1 > f2. Then, binary bit "1" is modulated with f1, and binary "0" is modulated with f2, which is lower than f1. 
+  <p class="mb-4 text-[18px] leading-relaxed">
+    In <b>Frequency Shift Keying (FSK)</b>, digital data is represented by shifting the frequency of the carrier
+    signal between two distinct values. For example, a higher frequency (f₁) may represent binary '1', while a
+    lower frequency (f₂) represents binary '0'. The amplitude of the signal remains constant while only the
+    frequency changes.
+  </p>
 
-In <b>Phase Shift Keying (PSK)</b>, the carrier phase is modulated according to the current bit. Binary "1" is transmitted by changing the signal's phase by 180 degrees, while binary "0" is transmitted with the same phase as the preceding bit. 
+  <p class="mb-6 text-[18px] leading-relaxed">
+    In <b>Phase Shift Keying (PSK)</b>, the phase of the carrier signal is varied to represent digital data.
+    In Binary Phase Shift Keying (BPSK), a binary '1' is represented by a carrier with a reference phase,
+    while a binary '0' is represented by a carrier shifted by 180 degrees (π radians). This makes PSK more
+    robust to noise compared to ASK.
+  </p>
 
-Each modulation scheme has its advantages and is chosen based on the specific requirements of the communication system, such as bandwidth, power efficiency, and noise resilience.
-</p>
+  <h2 class="text-2xl font-semibold mb-4">Digital Modulation Techniques</h2>
 
-<br><br>
+  <ol class="mb-4 pl-6 list-decimal text-[#007bff] text-[18px]" style="font-family: Raleway, sans-serif">
+    <li class="mb-2">
+      <a href="./ASK.html" class="hover:text-[#3e6389] hover:underline">
+        Amplitude Shift Keying (ASK)
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="./FSK.html" class="hover:text-[#3e6389] hover:underline">
+        Frequency Shift Keying (FSK)
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="./PSK.html" class="hover:text-[#3e6389] hover:underline">
+        Phase Shift Keying (PSK)
+      </a>
+    </li>
+  </ol>
 
-### Keying Techniques
-
-<ol class="mb-4 pl-4 list-decimal text-[#007bff] font-normal text-[19.2px]" style="font-family: Raleway, sans-serif">
-  <li>
-    <a href="./ASK.html" class="hover:text-[#3e6389] hover:underline">
-      <p>Amplitude Shift Keying (ASK)</p>
-    </a>
-  </li>
-  <li>
-    <a href="./FSK.html" class="hover:text-[#3e6389] hover:underline">
-      <p>Frequency Shift Keying (FSK)</p>
-    </a>
-  </li>
-  <li>
-    <a href="./PSK.html" class="hover:text-[#3e6389] hover:underline">
-      <p>Phase Shift Keying (PSK)</p>
-    </a>
-  </li>
-</ol>
 </body>
 </html>
