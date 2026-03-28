@@ -27,12 +27,12 @@
         "d": "Δf = T/2"
       },
       "explanations": {
-        "a": "Correct! For orthogonality, the minimum frequency separation is Δf = 1/(2T). This ensures that the integral of the product of the two tones over the symbol duration is zero.",
-        "b": "Incorrect! While Δf = 1/T also ensures orthogonality, it is not the minimum separation.",
-        "c": "Incorrect! If both frequencies are equal, the signals are identical, so they are not orthogonal.",
+        "a": "Incorrect! Δf = 1/(2T) gives partial orthogonality but is not sufficient for full coherent orthogonal detection.",
+        "b": "Correct! For coherent binary FSK, the minimum frequency separation to ensure orthogonality over a symbol duration T is Δf = 1/T.",
+        "c": "Incorrect! If both frequencies are equal, the signals are identical and not orthogonal.",
         "d": "Incorrect! This spacing is dimensionally inconsistent and does not ensure orthogonality."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
