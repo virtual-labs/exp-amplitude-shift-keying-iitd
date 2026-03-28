@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Why is coherent detection preferred over non-coherent detection in PSK systems under AWGN?",
+      "answers": {
+        "a": "It simplifies the receiver design.",
+        "b": "It does not require carrier synchronization.",
+        "c": "It provides better bit error performance.",
+        "d": "It consumes less power."
+      },
+      "explanations": {
+        "a": "Incorrect! Coherent detection is usually more complex.",
+        "b": "Incorrect! Coherent detection requires carrier synchronization.",
+        "c": "Correct! Coherent detection provides superior BER performance due to phase alignment.",
+        "d": "Incorrect! Power consumption is not the main factor in choosing coherent detection."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Consider a binary PSK system. What is the minimum Euclidean distance between symbols if the signal power is normalized to 1?",
+      "answers": {
+        "a": "2",
+        "b": "1",
+        "c": "√2",
+        "d": "√2/2"
+      },
+      "explanations": {
+        "a": "Correct! In BPSK, symbols are +1 and −1, so the Euclidean distance between them is 2.",
+        "b": "Incorrect! This is smaller than the actual distance between BPSK symbols.",
+        "c": "Incorrect! This value corresponds to QPSK, not BPSK.",
+        "d": "Incorrect! This is not the correct Euclidean distance."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In digital modulation, what factor primarily determines the bandwidth efficiency of a scheme?",
+      "answers": {
+        "a": "Symbol rate alone",
+        "b": "Modulation index",
+        "c": "Number of bits per symbol",
+        "d": "Carrier frequency"
+      },
+      "explanations": {
+        "a": "Incorrect! Symbol rate affects bandwidth, but efficiency depends more on how much information each symbol carries.",
+        "b": "Incorrect! Modulation index is mainly relevant for analog modulation like FM.",
+        "c": "Correct! Bandwidth efficiency increases with the number of bits per symbol (log₂M), though pulse shaping also plays a role.",
+        "d": "Incorrect! Carrier frequency does not determine bandwidth efficiency."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In BPSK, what is the theoretical bit error rate (BER) under AWGN with coherent detection and Eb/N0 = 10 dB?",
+      "answers": {
+        "a": "Q(√(10))",
+        "b": "Q(√(20))",
+        "c": "0.5 * erfc(√(10))",
+        "d": "Q(√(10))"
+      },
+      "explanations": {
+        "a": "Incorrect! BPSK BER follows Q(√(2Eb/N0)), not Q(√(Eb/N0)).",
+        "b": "Correct! BPSK BER ≈ Q(√(2Eb/N0)), and for Eb/N0 = 10 (linear), this gives √20.",
+        "c": "Incorrect! Although related, this is not the standard Q-function expression used here.",
+        "d": "Incorrect! This does not match the correct BPSK BER formula."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In M-ary PSK, what is the primary trade-off when increasing the value of M?",
+      "answers": {
+        "a": "Lower data rate but better noise immunity",
+        "b": "Higher bandwidth requirement and lower complexity",
+        "c": "Higher spectral efficiency but increased symbol error rate",
+        "d": "Increased power efficiency but reduced robustness"
+      },
+      "explanations": {
+        "a": "Incorrect! Increasing M increases data rate.",
+        "b": "Incorrect! Bandwidth efficiency increases with M, but complexity also increases.",
+        "c": "Correct! Larger M increases bits per symbol but reduces the distance between symbols, increasing symbol error rate.",
+        "d": "Incorrect! Power efficiency does not necessarily improve with larger M."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How does Gray coding benefit digital modulation schemes?",
+      "answers": {
+        "a": "Reduces signal power consumption",
+        "b": "Minimizes adjacent symbol errors",
+        "c": "Decreases required bandwidth",
+        "d": "Improves synchronization time"
+      },
+      "explanations": {
+        "a": "Incorrect! Gray coding does not directly affect signal power.",
+        "b": "Correct! Adjacent symbols differ by only one bit, reducing bit errors.",
+        "c": "Incorrect! Bandwidth is not affected by Gray coding.",
+        "d": "Incorrect! Gray coding does not directly improve synchronization."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+        {
+          "question": "For a signal with bit rate R and modulation with k bits per symbol, what is the symbol rate?",
+          "answers": {
+            "a": "R + k",
+            "b": "R / k",
+            "c": "R × k",
+            "d": "R² / k"
+          },
+          "explanations": {
+            "a": "Incorrect! Addition is dimensionally inconsistent and does not represent symbol rate.",
+            "b": "Correct! Symbol rate = Bit rate / Bits per symbol (R/k).",
+            "c": "Incorrect! Multiplying would incorrectly increase the rate.",
+            "d": "Incorrect! This is not a valid relationship for symbol rate."
+          },
+          "correctAnswer": "b",
+          "difficulty": "intermediate"
+        },
+        {
+          "question": "Which digital modulation scheme is most robust to noise in an AWGN channel?",
+          "answers": {
+            "a": "ASK",
+            "b": "FSK",
+            "c": "PSK",
+            "d": "All perform equally"
+          },
+          "explanations": {
+            "a": "Incorrect! ASK is highly sensitive to amplitude noise.",
+            "b": "Incorrect! FSK is more robust than ASK but generally less efficient than PSK.",
+            "c": "Correct! PSK, especially BPSK, offers the best noise performance in AWGN among these schemes.",
+            "d": "Incorrect! Different modulation schemes have different noise performance."
+          },
+          "correctAnswer": "c",
+          "difficulty": "intermediate"
+        },
+        {
+          "question": "A digital system transmits 16-QAM symbols at 1 Msymbol/s. What is the bit rate of the system?",
+          "answers": {
+            "a": "1 Mbps",
+            "b": "2 Mbps",
+            "c": "4 Mbps",
+            "d": "16 Mbps"
+          },
+          "explanations": {
+            "a": "Incorrect! Each 16-QAM symbol carries 4 bits, not 1 bit.",
+            "b": "Incorrect! 16-QAM carries 4 bits per symbol.",
+            "c": "Correct! 16-QAM = log2(16) = 4 bits per symbol → 1M × 4 = 4 Mbps.",
+            "d": "Incorrect! 16-QAM does not carry 16 bits per symbol."
+          },
+          "correctAnswer": "c",
+          "difficulty": "intermediate"
+        },
+        {
+          "question": "In a binary ASK system with coherent detection, what kind of filter maximizes the SNR at the detector?",
+          "answers": {
+            "a": "Low-pass filter",
+            "b": "Matched filter",
+            "c": "Band-pass filter",
+            "d": "Rectifier followed by LPF"
+          },
+          "explanations": {
+            "a": "Incorrect! A low-pass filter alone does not maximize SNR.",
+            "b": "Correct! A matched filter maximizes the signal-to-noise ratio in AWGN for coherent detection.",
+            "c": "Incorrect! A band-pass filter does not provide optimal SNR performance.",
+            "d": "Incorrect! This is used in envelope detection, not optimal coherent detection."
+          },
+          "correctAnswer": "b",
+          "difficulty": "hard"
+        }
+      ]
+    }
