@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "1. In a binary ASK system over an AWGN channel, if the energy of symbol '1' is E_s and symbol '0' is represented by zero energy, what is the theoretical bit error probability?",
+      "question": "In a binary ASK system over an AWGN channel, if the energy of symbol '1' is E_s and symbol '0' is represented by zero energy, what is the theoretical bit error probability?",
       "answers": {
         "a": "Q(√(E_s/N₀))",
         "b": "Q(√(E_s/(2N₀)))",
@@ -19,41 +19,41 @@
       "difficulty": "hard"
     },
     {
-      "question": "2. In binary FSK with coherent detection, how do you ensure orthogonality between the two tones in a symbol duration T?",
+      "question": "In a binary FSK system with coherent detection, what is the minimum frequency separation Δf between the two tones to ensure orthogonality over a symbol duration T?",
       "answers": {
-        "a": "Ensure Δf = 1/(2T)",
-        "b": "Ensure Δf = 1/T",
-        "c": "Set both frequencies to the same value",
-        "d": "Ensure Δf = T/2"
+        "a": "Δf = 1/(2T)",
+        "b": "Δf = 1/T",
+        "c": "Both frequencies are the same",
+        "d": "Δf = T/2"
       },
       "explanations": {
-        "a": "Incorrect! This spacing gives minimum separation but not strict orthogonality.",
-        "b": "Correct! Orthogonality requires Δf = 1/T.",
-        "c": "Incorrect! If both frequencies are the same, there is no frequency shift.",
-        "d": "Incorrect! This is dimensionally inconsistent."
+        "a": "Correct! For orthogonality, the minimum frequency separation is Δf = 1/(2T). This ensures that the integral of the product of the two tones over the symbol duration is zero.",
+        "b": "Incorrect! While Δf = 1/T also ensures orthogonality, it is not the minimum separation.",
+        "c": "Incorrect! If both frequencies are equal, the signals are identical, so they are not orthogonal.",
+        "d": "Incorrect! This spacing is dimensionally inconsistent and does not ensure orthogonality."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In digital modulation, how does increasing the modulation order (e.g., from 4-PSK to 8-PSK) affect the bit error rate (BER) under the same SNR?",
+      "answers": {
+        "a": "BER decreases because more bits are transmitted per symbol",
+        "b": "BER increases because the Euclidean distance between symbols decreases",
+        "c": "BER remains the same because SNR is unchanged",
+        "d": "BER becomes zero at high modulation orders"
+      },
+      "explanations": {
+        "a": "Incorrect! More bits per symbol increases efficiency but can increase errors if symbols are closer.",
+        "b": "Correct! Higher-order modulation packs symbols closer in signal space, reducing Euclidean distance and increasing BER.",
+        "c": "Incorrect! BER depends not just on SNR but also on symbol spacing in the constellation.",
+        "d": "Incorrect! BER never becomes zero unless noise is zero."
       },
       "correctAnswer": "b",
       "difficulty": "hard"
     },
     {
-      "question": "3. In PSK modulation, what is the key impact of using Gray coding in symbol mapping?",
-      "answers": {
-        "a": "Reduces average power consumption",
-        "b": "Maximizes bandwidth efficiency",
-        "c": "Minimizes the number of bit errors per symbol error",
-        "d": "Increases spectral resolution"
-      },
-      "explanations": {
-        "a": "Incorrect! Gray coding does not affect signal power.",
-        "b": "Incorrect! Bandwidth depends on symbol rate and modulation order.",
-        "c": "Correct! Gray coding ensures adjacent symbols differ by one bit.",
-        "d": "Incorrect! Spectral resolution is not determined by symbol mapping."
-      },
-      "correctAnswer": "c",
-      "difficulty": "hard"
-    },
-    {
-      "question": "4. A coherent BFSK system uses orthogonal frequencies. What is the minimum bit error probability in AWGN for equal energy signals?",
+      "question": "A coherent BFSK system uses orthogonal frequencies. What is the minimum bit error probability in AWGN for equal energy signals?",
       "answers": {
         "a": "Q(√(E_s/N₀))",
         "b": "1/2 × exp(-E_s/(2N₀))",
@@ -70,7 +70,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "5. In an 8-PSK system, how many bits are affected on average per symbol error if Gray coding is not used?",
+      "question": "In an 8-PSK system, how many bits are affected on average per symbol error if Gray coding is not used?",
       "answers": {
         "a": "1",
         "b": "2 or more",
@@ -87,7 +87,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "6. In non-coherent binary FSK, what causes the degradation in bit error rate compared to coherent FSK?",
+      "question": "In non-coherent binary FSK, what causes the degradation in bit error rate compared to coherent FSK?",
       "answers": {
         "a": "Lack of orthogonality between tones",
         "b": "Use of envelope detection instead of correlation detection",
@@ -104,7 +104,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "7. In M-ASK with M > 2, what limits the minimum distance between signal levels for fixed average power?",
+      "question": "In M-ASK with M > 2, what limits the minimum distance between signal levels for fixed average power?",
       "answers": {
         "a": "The number of levels M",
         "b": "The symbol rate",
@@ -121,7 +121,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "8. What is the peak-to-average power ratio (PAPR) concern in M-ASK compared to BPSK or BFSK?",
+      "question": "What is the peak-to-average power ratio (PAPR) concern in M-ASK compared to BPSK or BFSK?",
       "answers": {
         "a": "M-ASK has lower PAPR",
         "b": "M-ASK has higher PAPR due to varying amplitudes",
@@ -138,7 +138,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "9. In M-PSK, why does increasing M increase the bit error rate at fixed SNR?",
+      "question": "In M-PSK, why does increasing M increase the bit error rate at fixed SNR?",
       "answers": {
         "a": "More bits per symbol increases decision complexity",
         "b": "Constellation points become closer",
@@ -155,21 +155,21 @@
       "difficulty": "hard"
     },
     {
-      "question": "10. Which mathematical expression best represents the power spectral density (PSD) of a Binary FSK signal with non-coherent detection?",
+      "question": "In M-FSK systems, how does increasing M (number of frequencies) affect the bandwidth and orthogonality requirements?",
       "answers": {
-        "a": "S(f) = sinc²(f)",
-        "b": "S(f) = 1/T * [δ(f - f1) + δ(f - f2)]",
-        "c": "S(f) = (A²/2) * [rect((f - f1)/B) + rect((f - f2)/B)]",
-        "d": "S(f) = A² * cos(2πft)"
+        "a": "Bandwidth decreases, orthogonality is easier to maintain",
+        "b": "Bandwidth increases, and the frequency spacing must be increased to maintain orthogonality",
+        "c": "Bandwidth remains constant, orthogonality is unaffected",
+        "d": "Bandwidth decreases, but frequency spacing must increase"
       },
       "explanations": {
-        "a": "Incorrect! sinc²(f) corresponds to rectangular pulse spectra.",
-        "b": "Incorrect! This represents ideal tones, not the practical PSD.",
-        "c": "Correct! This approximates the practical PSD shape of BFSK centered at f1 and f2.",
-        "d": "Incorrect! This is a time-domain signal expression, not a PSD."
+        "a": "Incorrect! More symbols require more frequencies, so bandwidth does not decrease.",
+        "b": "Correct! Increasing M requires more tones, which increases bandwidth, and the spacing between tones must be enough to maintain orthogonality.",
+        "c": "Incorrect! Bandwidth depends on the number of tones and symbol duration.",
+        "d": "Incorrect! Bandwidth does not decrease when M increases."
       },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
+      "correctAnswer": "b",
+      "difficulty": "hard"
     }
   ]
 }
