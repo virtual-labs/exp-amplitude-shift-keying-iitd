@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "In a binary ASK system over an AWGN channel, if the energy of symbol '1' is E_s and symbol '0' is represented by zero energy, what is the theoretical bit error probability?",
+      "answers": {
+        "a": "Q(√(E_s/N₀))",
+        "b": "Q(√(E_s/(2N₀)))",
+        "c": "1/2 × erfc(√(E_s/(2N₀)))",
+        "d": "Q(√(2E_s/N₀))"
+      },
+      "explanations": {
+        "a": "Correct! This is correct for unipolar ASK in AWGN.",
+        "b": "Incorrect! This applies for coherent BPSK or antipodal signaling.",
+        "c": "Incorrect! Same as (b), expressed in erfc form.",
+        "d": "Incorrect! This is too optimistic and applies for antipodal PSK."
+      },
+      "correctAnswer": "a",
+      "difficulty": "hard"
+    },
+    {
+      "question": "In a binary FSK system with coherent detection, what is the minimum frequency separation Δf between the two tones to ensure orthogonality over a symbol duration T?",
+      "answers": {
+        "a": "Δf = 1/(2T)",
+        "b": "Δf = 1/T",
+        "c": "Both frequencies are the same",
+        "d": "Δf = T/2"
+      },
+      "explanations": {
+        "a": "Incorrect! Δf = 1/(2T) gives partial orthogonality but is not sufficient for full coherent orthogonal detection.",
+        "b": "Correct! For coherent binary FSK, the minimum frequency separation to ensure orthogonality over a symbol duration T is Δf = 1/T.",
+        "c": "Incorrect! If both frequencies are equal, the signals are identical and not orthogonal.",
+        "d": "Incorrect! This spacing is dimensionally inconsistent and does not ensure orthogonality."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In digital modulation, how does increasing the modulation order (e.g., from 4-PSK to 8-PSK) affect the bit error rate (BER) under the same SNR?",
+      "answers": {
+        "a": "BER decreases because more bits are transmitted per symbol",
+        "b": "BER increases because the Euclidean distance between symbols decreases",
+        "c": "BER remains the same because SNR is unchanged",
+        "d": "BER becomes zero at high modulation orders"
+      },
+      "explanations": {
+        "a": "Incorrect! More bits per symbol increases efficiency but can increase errors if symbols are closer.",
+        "b": "Correct! Higher-order modulation packs symbols closer in signal space, reducing Euclidean distance and increasing BER.",
+        "c": "Incorrect! BER depends not just on SNR but also on symbol spacing in the constellation.",
+        "d": "Incorrect! BER never becomes zero unless noise is zero."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "A coherent BFSK system uses orthogonal frequencies. What is the minimum bit error probability in AWGN for equal energy signals?",
+      "answers": {
+        "a": "Q(√(E_s/N₀))",
+        "b": "1/2 × exp(-E_s/(2N₀))",
+        "c": "1/2 × erfc(√(E_s/(2N₀)))",
+        "d": "Q(√(E_s/(2N₀)))"
+      },
+      "explanations": {
+        "a": "Incorrect! This expression applies to ASK or antipodal signaling.",
+        "b": "Correct! Coherent orthogonal BFSK has this closed-form BER expression.",
+        "c": "Incorrect! This is used for antipodal PSK signals.",
+        "d": "Incorrect! This is not the correct BER form for coherent BFSK."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "In an 8-PSK system, how many bits are affected on average per symbol error if Gray coding is not used?",
+      "answers": {
+        "a": "1",
+        "b": "2 or more",
+        "c": "0.5",
+        "d": "Same as Gray coded"
+      },
+      "explanations": {
+        "a": "Incorrect! This is typically true only when Gray coding is used.",
+        "b": "Correct! Without Gray coding, multiple bits may change per symbol error.",
+        "c": "Incorrect! This underestimates the average bit errors.",
+        "d": "Incorrect! Gray coding reduces the number of bit errors."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "In non-coherent binary FSK, what causes the degradation in bit error rate compared to coherent FSK?",
+      "answers": {
+        "a": "Lack of orthogonality between tones",
+        "b": "Use of envelope detection instead of correlation detection",
+        "c": "Greater phase noise at the transmitter",
+        "d": "Excessive bandwidth usage"
+      },
+      "explanations": {
+        "a": "Incorrect! Orthogonality can still be maintained.",
+        "b": "Correct! Non-coherent detection is less optimal and more susceptible to noise.",
+        "c": "Incorrect! Phase noise is more relevant to PSK systems.",
+        "d": "Incorrect! Bandwidth is not the primary cause of BER degradation."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "In M-ASK with M > 2, what limits the minimum distance between signal levels for fixed average power?",
+      "answers": {
+        "a": "The number of levels M",
+        "b": "The symbol rate",
+        "c": "The carrier frequency",
+        "d": "The modulation index"
+      },
+      "explanations": {
+        "a": "Correct! Increasing M forces the signal levels closer together for fixed average power.",
+        "b": "Incorrect! Symbol rate affects bandwidth, not amplitude spacing.",
+        "c": "Incorrect! Carrier frequency does not affect amplitude spacing.",
+        "d": "Incorrect! Modulation index is relevant to analog modulation."
+      },
+      "correctAnswer": "a",
+      "difficulty": "hard"
+    },
+    {
+      "question": "What is the peak-to-average power ratio (PAPR) concern in M-ASK compared to BPSK or BFSK?",
+      "answers": {
+        "a": "M-ASK has lower PAPR",
+        "b": "M-ASK has higher PAPR due to varying amplitudes",
+        "c": "M-ASK and BPSK have same PAPR",
+        "d": "FSK has the highest PAPR"
+      },
+      "explanations": {
+        "a": "Incorrect! Amplitude variations increase PAPR.",
+        "b": "Correct! Unequal amplitude levels produce higher peak-to-average power ratio.",
+        "c": "Incorrect! BPSK has constant amplitude.",
+        "d": "Incorrect! FSK typically maintains a constant envelope."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "In M-PSK, why does increasing M increase the bit error rate at fixed SNR?",
+      "answers": {
+        "a": "More bits per symbol increases decision complexity",
+        "b": "Constellation points become closer",
+        "c": "Bandwidth increases linearly",
+        "d": "Carrier phase cannot be recovered"
+      },
+      "explanations": {
+        "a": "Incorrect! Increased complexity is not the primary cause of higher BER.",
+        "b": "Correct! Increasing M reduces angular separation between constellation points.",
+        "c": "Incorrect! Bandwidth does not increase linearly with M in PSK.",
+        "d": "Incorrect! Carrier phase recovery is still possible."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "In M-FSK systems, how does increasing M (number of frequencies) affect the bandwidth and orthogonality requirements?",
+      "answers": {
+        "a": "Bandwidth decreases, orthogonality is easier to maintain",
+        "b": "Bandwidth increases, and the frequency spacing must be increased to maintain orthogonality",
+        "c": "Bandwidth remains constant, orthogonality is unaffected",
+        "d": "Bandwidth decreases, but frequency spacing must increase"
+      },
+      "explanations": {
+        "a": "Incorrect! More symbols require more frequencies, so bandwidth does not decrease.",
+        "b": "Correct! Increasing M requires more tones, which increases bandwidth, and the spacing between tones must be enough to maintain orthogonality.",
+        "c": "Incorrect! Bandwidth depends on the number of tones and symbol duration.",
+        "d": "Incorrect! Bandwidth does not decrease when M increases."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    }
+  ]
+}
