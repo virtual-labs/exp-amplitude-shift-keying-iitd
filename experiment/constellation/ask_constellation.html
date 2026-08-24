@@ -67,15 +67,17 @@
           originalSignalChart.destroy();
         }
 
-        // Generate random 1 or -1
-        function randomOneMinusOne() {
-          return Math.random() < 0.5 ? -1 : 1;
+        // ASK is on-off keying: binary symbols are 0 (carrier off) and +1
+        // (carrier at full amplitude) — NOT -1/+1, which is the BPSK/PSK
+        // convention. The two constellation points must sit at 0 and +1.
+        function randomZeroOne() {
+          return Math.random() < 0.5 ? 0 : 1;
         }
 
         // Generate a random modulated signal
         const modulatedSignal = new Array(numBits)
           .fill()
-          .map(randomOneMinusOne);
+          .map(randomZeroOne);
 
         console.log("Random Modulated Signal:", modulatedSignal);
 
