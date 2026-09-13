@@ -58,13 +58,13 @@
         "a": "Q(√(10))",
         "b": "Q(√(20))",
         "c": "0.5 * erfc(√(10))",
-        "d": "Q(√(10))"
+        "d": "erfc(√(20))"
       },
       "explanations": {
         "a": "Incorrect! BPSK BER follows Q(√(2Eb/N0)), not Q(√(Eb/N0)).",
         "b": "Correct! BPSK BER ≈ Q(√(2Eb/N0)), and for Eb/N0 = 10 (linear), this gives √20.",
         "c": "Incorrect! Although related, this is not the standard Q-function expression used here.",
-        "d": "Incorrect! This does not match the correct BPSK BER formula."
+        "d": "Incorrect! This omits the 1/2 factor relating erfc to the Q-function: Q(x) = 0.5·erfc(x/√2)."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
@@ -103,73 +103,73 @@
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
-        {
-          "question": "For a signal with bit rate R and modulation with k bits per symbol, what is the symbol rate?",
-          "answers": {
-            "a": "R + k",
-            "b": "R / k",
-            "c": "R × k",
-            "d": "R² / k"
-          },
-          "explanations": {
-            "a": "Incorrect! Addition is dimensionally inconsistent and does not represent symbol rate.",
-            "b": "Correct! Symbol rate = Bit rate / Bits per symbol (R/k).",
-            "c": "Incorrect! Multiplying would incorrectly increase the rate.",
-            "d": "Incorrect! This is not a valid relationship for symbol rate."
-          },
-          "correctAnswer": "b",
-          "difficulty": "intermediate"
-        },
-        {
-          "question": "Which digital modulation scheme is most robust to noise in an AWGN channel?",
-          "answers": {
-            "a": "ASK",
-            "b": "FSK",
-            "c": "PSK",
-            "d": "All perform equally"
-          },
-          "explanations": {
-            "a": "Incorrect! ASK is highly sensitive to amplitude noise.",
-            "b": "Incorrect! FSK is more robust than ASK but generally less efficient than PSK.",
-            "c": "Correct! PSK, especially BPSK, offers the best noise performance in AWGN among these schemes.",
-            "d": "Incorrect! Different modulation schemes have different noise performance."
-          },
-          "correctAnswer": "c",
-          "difficulty": "intermediate"
-        },
-        {
-          "question": "A digital system transmits 16-QAM symbols at 1 Msymbol/s. What is the bit rate of the system?",
-          "answers": {
-            "a": "1 Mbps",
-            "b": "2 Mbps",
-            "c": "4 Mbps",
-            "d": "16 Mbps"
-          },
-          "explanations": {
-            "a": "Incorrect! Each 16-QAM symbol carries 4 bits, not 1 bit.",
-            "b": "Incorrect! 16-QAM carries 4 bits per symbol.",
-            "c": "Correct! 16-QAM = log2(16) = 4 bits per symbol → 1M × 4 = 4 Mbps.",
-            "d": "Incorrect! 16-QAM does not carry 16 bits per symbol."
-          },
-          "correctAnswer": "c",
-          "difficulty": "intermediate"
-        },
-        {
-          "question": "In a binary ASK system with coherent detection, what kind of filter maximizes the SNR at the detector?",
-          "answers": {
-            "a": "Low-pass filter",
-            "b": "Matched filter",
-            "c": "Band-pass filter",
-            "d": "Rectifier followed by LPF"
-          },
-          "explanations": {
-            "a": "Incorrect! A low-pass filter alone does not maximize SNR.",
-            "b": "Correct! A matched filter maximizes the signal-to-noise ratio in AWGN for coherent detection.",
-            "c": "Incorrect! A band-pass filter does not provide optimal SNR performance.",
-            "d": "Incorrect! This is used in envelope detection, not optimal coherent detection."
-          },
-          "correctAnswer": "b",
-          "difficulty": "hard"
-        }
-      ]
+    {
+      "question": "For a signal with bit rate R and modulation with k bits per symbol, what is the symbol rate?",
+      "answers": {
+        "a": "R + k",
+        "b": "R / k",
+        "c": "R × k",
+        "d": "R² / k"
+      },
+      "explanations": {
+        "a": "Incorrect! Addition is dimensionally inconsistent and does not represent symbol rate.",
+        "b": "Correct! Symbol rate = Bit rate / Bits per symbol (R/k).",
+        "c": "Incorrect! Multiplying would incorrectly increase the rate.",
+        "d": "Incorrect! This is not a valid relationship for symbol rate."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which digital modulation scheme is most robust to noise in an AWGN channel?",
+      "answers": {
+        "a": "ASK",
+        "b": "FSK",
+        "c": "PSK",
+        "d": "All perform equally"
+      },
+      "explanations": {
+        "a": "Incorrect! ASK is highly sensitive to amplitude noise.",
+        "b": "Incorrect! FSK is more robust than ASK but generally less efficient than PSK.",
+        "c": "Correct! PSK, especially BPSK, offers the best noise performance in AWGN among these schemes.",
+        "d": "Incorrect! Different modulation schemes have different noise performance."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "A digital system transmits 16-QAM symbols at 1 Msymbol/s. What is the bit rate of the system?",
+      "answers": {
+        "a": "1 Mbps",
+        "b": "2 Mbps",
+        "c": "4 Mbps",
+        "d": "16 Mbps"
+      },
+      "explanations": {
+        "a": "Incorrect! Each 16-QAM symbol carries 4 bits, not 1 bit.",
+        "b": "Incorrect! 16-QAM carries 4 bits per symbol.",
+        "c": "Correct! 16-QAM = log2(16) = 4 bits per symbol → 1M × 4 = 4 Mbps.",
+        "d": "Incorrect! 16-QAM does not carry 16 bits per symbol."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In a binary ASK system with coherent detection, what kind of filter maximizes the SNR at the detector?",
+      "answers": {
+        "a": "Low-pass filter",
+        "b": "Matched filter",
+        "c": "Band-pass filter",
+        "d": "Rectifier followed by LPF"
+      },
+      "explanations": {
+        "a": "Incorrect! A low-pass filter alone does not maximize SNR.",
+        "b": "Correct! A matched filter maximizes the signal-to-noise ratio in AWGN for coherent detection.",
+        "c": "Incorrect! A band-pass filter does not provide optimal SNR performance.",
+        "d": "Incorrect! This is used in envelope detection, not optimal coherent detection."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
     }
+  ]
+}
